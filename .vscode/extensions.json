@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "davidanson.vscode-markdownlint",
+        "dotjoshjohnson.xml",
+        "editorconfig.editorconfig",
+        "ms-vscode.cpptools-extension-pack",
+        "yzhang.markdown-all-in-one"
+    ]
+}
