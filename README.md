@@ -1,6 +1,7 @@
 CertUiExts
 ==========
 
+[![azure devops](https://dev.azure.com/nexiom/CertUiExts/_apis/build/status/CertUiExts?branchName=stable)](https://dev.azure.com/nexiom/CertUiExts/_build/latest?definitionId=1&branchName=stable)
 [![license](https://img.shields.io/github/license/ralish/QueryHardwareSecurity)](https://choosealicense.com/licenses/mit/)
 
 A library which extends Windows cryptography support for displaying additional OIDs and associated certificate extensions.

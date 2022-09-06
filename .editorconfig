@@ -36,3 +36,7 @@ insert_final_newline = false
 [*.sln]
 charset = utf-8-bom
 indent_style = tab
+
+# YAML
+[*.yml]
+indent_size = 2

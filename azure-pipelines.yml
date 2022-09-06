@@ -1,0 +1,61 @@
+trigger:
+  batch: true
+
+pool:
+  vmImage: windows-2022
+
+variables:
+  solution: CertUiExts.sln
+
+steps:
+- task: VSBuild@1
+  inputs:
+    solution: $(solution)
+    platform: x86
+    configuration: Debug
+    maximumCpuCount: true
+
+- task: VSBuild@1
+  inputs:
+    solution: $(solution)
+    platform: x86
+    configuration: Release
+    maximumCpuCount: true
+
+- task: VSBuild@1
+  inputs:
+    solution: $(solution)
+    platform: x64
+    configuration: Debug
+    maximumCpuCount: true
+
+- task: VSBuild@1
+  inputs:
+    solution: $(solution)
+    platform: x64
+    configuration: Release
+    maximumCpuCount: true
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: bin/x86/Release
+    artifact: CertUiExts-$(build.SourceVersion)-x86
+    publishLocation: pipeline
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: bin/x86/Debug
+    artifact: CertUiExts-$(build.SourceVersion)-x86-dbg
+    publishLocation: pipeline
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: bin/x64/Release
+    artifact: CertUiExts-$(build.SourceVersion)-x64
+    publishLocation: pipeline
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: bin/x64/Debug
+    artifact: CertUiExts-$(build.SourceVersion)-x64-dbg
+    publishLocation: pipeline
