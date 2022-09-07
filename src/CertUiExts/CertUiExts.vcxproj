@@ -70,26 +70,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup>
-    <ClCompile>
-      <!-- General -->
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <!-- Language -->
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <ConformanceMode>true</ConformanceMode>
-      <!-- Precompiled headers -->
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <!-- Advanced -->
-      <CompileAs>CompileAsC</CompileAs>
-    </ClCompile>
     <Link>
       <!-- Input -->
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);crypt32.lib</AdditionalDependencies>
       <!-- Manifest file -->
       <EnableUAC>false</EnableUAC>
-      <!-- Debugging -->
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <!-- System -->
       <SubSystem>Windows</SubSystem>
     </Link>

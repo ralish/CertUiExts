@@ -17,7 +17,21 @@
     <ClCompile>
       <!-- General -->
       <AdditionalIncludeDirectories>$(SolutionDir)inc</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <!-- Language -->
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <ConformanceMode>true</ConformanceMode>
+      <!-- Precompiled headers -->
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <!-- Advanced -->
+      <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
+    <Link>
+      <!-- Debugging -->
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
     <ResourceCompile>
       <!-- General -->
       <AdditionalIncludeDirectories>$(SolutionDir)inc</AdditionalIncludeDirectories>
