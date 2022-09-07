@@ -185,8 +185,8 @@ BOOL FormatAadJoinType(_In_ DWORD dwCertEncodingType,
             goto end;
     }
 
-    if (wcscpy_s(pbFormat, *pcbFormat / 2, pwszJoinType) != 0) {
-        DBG_PRINT("wcscpy_s() failed copying string to output buffer (errno: %d)\n", errno);
+    if  (swprintf_s(pbFormat, *pcbFormat / 2, L"%s\n", pwszJoinType) == -1) {
+        DBG_PRINT("swprintf_s() failed to format string to output buffer (errno: %d)\n", errno);
         goto end;
     }
 
@@ -273,8 +273,8 @@ BOOL FormatAadTenantRegion(_In_ DWORD dwCertEncodingType,
         pwszTenantRegionName = L"Unknown";
     }
 
-    if (swprintf_s(pbFormat, *pcbFormat / 2, L"%s (%s)", pwszTenantRegionName, pwszTenantRegionCode) == -1) {
-        DBG_PRINT("swprintf_s() failed to format tenant region (errno: %d)\n", errno);
+    if (swprintf_s(pbFormat, *pcbFormat / 2, L"%s (%s)\n", pwszTenantRegionName, pwszTenantRegionCode) == -1) {
+        DBG_PRINT("swprintf_s() failed to format string to output buffer (errno: %d)\n", errno);
         goto end;
     }
 

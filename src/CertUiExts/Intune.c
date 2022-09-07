@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <malloc.h>
 
 #include "CertUiExts.h"
@@ -27,16 +28,19 @@ BOOL FormatIntuneDeviceId(_In_ DWORD dwCertEncodingType,
     GUID*  pGuid = NULL;
     LPWSTR pwszGuid = NULL;
 
+    // Additional character for newline
+    const DWORD dwBufferSize = cbGUID_SIZE_W + sizeof(WCHAR);
+
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
-    if (SetFormatBufferSize(pbFormat, pcbFormat, cbGUID_SIZE_W)) {
+    if (SetFormatBufferSize(pbFormat, pcbFormat, dwBufferSize)) {
         SetLastError(ERROR_MORE_DATA);
         return TRUE;
     }
 
-    if (*pcbFormat < cbGUID_SIZE_W) {
-        DBG_PRINT("Output buffer must be at least %u bytes but is %u bytes\n", cbGUID_SIZE_W, *pcbFormat);
-        *pcbFormat = cbGUID_SIZE_W;
+    if (*pcbFormat < dwBufferSize) {
+        DBG_PRINT("Output buffer must be at least %u bytes but is %u bytes\n", dwBufferSize, *pcbFormat);
+        *pcbFormat = dwBufferSize;
         SetLastError(ERROR_MORE_DATA);
         goto end;
     }
@@ -61,8 +65,8 @@ BOOL FormatIntuneDeviceId(_In_ DWORD dwCertEncodingType,
         goto end;
     }
 
-    if (wcscpy_s(pbFormat, *pcbFormat / sizeof(WCHAR), pwszGuid) != 0) {
-        DBG_PRINT("wcscpy_s() failed copying string to output buffer (errno: %d)\n", errno);
+    if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR), L"%s\n", pwszGuid) == -1) {
+        DBG_PRINT("swprintf_s() failed to format string to output buffer (errno: %d)\n", errno);
         goto end;
     }
 

@@ -215,7 +215,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ DWORD dwCertEncodingType,
     }
 
     if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR),
-                   L"Account: %s\\%s\nSID: %s",
+                   L"Account: %s\\%s\nSID: %s\n",
                    pwszSidAccountDomain, pwszSidAccountName, pwszSid) != -1) {
         bStatus = TRUE;
     }
