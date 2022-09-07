@@ -25,21 +25,21 @@ Requirements
 
 - Windows Vista or Server 2008 (or later)
 - Universal C Runtime (UCRT)  
-  *Built-in since Windows 10 and Server 2016.*
+  *Built-in since Windows 10 and Server 2016*
 
 Setup
 -----
 
 ### Installing
 
-1. Download the [latest release](https://github.com/ralish/CertUiExts/releases) which matches your Windows architecture (x86 or x64).
-2. Unpack the archive to a location which is read-only for non-Administrators (e.g. `C:\Program Files\CertUiExts`).
+1. Download the [latest release](https://github.com/ralish/CertUiExts/releases) which matches your Windows architecture (x86 or x64)
+2. Unpack the archive to a location which is read-only for non-Administrators (e.g. `C:\Program Files\CertUiExts`)
 3. From an elevated command-line run the registration utility to install: `CertUiExtsReg.exe /i`
 
 ### Uninstalling
 
 1. From an elevated command-line run the registration utility to uninstall: `CertUiExtsReg.exe /u`
-2. Delete the directory in which the files were unpacked (e.g. `C:\Program Files\CertUiExts`).
+2. Delete the directory in which the files were unpacked (e.g. `C:\Program Files\CertUiExts`)
 
 Usage
 -----
