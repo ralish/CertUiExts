@@ -26,6 +26,9 @@ Release/
 x64/
 x86/
 
+# Visual C++
+*.aps
+
 # Visual Studio
 *.user
 .vs/

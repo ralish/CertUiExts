@@ -10,6 +10,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CertUiExts", "src\CertUiExt
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CertUiExtsReg", "src\CertUiExtsReg\CertUiExtsReg.vcxproj", "{CEE62EE6-E539-41D2-9516-4A92D250AED0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2B85C80B-98D6-4CD5-B076-72D1C11A68DF}"
+	ProjectSection(SolutionItems) = preProject
+		inc\BaseVersionInfo.h = inc\BaseVersionInfo.h
+		inc\VersionInfo.rc2 = inc\VersionInfo.rc2
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
