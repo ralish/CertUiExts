@@ -14,23 +14,27 @@
   </PropertyGroup>
 
   <ItemDefinitionGroup>
-    <ResourceCompile>
+    <ClCompile>
+      <!-- General -->
       <AdditionalIncludeDirectories>$(SolutionDir)inc</AdditionalIncludeDirectories>
-      <!-- English (Australia) -->
+    </ClCompile>
+    <ResourceCompile>
+      <!-- General -->
+      <AdditionalIncludeDirectories>$(SolutionDir)inc</AdditionalIncludeDirectories>
       <Culture>0x0c09</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>
 
   <ItemDefinitionGroup Condition="'$(Configuration)' == 'Debug'">
     <ResourceCompile>
-      <!-- Preprocessor -->
+      <!-- General -->
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
 
   <ItemDefinitionGroup Condition="'$(Configuration)' == 'Release'">
     <ResourceCompile>
-      <!-- Preprocessor -->
+      <!-- General -->
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>

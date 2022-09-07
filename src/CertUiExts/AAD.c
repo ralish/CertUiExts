@@ -6,8 +6,10 @@
 
 #include <wincrypt.h>
 
-#include "CertUiExts.h"
+#include "Shared.h"
 #include "OIDs.h"
+
+#include "CertUiExts.h"
 
 /*
  * NTDS-DSA Invocation ID

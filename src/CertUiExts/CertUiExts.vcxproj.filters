@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\inc\ASN1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\OIDs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="CertUiExts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ASN.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OIDs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VersionInfo.h">

@@ -8,8 +8,9 @@
 #include <shlwapi.h>
 #include <wincrypt.h>
 
-#include "CertUiExts/CertUiExts.h"
-#include "CertUiExts/OIDs.h"
+#include "OIDs.h"
+
+#include "CertUiExtsReg.h"
 
 // Set to false if any (un)registration returns false
 BOOL g_bRegStatus = TRUE;

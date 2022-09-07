@@ -72,7 +72,6 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <!-- General -->
-      <AdditionalIncludeDirectories>$(SolutionDir)src</AdditionalIncludeDirectories>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <!-- Language -->
@@ -149,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CertUiExtsReg.h" />
     <ClInclude Include="VersionInfo.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />

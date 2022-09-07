@@ -7,6 +7,8 @@
 
 #include <wincrypt.h>
 
+#include "Shared.h"
+
 #include "CertUiExts.h"
 
 #ifdef _DEBUG

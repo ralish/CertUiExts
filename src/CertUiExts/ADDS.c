@@ -8,9 +8,11 @@
 #include <sddl.h>
 #include <wincrypt.h>
 
-#include "CertUiExts.h"
-#include "ASN.h"
+#include "Shared.h"
+#include "ASN1.h"
 #include "OIDs.h"
+
+#include "CertUiExts.h"
 
 /*
  * CA Security

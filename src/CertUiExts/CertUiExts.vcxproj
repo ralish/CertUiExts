@@ -150,9 +150,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\inc\ASN1.h" />
+    <ClInclude Include="..\..\inc\OIDs.h" />
     <ClInclude Include="CertUiExts.h" />
-    <ClInclude Include="ASN.h" />
-    <ClInclude Include="OIDs.h" />
     <ClInclude Include="VersionInfo.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />

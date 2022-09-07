@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <malloc.h>
 
+#include "Shared.h"
+
 #include "CertUiExts.h"
 
 /*
