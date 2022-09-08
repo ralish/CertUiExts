@@ -110,6 +110,10 @@
 // Found in certca.dll, CertEnroll.dll, CertEnrollUI.dll
 
 // Undocumented
+#define wszINTUNE_USER_ID_NAME L"Intune: User ID"
+#define szINTUNE_USER_ID_OID "1.2.840.113556.5.10"
+
+// Undocumented
 #define wszINTUNE_UNKNOWN_11_NAME L"Intune: Unknown (11)"
 #define szINTUNE_UNKNOWN_11_OID "1.2.840.113556.5.11"
 

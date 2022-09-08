@@ -105,6 +105,30 @@ BOOL FormatIntuneAccountId(_In_ DWORD dwCertEncodingType,
     return bStatus;
 }
 
+/*
+ * User ID
+ * 1.2.840.113556.5.10
+ */
+__declspec(dllexport)
+BOOL FormatIntuneUserId(_In_ DWORD dwCertEncodingType,
+                        _In_ DWORD dwFormatType,
+                        _In_ DWORD dwFormatStrType,
+                        _In_opt_ void* pFormatStruct,
+                        _In_opt_ LPCSTR lpszStructType,
+                        _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
+                        _In_ DWORD cbEncoded,
+                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
+                        _Inout_ DWORD* pcbFormat)
+{
+    BOOL bStatus;
+
+    DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
+    bStatus = FormatAsGuidStringW(dwFormatStrType, pbEncoded, cbEncoded, pbFormat, pcbFormat);
+    DBG_EXIT(bStatus);
+
+    return bStatus;
+}
+
 #ifdef _DEBUG
 /*
  * Unknown
