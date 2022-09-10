@@ -2,7 +2,7 @@ trigger:
   batch: true
 
 pool:
-  vmImage: windows-2022
+  vmImage: windows-latest
 
 variables:
   solution: CertUiExts.sln
