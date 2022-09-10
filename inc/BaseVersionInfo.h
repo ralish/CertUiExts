@@ -1,8 +1,8 @@
 #pragma once
 
 // Version
-#define VER_VERSION_BIN         0, 1, 1, 0
-#define VER_VERSION_STR         "0.1.1.0"
+#define VER_VERSION_BIN         0, 1, 2, 0
+#define VER_VERSION_STR         "0.1.2.0"
 
 // VERSIONINFO
 #define VER_FILEVERSION_BIN     VER_VERSION_BIN

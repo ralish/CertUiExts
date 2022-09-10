@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.1.2
+------
+
+- Add support for Intune User ID (`1.2.840.113556.5.10`)
+- Numerous code quality improvements & miscellaneous tidy-up
+
 v0.1.1
 ------
 
