@@ -26,6 +26,9 @@ Release/
 x64/
 x86/
 
+# Testing
+certs/
+
 # Visual C++
 *.aps
 
