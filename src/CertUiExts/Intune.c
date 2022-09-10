@@ -30,8 +30,8 @@ BOOL FormatIntuneDeviceId(_In_ DWORD dwCertEncodingType,
     GUID*  pGuid = NULL;
     LPWSTR pwszGuid = NULL;
 
-    // Additional character for newline
-    const DWORD dwBufferSize = cbGUID_SIZE_W + sizeof(WCHAR);
+    // Add newline & terminating null
+    const DWORD dwBufferSize = (dwGUID_SIZE_CHARS + 2) * sizeof(WCHAR);
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 

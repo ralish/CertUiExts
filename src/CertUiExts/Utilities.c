@@ -128,14 +128,16 @@ void FormatObjectDebugExitA(const LPCSTR pszFuncName, const BOOL bStatus)
 
 BOOL ConvertGuidToStringW(const GUID* pGuid, LPWSTR* ppwszGuid)
 {
-    *ppwszGuid = malloc(cbGUID_SIZE_W);
+    const DWORD dwGuidChars = dwGUID_SIZE_CHARS + 1; // Add terminating null
+
+    *ppwszGuid = calloc(dwGuidChars, sizeof(WCHAR));
     if (*ppwszGuid == NULL) {
-        DBG_PRINT("malloc() failed to allocate %u bytes (errno: %d)\n", cbGUID_SIZE_W, errno);
+        DBG_PRINT("calloc() failed to allocate WCHAR array for GUID (errno: %d)\n", errno);
         return FALSE;
     }
 
     if (swprintf_s(*ppwszGuid,
-                   dwGUID_SIZE_CHARS,
+                   dwGuidChars,
                    L"%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x",
                    pGuid->Data1, pGuid->Data2, pGuid->Data3,
                    pGuid->Data4[0], pGuid->Data4[1], pGuid->Data4[2], pGuid->Data4[3],
@@ -196,7 +198,7 @@ end:
     return bStatus;
 }
 
-BOOL DecodeAsnSidA(const BYTE* pbEncoded, const DWORD cbEncoded, LPSTR* ppszSid)
+BOOL DecodeAsnSidA(const BYTE* pbEncoded, const DWORD cbEncoded, LPSTR* ppszSid, DWORD* cbSid)
 {
     BOOL                bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAsnSidBlob = NULL;
@@ -215,10 +217,10 @@ BOOL DecodeAsnSidA(const BYTE* pbEncoded, const DWORD cbEncoded, LPSTR* ppszSid)
         return bStatus;
     }
 
-    cbSidLenA = pbAsnSidBlob->cbData + sizeof(CHAR); // Terminating null
-    *ppszSid = malloc(cbSidLenA);
+    cbSidLenA = pbAsnSidBlob->cbData + sizeof(CHAR); // Add terminating null
+    *ppszSid = calloc(cbSidLenA, sizeof(CHAR));
     if (*ppszSid == NULL) {
-        DBG_PRINT("malloc() failed to allocate %u bytes (errno: %d)\n", cbSidLenA, errno);
+        DBG_PRINT("calloc() failed to allocate CHAR array for SID (errno: %d)\n", errno);
         goto end;
     }
 
@@ -229,6 +231,7 @@ BOOL DecodeAsnSidA(const BYTE* pbEncoded, const DWORD cbEncoded, LPSTR* ppszSid)
         goto end;
     }
 
+    *cbSid = cbSidLenA;
     bStatus = TRUE;
 
 end:
@@ -247,8 +250,8 @@ BOOL FormatAsGuidStringW(const DWORD dwFormatStrType,
     GUID*  pGuid = NULL;
     LPWSTR pwszGuid = NULL;
 
-    // Additional character for newline
-    const DWORD dwBufferSize = cbGUID_SIZE_W + sizeof(WCHAR);
+    // Add newline & terminating null
+    const DWORD dwBufferSize = (dwGUID_SIZE_CHARS + 2) * sizeof(WCHAR);
 
     if (SetFormatBufferSize(pbFormat, pcbFormat, dwBufferSize)) {
         SetLastError(ERROR_MORE_DATA);

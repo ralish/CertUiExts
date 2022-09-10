@@ -29,21 +29,21 @@ BOOL FormatNtdsCaSecurityExt(_In_ DWORD dwCertEncodingType,
                              _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                              _Inout_ DWORD* pcbFormat)
 {
-    BOOL bStatus = FALSE;
+    BOOL   bStatus = FALSE;
+    size_t stNumChars;
 
     // OID
     BYTE   pbAsnOidTlv[cbNTDS_OBJECTSID_OID_TLV];
     LPSTR* ppszOid = NULL;
     LPWSTR pwszOid = NULL;
-    DWORD  cbOidLenA = 0;
-    size_t cbOidLenW;
+    DWORD  cbOidA = 0;
 
     // SID
     BYTE*  pbAsnSidTlv = NULL;
     DWORD  cbAsnSidTlv;
+    DWORD  cbSidA;
     LPSTR  pszSid = NULL;
     LPWSTR pwszSid = NULL;
-    size_t cbSidLenW;
 
     // Account details
     PSID         pSid = NULL;
@@ -117,7 +117,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ DWORD dwCertEncodingType,
                              CRYPT_DECODE_ALLOC_FLAG,
                              NULL, // Use LocalAlloc()
                              &ppszOid,
-                             &cbOidLenA)) {
+                             &cbOidA)) {
         DBG_PRINT("CryptDecodeObjectEx() failed (err: %u)\n", GetLastError());
         goto end;
     }
@@ -127,15 +127,15 @@ BOOL FormatNtdsCaSecurityExt(_In_ DWORD dwCertEncodingType,
         goto end;
     }
 
-    cbOidLenW = strlen(*ppszOid) * sizeof(WCHAR) + sizeof(WCHAR); // Terminating null
-    pwszOid = malloc(cbOidLenW);
+    stNumChars = strnlen_s(*ppszOid, cbOidA) + 1; // Add terminating null
+    pwszOid = calloc(stNumChars, sizeof(WCHAR));
     if (pwszOid == NULL) {
-        DBG_PRINT("malloc() failed to allocate %u bytes for wide OID string (errno: %d)\n", (DWORD)cbOidLenW, errno);
+        DBG_PRINT("calloc() failed to allocate WCHAR array for OID (errno: %d)\n", errno);
         goto end;
     }
 
-    if (mbstowcs_s(&cbOidLenW, pwszOid, cbOidLenW / sizeof(WCHAR), *ppszOid, strlen(*ppszOid)) != 0) {
-        DBG_PRINT("mbstowcs_s() failed converting ASCII OID string to wide OID string (errno: %d)\n", errno);
+    if (mbstowcs_s(&stNumChars, pwszOid, stNumChars, *ppszOid, stNumChars - 1) != 0) {
+        DBG_PRINT("mbstowcs_s() failed converting OID (errno: %d)\n", errno);
         goto end;
     }
 
@@ -151,19 +151,19 @@ BOOL FormatNtdsCaSecurityExt(_In_ DWORD dwCertEncodingType,
         goto end;
     }
 
-    if (!DecodeAsnSidA(pbAsnSidTlv, cbAsnSidTlv, &pszSid)) {
+    if (!DecodeAsnSidA(pbAsnSidTlv, cbAsnSidTlv, &pszSid, &cbSidA)) {
         goto end;
     }
 
-    cbSidLenW = strlen(pszSid) * sizeof(WCHAR) + sizeof(WCHAR); // Terminating null
-    pwszSid = malloc(cbSidLenW);
+    stNumChars = strnlen_s(pszSid, cbSidA) + 1; // Add terminating null
+    pwszSid = calloc(stNumChars, sizeof(WCHAR));
     if (pwszSid == NULL) {
-        DBG_PRINT("malloc() failed to allocate %u bytes for wide SID string (errno: %d)\n", (DWORD)cbSidLenW, errno);
+        DBG_PRINT("calloc() failed to allocate WCHAR array for SID (errno: %d)\n", errno);
         goto end;
     }
 
-    if (mbstowcs_s(&cbSidLenW, pwszSid, cbSidLenW / sizeof(WCHAR), pszSid, strlen(pszSid)) != 0) {
-        DBG_PRINT("mbstowcs_s() failed converting ASCII SID string to wide SID string (errno: %d)\n", errno);
+    if (mbstowcs_s(&stNumChars, pwszSid, stNumChars, pszSid, stNumChars - 1) != 0) {
+        DBG_PRINT("mbstowcs_s() failed converting SID (errno: %d)\n", errno);
         goto end;
     }
 
@@ -193,17 +193,15 @@ BOOL FormatNtdsCaSecurityExt(_In_ DWORD dwCertEncodingType,
         }
     }
 
-    cbSidAccountName = cbSidAccountName * sizeof(WCHAR);
-    pwszSidAccountName = malloc(cbSidAccountName);
+    pwszSidAccountName = calloc(cbSidAccountName, sizeof(WCHAR));
     if (pwszSidAccountName == NULL) {
-        DBG_PRINT("malloc() failed to allocate %u bytes for SID account name (errno: %d)\n", cbSidAccountName, errno);
+        DBG_PRINT("calloc() failed to allocate WCHAR array for SID account name (errno: %d)\n", errno);
         goto end;
     }
 
-    cbSidAccountDomain = cbSidAccountDomain * sizeof(WCHAR);
-    pwszSidAccountDomain = malloc(cbSidAccountDomain);
+    pwszSidAccountDomain = calloc(cbSidAccountDomain, sizeof(WCHAR));
     if (pwszSidAccountDomain == NULL) {
-        DBG_PRINT("malloc() failed to allocate %u bytes for SID domain name (errno: %d)\n", cbSidAccountDomain, errno);
+        DBG_PRINT("calloc() failed to allocate WCHAR array for SID domain name (errno: %d)\n", errno);
         goto end;
     }
 

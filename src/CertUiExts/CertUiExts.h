@@ -9,7 +9,8 @@ BOOL DecodeAsnGuid(const BYTE* pbEncoded,
 
 BOOL DecodeAsnSidA(const BYTE* pbEncoded,
                    DWORD       cbEncoded,
-                   LPSTR*      ppszSid);
+                   LPSTR*      ppszSid,
+                   DWORD*      cbSid);
 
 BOOL FormatAsGuidStringW(DWORD       dwFormatStrType,
                          const BYTE* pbEncoded,
@@ -26,9 +27,7 @@ BOOL SetFormatBufferSize(const void* pbFormat,
                          DWORD       dwSize);
 
 // GUID constants
-#define dwGUID_SIZE_CHARS (DWORD)37 // Including dashes & terminating null
-#define cbGUID_SIZE_A (dwGUID_SIZE_CHARS * sizeof(CHAR))
-#define cbGUID_SIZE_W (dwGUID_SIZE_CHARS * sizeof(WCHAR))
+#define dwGUID_SIZE_CHARS (DWORD)36 // Including dashes
 
 // String constants (Unicode)
 #define wszFORMAT_FAILURE L"Failed to decode"
