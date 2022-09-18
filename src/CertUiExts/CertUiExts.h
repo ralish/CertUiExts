@@ -26,6 +26,9 @@ BOOL SetFormatBufferSize(const void* pbFormat,
                          DWORD*      pcbFormat,
                          DWORD       dwSize);
 
+BOOL VerifyFormatBufferSize(const DWORD* pcbFormat,
+                            DWORD        dwSize);
+
 // GUID constants
 #define dwGUID_SIZE_CHARS (DWORD)36 // Including dashes
 

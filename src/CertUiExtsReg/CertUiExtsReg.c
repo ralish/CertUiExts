@@ -134,7 +134,7 @@ void Register(void)
 
     /*
      * Type: Azure AD
-     * OIDs: 1.2.840.113556.1.5.284.x
+     * OIDs: 1.2.840.113556.1.5.284.*
      */
 
     RegisterOIDInfo(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
@@ -263,7 +263,7 @@ void Unregister(void)
 
     /*
      * Type: Azure AD
-     * OIDs: 1.2.840.113556.1.5.284.x
+     * OIDs: 1.2.840.113556.1.5.284.*
      */
 
     UnregisterOIDInfo(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);

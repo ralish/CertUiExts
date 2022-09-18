@@ -56,8 +56,11 @@ BOOL FormatNtdsCaSecurityExt(_In_ DWORD dwCertEncodingType,
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
     if (SetFormatBufferSize(pbFormat, pcbFormat, cbNTDS_CA_SECURITY_EXT_BUFFER)) {
-        SetLastError(ERROR_MORE_DATA);
         return TRUE;
+    }
+
+    if (!VerifyFormatBufferSize(pcbFormat, cbNTDS_CA_SECURITY_EXT_BUFFER)) {
+        return FALSE;
     }
 
     if (cbEncoded < cbNTDS_CA_SECURITY_EXT_ASN_MIN) {

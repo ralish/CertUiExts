@@ -154,8 +154,11 @@ BOOL FormatAadJoinType(_In_ DWORD dwCertEncodingType,
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
     if (SetFormatBufferSize(pbFormat, pcbFormat, cbAAD_JOIN_TYPE_BUFFER)) {
-        SetLastError(ERROR_MORE_DATA);
         return TRUE;
+    }
+
+    if (!VerifyFormatBufferSize(pcbFormat, cbAAD_JOIN_TYPE_BUFFER)) {
+        return FALSE;
     }
 
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
@@ -226,8 +229,11 @@ BOOL FormatAadTenantRegion(_In_ DWORD dwCertEncodingType,
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
     if (SetFormatBufferSize(pbFormat, pcbFormat, cbAAD_TENANT_REGION_BUFFER)) {
-        SetLastError(ERROR_MORE_DATA);
         return TRUE;
+    }
+
+    if (!VerifyFormatBufferSize(pcbFormat, cbAAD_TENANT_REGION_BUFFER)) {
+        return FALSE;
     }
 
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,

@@ -36,8 +36,11 @@ BOOL FormatIntuneDeviceId(_In_ DWORD dwCertEncodingType,
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
     if (SetFormatBufferSize(pbFormat, pcbFormat, dwBufferSize)) {
-        SetLastError(ERROR_MORE_DATA);
         return TRUE;
+    }
+
+    if (!VerifyFormatBufferSize(pcbFormat, dwBufferSize)) {
+        return FALSE;
     }
 
     if (*pcbFormat < dwBufferSize) {

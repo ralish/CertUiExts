@@ -254,8 +254,11 @@ BOOL FormatAsGuidStringW(const DWORD dwFormatStrType,
     const DWORD dwBufferSize = (dwGUID_SIZE_CHARS + 2) * sizeof(WCHAR);
 
     if (SetFormatBufferSize(pbFormat, pcbFormat, dwBufferSize)) {
-        SetLastError(ERROR_MORE_DATA);
         return TRUE;
+    }
+
+    if (!VerifyFormatBufferSize(pcbFormat, dwBufferSize)) {
+        return FALSE;
     }
 
     if (*pcbFormat < dwBufferSize) {
@@ -306,8 +309,7 @@ BOOL SetFailureInfo(const DWORD dwFormatStrType, void* pbFormat, const DWORD* pc
             return FALSE;
         }
 
-        DBG_PRINT("Output buffer must be at least %u bytes but is %u bytes\n",
-                  (DWORD)sizeof(wszFORMAT_FAILURE), *pcbFormat);
+        DBG_PRINT("Format function failed and output buffer of %u bytes insufficient for failure string\n", *pcbFormat);
     }
 
     return FALSE;
@@ -333,5 +335,25 @@ BOOL SetFormatBufferSize(const void* pbFormat, DWORD* pcbFormat, const DWORD dwS
     }
 
     *pcbFormat = dwSize;
+    SetLastError(ERROR_MORE_DATA);
     return TRUE;
+}
+
+/*
+ * Verifies the size of the provided buffer is sufficient for the data to be
+ * returned. While SetFormatBufferSize() sets the required buffer size when the
+ * caller is probing for the size, this function will check the provided buffer
+ * in the subsequent call is actually sufficient as an additional safety check.
+ * It's probably redundant as subsequent calls in the formatting function will
+ * fail, but it means we fail sooner and assists with debugging caller issues.
+ */
+BOOL VerifyFormatBufferSize(const DWORD* pcbFormat, const DWORD dwSize)
+{
+    if (*pcbFormat <= dwSize) {
+        return TRUE;
+    }
+
+    DBG_PRINT("Output buffer must be at least %u bytes but is %u bytes\n", dwSize, *pcbFormat);
+    SetLastError(ERROR_MORE_DATA);
+    return FALSE;
 }
