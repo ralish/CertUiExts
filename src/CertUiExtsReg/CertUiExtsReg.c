@@ -133,6 +133,16 @@ void Register(void)
 
 
     /*
+     * Type: ASP.NET Core
+     * OIDs: 1.3.6.1.4.1.311.84.1.*
+     */
+
+    RegisterOIDInfo(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
+    RegisterOIDFunction(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME,
+                        szCRYPT_FORMAT_OBJECT, "FormatAspNetCoreHttpsDevCert");
+
+
+    /*
      * Type: Azure AD
      * OIDs: 1.2.840.113556.1.5.284.*
      */
@@ -259,6 +269,16 @@ void Unregister(void)
 
     UnregisterOIDInfo(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
     UnregisterOIDFunction(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, szCRYPT_FORMAT_OBJECT);
+
+
+    /*
+     * Type: ASP.NET Core
+     * OIDs: 1.3.6.1.4.1.311.84.1.*
+     */
+
+    UnregisterOIDInfo(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME,
+                      CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
+    UnregisterOIDFunction(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME, szCRYPT_FORMAT_OBJECT);
 
 
     /*

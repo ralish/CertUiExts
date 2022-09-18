@@ -47,6 +47,9 @@
     <ClCompile Include="ADDS.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AspNetCore.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Intune.c">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -13,6 +13,7 @@ A library which extends Windows cryptography support for displaying additional O
 - [Usage](#usage)
 - [Object identifiers (OIDs)](#object-identifiers-oids)
   - [Active Directory](#active-directory)
+  - [ASP.NET Core](#aspnet-core)
   - [Azure AD](#azure-ad)
   - [Intune](#intune)
 - [Security](#security)
@@ -95,31 +96,37 @@ Object identifiers (OIDs)
 
 ### Active Directory
 
-| OID                            | Description               |
-| ------------------------------ | ------------------------- |
-| `1.3.6.1.4.1.311.25.2`         | CA Security               |
-| `1.3.6.1.4.1.311.25.2.1`       | Object SID                |
+| OID                            | Description                    |
+| ------------------------------ | ------------------------------ |
+| `1.3.6.1.4.1.311.25.2`         | CA Security                    |
+| `1.3.6.1.4.1.311.25.2.1`       | Object SID                     |
+
+### ASP.NET Core
+
+| OID                            | Description                    |
+| ------------------------------ | ------------------------------ |
+| `1.3.6.1.4.1.311.84.1.1`       | HTTPS Development Certificate  |
 
 ### Azure AD
 
-| OID                            | Description               |
-| ------------------------------ | ------------------------- |
-| `1.2.840.113556.1.5.284.1`     | NTDS-DSA Invocation ID    |
-| `1.2.840.113556.1.5.284.2`     | Device ID                 |
-| `1.2.840.113556.1.5.284.3`     | User ID                   |
-| `1.2.840.113556.1.5.284.4`     | Domain ID                 |
-| `1.2.840.113556.1.5.284.5`     | Tenant ID                 |
-| `1.2.840.113556.1.5.284.7`     | Join Type                 |
-| `1.2.840.113556.1.5.284.8`     | Tenant Region             |
+| OID                            | Description                    |
+| ------------------------------ | ------------------------------ |
+| `1.2.840.113556.1.5.284.1`     | NTDS-DSA Invocation ID         |
+| `1.2.840.113556.1.5.284.2`     | Device ID                      |
+| `1.2.840.113556.1.5.284.3`     | User ID                        |
+| `1.2.840.113556.1.5.284.4`     | Domain ID                      |
+| `1.2.840.113556.1.5.284.5`     | Tenant ID                      |
+| `1.2.840.113556.1.5.284.7`     | Join Type                      |
+| `1.2.840.113556.1.5.284.8`     | Tenant Region                  |
 
 ### Intune
 
-| OID                            | Description               |
-| ------------------------------ | ------------------------- |
-| `1.2.840.113556.5.4`           | Device ID                 |
-| `1.2.840.113556.5.6`           | Account ID                |
-| `1.2.840.113556.5.10`          | User ID                   |
-| `1.2.840.113556.5.14`          | AAD Tenant ID             |
+| OID                            | Description                    |
+| ------------------------------ | ------------------------------ |
+| `1.2.840.113556.5.4`           | Device ID                      |
+| `1.2.840.113556.5.6`           | Account ID                     |
+| `1.2.840.113556.5.10`          | User ID                        |
+| `1.2.840.113556.5.14`          | AAD Tenant ID                  |
 
 Security
 --------
