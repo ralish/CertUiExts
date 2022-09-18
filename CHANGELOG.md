@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.1.3
+------
+
+- Add support for ASP.NET Core HTTPS Development Certificate (`1.3.6.1.4.1.311.84.1.1`)
+- More code quality improvements
+
 v0.1.2
 ------
 
