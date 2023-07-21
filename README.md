@@ -15,6 +15,7 @@ A library which extends Windows cryptography support for displaying additional O
   - [Active Directory](#active-directory)
   - [ASP.NET Core](#aspnet-core)
   - [Azure AD](#azure-ad)
+  - [CA/Browser Forum](#cabrowser-forum)
   - [Intune](#intune)
 - [Security](#security)
   - [Build security](#build-security)
@@ -96,37 +97,61 @@ Object identifiers (OIDs)
 
 ### Active Directory
 
-| OID                            | Description                    |
-| ------------------------------ | ------------------------------ |
-| `1.3.6.1.4.1.311.25.2`         | CA Security                    |
-| `1.3.6.1.4.1.311.25.2.1`       | Object SID                     |
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.3.6.1.4.1.311.25.2`         | Extension          | CA Security                                                  |
+| `1.3.6.1.4.1.311.25.2.1`       | Extension          | Object SID                                                   |
 
 ### ASP.NET Core
 
-| OID                            | Description                    |
-| ------------------------------ | ------------------------------ |
-| `1.3.6.1.4.1.311.84.1.1`       | HTTPS Development Certificate  |
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.3.6.1.4.1.311.84.1.1`       | Extension          | HTTPS Development Certificate                                |
 
 ### Azure AD
 
-| OID                            | Description                    |
-| ------------------------------ | ------------------------------ |
-| `1.2.840.113556.1.5.284.1`     | NTDS-DSA Invocation ID         |
-| `1.2.840.113556.1.5.284.2`     | Device ID                      |
-| `1.2.840.113556.1.5.284.3`     | User ID                        |
-| `1.2.840.113556.1.5.284.4`     | Domain ID                      |
-| `1.2.840.113556.1.5.284.5`     | Tenant ID                      |
-| `1.2.840.113556.1.5.284.7`     | Join Type                      |
-| `1.2.840.113556.1.5.284.8`     | Tenant Region                  |
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.2.840.113556.1.5.284.1`     | Extension          | NTDS-DSA Invocation ID                                       |
+| `1.2.840.113556.1.5.284.2`     | Extension          | Device ID                                                    |
+| `1.2.840.113556.1.5.284.3`     | Extension          | User ID                                                      |
+| `1.2.840.113556.1.5.284.4`     | Extension          | Domain ID                                                    |
+| `1.2.840.113556.1.5.284.5`     | Extension          | Tenant ID                                                    |
+| `1.2.840.113556.1.5.284.7`     | Extension          | Join Type                                                    |
+| `1.2.840.113556.1.5.284.8`     | Extension          | Tenant Region                                                |
+
+### CA/Browser Forum
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `2.23.140.1.1`                 | Certificate Policy | Extended Validation (EV) TLS Certificate                     |
+| `2.23.140.1.2.1`               | Certificate Policy | Domain Validated (DV) TLS Certificate                        |
+| `2.23.140.1.2.2`               | Certificate Policy | Organization Validated (OV) TLS Certificate                  |
+| `2.23.140.1.2.3`               | Certificate Policy | Individual Validated (IV) TLS Certificate                    |
+| `2.23.140.1.3`                 | Certificate Policy | Extended Validation (EV) Code Signing Certificate            |
+| `2.23.140.1.4.1`               | Certificate Policy | Code Signing Certificate                                     |
+| `2.23.140.1.4.2`               | Certificate Policy | Timestamping Certificate                                     |
+| `2.23.140.1.5.1.1`             | Certificate Policy | Mailbox Validated S/MIME Certificate (Legacy)                |
+| `2.23.140.1.5.1.2`             | Certificate Policy | Mailbox Validated S/MIME Certificate (Multipurpose)          |
+| `2.23.140.1.5.1.3`             | Certificate Policy | Mailbox Validated S/MIME Certificate (Strict)                |
+| `2.23.140.1.5.2.1`             | Certificate Policy | Organization Validated S/MIME Certificate (Legacy)           |
+| `2.23.140.1.5.2.2`             | Certificate Policy | Organization Validated S/MIME Certificate (Multipurpose)     |
+| `2.23.140.1.5.2.3`             | Certificate Policy | Organization Validated S/MIME Certificate (Strict)           |
+| `2.23.140.1.5.3.1`             | Certificate Policy | Sponsor Validated S/MIME Certificate (Legacy)                |
+| `2.23.140.1.5.3.2`             | Certificate Policy | Sponsor Validated S/MIME Certificate (Multipurpose)          |
+| `2.23.140.1.5.3.3`             | Certificate Policy | Sponsor Validated S/MIME Certificate (Strict)                |
+| `2.23.140.1.5.4.1`             | Certificate Policy | Individual Validated S/MIME Certificate (Legacy)             |
+| `2.23.140.1.5.4.2`             | Certificate Policy | Individual Validated S/MIME Certificate (Multipurpose)       |
+| `2.23.140.1.5.4.3`             | Certificate Policy | Individual Validated S/MIME Certificate (Strict)             |
 
 ### Intune
 
-| OID                            | Description                    |
-| ------------------------------ | ------------------------------ |
-| `1.2.840.113556.5.4`           | Device ID                      |
-| `1.2.840.113556.5.6`           | Account ID                     |
-| `1.2.840.113556.5.10`          | User ID                        |
-| `1.2.840.113556.5.14`          | AAD Tenant ID                  |
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.2.840.113556.5.4`           | Extension          | Device ID                                                    |
+| `1.2.840.113556.5.6`           | Extension          | Account ID                                                   |
+| `1.2.840.113556.5.10`          | Extension          | User ID                                                      |
+| `1.2.840.113556.5.14`          | Extension          | AAD Tenant ID                                                |
 
 Security
 --------

@@ -105,6 +105,95 @@
 
 
 // *********************************************************
+// ***                 CA/Browser Forum                  ***
+// *********************************************************
+
+/*
+ * 2.23.140
+ *
+ * joint-iso-itu-t(2)
+ * international-organizations(23)
+ * ca-browser-forum(140)
+ */
+
+// certificate-policies(1) -> ev-guidelines(1)
+#define wszCAB_CERTPOL_TLS_EV_NAME L"CA/Browser Forum: Extended Validation (EV) TLS Certificate"
+#define szCAB_CERTPOL_TLS_EV_OID "2.23.140.1.1"
+
+// certificate-policies(1) -> baseline-requirements(2) -> domain-validated(1)
+#define wszCAB_CERTPOL_TLS_DV_NAME L"CA/Browser Forum: Domain Validated (DV) TLS Certificate"
+#define szCAB_CERTPOL_TLS_DV_OID "2.23.140.1.2.1"
+
+// certificate-policies(1) -> baseline-requirements(2) -> organization-validated(2)
+#define wszCAB_CERTPOL_TLS_OV_NAME L"CA/Browser Forum: Organization Validated (OV) TLS Certificate"
+#define szCAB_CERTPOL_TLS_OV_OID "2.23.140.1.2.2"
+
+// certificate-policies(1) -> baseline-requirements(2) -> individual-validated(3)
+#define wszCAB_CERTPOL_TLS_IV_NAME L"CA/Browser Forum: Individual Validated (IV) TLS Certificate"
+#define szCAB_CERTPOL_TLS_IV_OID "2.23.140.1.2.3"
+
+// certificate-policies(1) -> extended-validation-codesigning(3)
+#define wszCAB_CERTPOL_CS_EV_NAME L"CA/Browser Forum: Extended Validation (EV) Code Signing Certificate"
+#define szCAB_CERTPOL_CS_EV_OID "2.23.140.1.3"
+
+// certificate-policies(1) -> code-signing-requirements(4) -> code-signing(1)
+#define wszCAB_CERTPOL_CS_NAME L"CA/Browser Forum: Code Signing Certificate"
+#define szCAB_CERTPOL_CS_OID "2.23.140.1.4.1"
+
+// certificate-policies(1) -> code-signing-requirements(4) -> timestamping(2)
+#define wszCAB_CERTPOL_TS_NAME L"CA/Browser Forum: Timestamping Certificate"
+#define szCAB_CERTPOL_TS_OID "2.23.140.1.4.2"
+
+// certificate-policies(1) -> smime-baseline(5) -> mailbox-validated(1) -> legacy(1)
+#define wszCAB_CERTPOL_SMIME_MV_LEGACY_NAME L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Legacy)"
+#define szCAB_CERTPOL_SMIME_MV_LEGACY_OID "2.23.140.1.5.1.1"
+
+// certificate-policies(1) -> smime-baseline(5) -> mailbox-validated(1) -> multipurpose(2)
+#define wszCAB_CERTPOL_SMIME_MV_MULTI_NAME L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Multipurpose)"
+#define szCAB_CERTPOL_SMIME_MV_MULTI_OID "2.23.140.1.5.1.2"
+
+// certificate-policies(1) -> smime-baseline(5) -> mailbox-validated(1) -> strict(3)
+#define wszCAB_CERTPOL_SMIME_MV_STRICT_NAME L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Strict)"
+#define szCAB_CERTPOL_SMIME_MV_STRICT_OID "2.23.140.1.5.1.3"
+
+// certificate-policies(1) -> smime-baseline(5) -> organization-validated(2) -> legacy(1)
+#define wszCAB_CERTPOL_SMIME_OV_LEGACY_NAME L"CA/Browser Forum: Organization Validated S/MIME Certificate (Legacy)"
+#define szCAB_CERTPOL_SMIME_OV_LEGACY_OID "2.23.140.1.5.2.1"
+
+// certificate-policies(1) -> smime-baseline(5) -> organization-validated(2) -> multipurpose(2)
+#define wszCAB_CERTPOL_SMIME_OV_MULTI_NAME L"CA/Browser Forum: Organization Validated S/MIME Certificate (Multipurpose)"
+#define szCAB_CERTPOL_SMIME_OV_MULTI_OID "2.23.140.1.5.2.2"
+
+// certificate-policies(1) -> smime-baseline(5) -> organization-validated(2) -> strict(3)
+#define wszCAB_CERTPOL_SMIME_OV_STRICT_NAME L"CA/Browser Forum: Organization Validated S/MIME Certificate (Strict)"
+#define szCAB_CERTPOL_SMIME_OV_STRICT_OID "2.23.140.1.5.2.3"
+
+// certificate-policies(1) -> smime-baseline(5) -> sponsor-validated(3) -> legacy(1)
+#define wszCAB_CERTPOL_SMIME_SV_LEGACY_NAME L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Legacy)"
+#define szCAB_CERTPOL_SMIME_SV_LEGACY_OID "2.23.140.1.5.3.1"
+
+// certificate-policies(1) -> smime-baseline(5) -> sponsor-validated(3) -> multipurpose(2)
+#define wszCAB_CERTPOL_SMIME_SV_MULTI_NAME L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Multipurpose)"
+#define szCAB_CERTPOL_SMIME_SV_MULTI_OID "2.23.140.1.5.3.2"
+
+// certificate-policies(1) -> smime-baseline(5) -> sponsor-validated(3) -> strict(3)
+#define wszCAB_CERTPOL_SMIME_SV_STRICT_NAME L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Strict)"
+#define szCAB_CERTPOL_SMIME_SV_STRICT_OID "2.23.140.1.5.3.3"
+
+// certificate-policies(1) -> smime-baseline(5) -> individual-validated(4) -> legacy(1)
+#define wszCAB_CERTPOL_SMIME_IV_LEGACY_NAME L"CA/Browser Forum: Individual Validated S/MIME Certificate (Legacy)"
+#define szCAB_CERTPOL_SMIME_IV_LEGACY_OID "2.23.140.1.5.4.1"
+
+// certificate-policies(1) -> smime-baseline(5) -> individual-validated(4) -> multipurpose(2)
+#define wszCAB_CERTPOL_SMIME_IV_MULTI_NAME L"CA/Browser Forum: Individual Validated S/MIME Certificate (Multipurpose)"
+#define szCAB_CERTPOL_SMIME_IV_MULTI_OID "2.23.140.1.5.4.2"
+
+// certificate-policies(1) -> smime-baseline(5) -> individual-validated(4) -> strict(3)
+#define wszCAB_CERTPOL_SMIME_IV_STRICT_NAME L"CA/Browser Forum: Individual Validated S/MIME Certificate (Strict)"
+#define szCAB_CERTPOL_SMIME_IV_STRICT_OID "2.23.140.1.5.4.3"
+
+
+// *********************************************************
 // ***                      Intune                       ***
 // *********************************************************
 
