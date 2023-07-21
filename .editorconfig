@@ -38,5 +38,5 @@ charset = utf-8-bom
 indent_style = tab
 
 # YAML
-[*.yml]
+[*.yml,.clang-tidy]
 indent_size = 2
