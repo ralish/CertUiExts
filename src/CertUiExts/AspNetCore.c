@@ -16,19 +16,18 @@
  * version, or be empty, which is equivalent to setting the version to zero.
  */
 __declspec(dllexport)
-BOOL FormatAspNetCoreHttpsDevCert(_In_ DWORD                              dwCertEncodingType,
-                                  _In_ DWORD                              dwFormatType,
-                                  _In_ DWORD                              dwFormatStrType,
-                                  _In_opt_ void*                          pFormatStruct,
-                                  _In_opt_ LPCSTR                         lpszStructType,
+BOOL FormatAspNetCoreHttpsDevCert(_In_ const DWORD dwCertEncodingType,
+                                  _In_ const DWORD dwFormatType,
+                                  _In_ const DWORD dwFormatStrType,
+                                  _In_opt_ const void* pFormatStruct,
+                                  _In_opt_ const LPCSTR lpszStructType,
                                   _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                                  _In_ DWORD                              cbEncoded,
+                                  _In_ const DWORD cbEncoded,
                                   _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void*
                                   pbFormat,
-                                  _Inout_ DWORD* pcbFormat)
-{
-    BOOL  bStatus = FALSE;
-    INT   dwVersion = 0;
+                                  _Inout_ DWORD* pcbFormat) {
+    BOOL bStatus = FALSE;
+    INT dwVersion = 0;
     WCHAR pszVersion[4]; // Largest integer for a single byte is 254
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);

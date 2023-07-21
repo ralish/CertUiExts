@@ -6,13 +6,13 @@ void OutputDebugFormatStringA(LPCSTR pszFuncName,
                               ...);
 
 void FormatObjectDebugEntryA(LPCSTR pszFuncName,
-                             DWORD  dwCertEncodingType,
-                             DWORD  dwFormatStrType,
+                             DWORD dwCertEncodingType,
+                             DWORD dwFormatStrType,
                              LPCSTR lpszStructType,
-                             DWORD  cbFormat);
+                             DWORD cbFormat);
 
 void FormatObjectDebugExitA(LPCSTR pszFuncName,
-                            BOOL   bStatus);
+                            BOOL bStatus);
 
 #define DBG_PRINT(kszDebugFormatString, ...) \
     OutputDebugFormatStringA(__func__, kszDebugFormatString, __VA_ARGS__)

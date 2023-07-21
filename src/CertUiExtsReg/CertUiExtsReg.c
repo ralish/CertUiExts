@@ -1,8 +1,6 @@
 #include "pch.h"
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <malloc.h>
 
 #include <windows.h>
 #include <shlwapi.h>
@@ -18,8 +16,7 @@ BOOL g_bRegStatus = TRUE;
 // DLL path used in OID info & function registrations
 WCHAR g_pwszDllPath[MAX_PATH * sizeof(WCHAR)];
 
-void DisplayHelp(BOOL bInvalidParam)
-{
+void DisplayHelp(const BOOL bInvalidParam) {
     if (bInvalidParam) {
         wprintf_s(L"An invalid parameter was provided.\n\n");
     }
@@ -30,9 +27,8 @@ void DisplayHelp(BOOL bInvalidParam)
     wprintf_s(L"  /u    Unregister the extension");
 }
 
-BOOL GetDllPath(void)
-{
-    BOOL  bStatus = FALSE;
+BOOL GetDllPath(void) {
+    BOOL bStatus = FALSE;
     DWORD dwPathLen;
 
     dwPathLen = GetModuleFileNameW(NULL, g_pwszDllPath, MAX_PATH * sizeof(WCHAR));
@@ -64,11 +60,10 @@ end:
 
 #pragma region Install
 
-BOOL RegisterOIDInfo(const LPSTR  pszOID,
+BOOL RegisterOIDInfo(const LPSTR pszOID,
                      const LPWSTR pwszName,
-                     const DWORD  dwGroupId)
-{
-    BOOL            bStatus = FALSE;
+                     const DWORD dwGroupId) {
+    BOOL bStatus = FALSE;
     CRYPT_OID_INFO* pOIDInfo;
 
     wprintf_s(L"[%s] Registering OID info ... ", pwszName);
@@ -97,11 +92,10 @@ end:
     return bStatus;
 }
 
-BOOL RegisterOIDFunction(const LPSTR  pszOID,
+BOOL RegisterOIDFunction(const LPSTR pszOID,
                          const LPWSTR pwszName,
-                         const LPSTR  pszFuncName,
-                         const LPSTR  pszOverrideFuncName)
-{
+                         const LPSTR pszFuncName,
+                         const LPSTR pszOverrideFuncName) {
     BOOL bStatus;
 
     wprintf_s(L"[%s] Registering OID function ... ", pwszName);
@@ -120,99 +114,90 @@ BOOL RegisterOIDFunction(const LPSTR  pszOID,
     return bStatus;
 }
 
-void Register(void)
-{
+void Register(void) {
     /*
-     * Type: Active Directory Domain Services
-     * OIDs: 1.3.6.1.4.1.311.25.*
+     * Active Directory Domain Services
+     * 1.3.6.1.4.1.311.25.*
      */
 
     RegisterOIDInfo(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatNtdsCaSecurityExt");
+    RegisterOIDFunction(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, szCRYPT_FORMAT_OBJECT,
+                        "FormatNtdsCaSecurityExt");
 
 
     /*
-     * Type: ASP.NET Core
-     * OIDs: 1.3.6.1.4.1.311.84.1.*
+     * ASP.NET Core
+     * 1.3.6.1.4.1.311.84.1.*
      */
 
     RegisterOIDInfo(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAspNetCoreHttpsDevCert");
+    RegisterOIDFunction(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME, szCRYPT_FORMAT_OBJECT,
+                        "FormatAspNetCoreHttpsDevCert");
 
 
     /*
-     * Type: Azure AD
-     * OIDs: 1.2.840.113556.1.5.284.*
+     * Azure AD
+     * 1.2.840.113556.1.5.284.*
      */
 
     RegisterOIDInfo(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAadNtdsDsaIid");
+    RegisterOIDFunction(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadNtdsDsaIid");
 
     RegisterOIDInfo(szAAD_DEVICE_ID_OID, wszAAD_DEVICE_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_DEVICE_ID_OID, wszAAD_DEVICE_ID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAadDeviceId");
+    RegisterOIDFunction(szAAD_DEVICE_ID_OID, wszAAD_DEVICE_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadDeviceId");
 
     RegisterOIDInfo(szAAD_USER_ID_OID, wszAAD_USER_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_USER_ID_OID, wszAAD_USER_ID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAadUserId");
+    RegisterOIDFunction(szAAD_USER_ID_OID, wszAAD_USER_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadUserId");
 
     RegisterOIDInfo(szAAD_DOMAIN_ID_OID, wszAAD_DOMAIN_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_DOMAIN_ID_OID, wszAAD_DOMAIN_ID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAadDomainId");
+    RegisterOIDFunction(szAAD_DOMAIN_ID_OID, wszAAD_DOMAIN_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadDomainId");
 
     RegisterOIDInfo(szAAD_TENANT_ID_OID, wszAAD_TENANT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_TENANT_ID_OID, wszAAD_TENANT_ID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAadTenantId");
+    RegisterOIDFunction(szAAD_TENANT_ID_OID, wszAAD_TENANT_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadTenantId");
 
     RegisterOIDInfo(szAAD_JOIN_TYPE_OID, wszAAD_JOIN_TYPE_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_JOIN_TYPE_OID, wszAAD_JOIN_TYPE_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAadJoinType");
+    RegisterOIDFunction(szAAD_JOIN_TYPE_OID, wszAAD_JOIN_TYPE_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadJoinType");
 
     RegisterOIDInfo(szAAD_TENANT_REGION_OID, wszAAD_TENANT_REGION_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_TENANT_REGION_OID, wszAAD_TENANT_REGION_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAadTenantRegion");
+    RegisterOIDFunction(szAAD_TENANT_REGION_OID, wszAAD_TENANT_REGION_NAME, szCRYPT_FORMAT_OBJECT,
+                        "FormatAadTenantRegion");
 
 
     /*
-     * Type: Intune
-     * OIDs: 1.2.840.113556.5.*
+     * Intune
+     * 1.2.840.113556.5.*
      */
 
     RegisterOIDInfo(szINTUNE_DEVICE_ID_OID, wszINTUNE_DEVICE_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_DEVICE_ID_OID, wszINTUNE_DEVICE_ID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatIntuneDeviceId");
+    RegisterOIDFunction(szINTUNE_DEVICE_ID_OID, wszINTUNE_DEVICE_ID_NAME, szCRYPT_FORMAT_OBJECT,
+                        "FormatIntuneDeviceId");
 
     RegisterOIDInfo(szINTUNE_ACCOUNT_ID_OID, wszINTUNE_ACCOUNT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_ACCOUNT_ID_OID, wszINTUNE_ACCOUNT_ID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatIntuneAccountId");
+    RegisterOIDFunction(szINTUNE_ACCOUNT_ID_OID, wszINTUNE_ACCOUNT_ID_NAME, szCRYPT_FORMAT_OBJECT,
+                        "FormatIntuneAccountId");
 
     RegisterOIDInfo(szINTUNE_USER_ID_OID, wszINTUNE_USER_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_USER_ID_OID, wszINTUNE_USER_ID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatIntuneUserId");
+    RegisterOIDFunction(szINTUNE_USER_ID_OID, wszINTUNE_USER_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatIntuneUserId");
 
 #ifdef _DEBUG
     RegisterOIDInfo(szINTUNE_UNKNOWN_11_OID, wszINTUNE_UNKNOWN_11_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_UNKNOWN_11_OID, wszINTUNE_UNKNOWN_11_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatIntuneUnknown11");
+    RegisterOIDFunction(szINTUNE_UNKNOWN_11_OID, wszINTUNE_UNKNOWN_11_NAME, szCRYPT_FORMAT_OBJECT,
+                        "FormatIntuneUnknown11");
 #endif
 
     RegisterOIDInfo(szINTUNE_AAD_TENANT_ID_OID, wszINTUNE_AAD_TENANT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_AAD_TENANT_ID_OID, wszINTUNE_AAD_TENANT_ID_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatIntuneAadTenantId");
+    RegisterOIDFunction(szINTUNE_AAD_TENANT_ID_OID, wszINTUNE_AAD_TENANT_ID_NAME, szCRYPT_FORMAT_OBJECT,
+                        "FormatIntuneAadTenantId");
 }
 
 #pragma endregion
 
 #pragma region Uninstall
 
-BOOL UnregisterOIDInfo(const LPSTR  pszOID,
+BOOL UnregisterOIDInfo(const LPSTR pszOID,
                        const LPWSTR pwszName,
-                       const DWORD  dwGroupId)
-{
-    BOOL            bStatus = FALSE;
+                       const DWORD dwGroupId) {
+    BOOL bStatus = FALSE;
     CRYPT_OID_INFO* pOIDInfo;
 
     wprintf_s(L"[%s] Unregistering OID info ... ", pwszName);
@@ -240,10 +225,9 @@ end:
     return bStatus;
 }
 
-BOOL UnregisterOIDFunction(const LPSTR  pszOID,
+BOOL UnregisterOIDFunction(const LPSTR pszOID,
                            const LPWSTR pwszName,
-                           const LPSTR  pszFuncName)
-{
+                           const LPSTR pszFuncName) {
     BOOL bStatus;
 
     wprintf_s(L"[%s] Unregistering OID function ... ", pwszName);
@@ -260,11 +244,10 @@ BOOL UnregisterOIDFunction(const LPSTR  pszOID,
     return bStatus;
 }
 
-void Unregister(void)
-{
+void Unregister(void) {
     /*
-     * Type: Active Directory Domain Services
-     * OIDs: 1.3.6.1.4.1.311.25.*
+     * Active Directory Domain Services
+     * 1.3.6.1.4.1.311.25.*
      */
 
     UnregisterOIDInfo(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
@@ -272,8 +255,8 @@ void Unregister(void)
 
 
     /*
-     * Type: ASP.NET Core
-     * OIDs: 1.3.6.1.4.1.311.84.1.*
+     * ASP.NET Core
+     * 1.3.6.1.4.1.311.84.1.*
      */
 
     UnregisterOIDInfo(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME,
@@ -282,8 +265,8 @@ void Unregister(void)
 
 
     /*
-     * Type: Azure AD
-     * OIDs: 1.2.840.113556.1.5.284.*
+     * Azure AD
+     * 1.2.840.113556.1.5.284.*
      */
 
     UnregisterOIDInfo(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
@@ -309,8 +292,8 @@ void Unregister(void)
 
 
     /*
-     * Type: Intune
-     * OIDs: 1.2.840.113556.5.*
+     * Intune
+     * 1.2.840.113556.5.*
      */
 
     UnregisterOIDInfo(szINTUNE_DEVICE_ID_OID, wszINTUNE_DEVICE_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
@@ -333,8 +316,7 @@ void Unregister(void)
 
 #pragma endregion
 
-int main(int argc, char* argv[])
-{
+int main(const int argc, const char* argv[]) {
     LONG status = 1;
 
     switch (argc) {
@@ -342,7 +324,7 @@ int main(int argc, char* argv[])
             break;
         case 1:
             status = 0;
-        default:
+        default: // NOLINT(clang-diagnostic-implicit-fallthrough)
             DisplayHelp(status);
             goto end;
     }

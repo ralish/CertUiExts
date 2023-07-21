@@ -17,14 +17,13 @@
 
 #define DEBUG_BUFFER_SIZE 1024
 
-CHAR  pszDebugBuffer[DEBUG_BUFFER_SIZE];
+CHAR pszDebugBuffer[DEBUG_BUFFER_SIZE];
 CHAR* pszDebugStringPrefix = "[%-25s] ";
 
-void OutputDebugFormatStringA(const LPCSTR pszFuncName, const LPCSTR pszDebugFormat, ...)
-{
+void OutputDebugFormatStringA(const LPCSTR pszFuncName, const LPCSTR pszDebugFormat, ...) {
     va_list args;
-    size_t  stDebugStringOffset;
-    size_t  stDebugStringSize = sizeof(CHAR); // Terminating null
+    size_t stDebugStringOffset;
+    size_t stDebugStringSize = sizeof(CHAR); // Terminating null
 
     va_start(args, pszDebugFormat);
 
@@ -57,11 +56,10 @@ end:
 }
 
 void FormatObjectDebugEntryA(const LPCSTR pszFuncName,
-                             const DWORD  dwCertEncodingType,
-                             const DWORD  dwFormatStrType,
+                             const DWORD dwCertEncodingType,
+                             const DWORD dwFormatStrType,
                              const LPCSTR lpszStructType,
-                             const DWORD  cbFormat)
-{
+                             const DWORD cbFormat) {
     int ret;
     int cbDebugStringOffset = 0;
 
@@ -100,8 +98,7 @@ void FormatObjectDebugEntryA(const LPCSTR pszFuncName,
     }
 }
 
-void FormatObjectDebugExitA(const LPCSTR pszFuncName, const BOOL bStatus)
-{
+void FormatObjectDebugExitA(const LPCSTR pszFuncName, const BOOL bStatus) {
     int ret;
     int cbDebugStringOffset = 0;
 
@@ -126,8 +123,7 @@ void FormatObjectDebugExitA(const LPCSTR pszFuncName, const BOOL bStatus)
 }
 #endif
 
-BOOL ConvertGuidToStringW(const GUID* pGuid, LPWSTR* ppwszGuid)
-{
+BOOL ConvertGuidToStringW(const GUID* pGuid, LPWSTR* ppwszGuid) {
     const DWORD dwGuidChars = dwGUID_SIZE_CHARS + 1; // Add terminating null
 
     *ppwszGuid = calloc(dwGuidChars, sizeof(WCHAR));
@@ -153,11 +149,10 @@ BOOL ConvertGuidToStringW(const GUID* pGuid, LPWSTR* ppwszGuid)
     return FALSE;
 }
 
-BOOL DecodeAsnGuid(const BYTE* pbEncoded, const DWORD cbEncoded, GUID** ppGuid)
-{
-    BOOL                bStatus = FALSE;
+BOOL DecodeAsnGuid(const BYTE* pbEncoded, const DWORD cbEncoded, GUID** ppGuid) {
+    BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAsnGuidBlob = NULL;
-    DWORD               cbAsnGuidBlob = 0;
+    DWORD cbAsnGuidBlob = 0;
 
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
                              X509_OCTET_STRING,
@@ -198,12 +193,11 @@ end:
     return bStatus;
 }
 
-BOOL DecodeAsnSidA(const BYTE* pbEncoded, const DWORD cbEncoded, LPSTR* ppszSid, DWORD* cbSid)
-{
-    BOOL                bStatus = FALSE;
+BOOL DecodeAsnSidA(const BYTE* pbEncoded, const DWORD cbEncoded, LPSTR* ppszSid, DWORD* cbSid) {
+    BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAsnSidBlob = NULL;
-    DWORD               cbAsnSidBlob = 0;
-    DWORD               cbSidLenA;
+    DWORD cbAsnSidBlob = 0;
+    DWORD cbSidLenA;
 
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
                              X509_OCTET_STRING,
@@ -243,11 +237,10 @@ end:
 BOOL FormatAsGuidStringW(const DWORD dwFormatStrType,
                          const BYTE* pbEncoded,
                          const DWORD cbEncoded,
-                         void*       pbFormat,
-                         DWORD*      pcbFormat)
-{
-    BOOL   bStatus = FALSE;
-    GUID*  pGuid = NULL;
+                         void* pbFormat,
+                         DWORD* pcbFormat) {
+    BOOL bStatus = FALSE;
+    GUID* pGuid = NULL;
     LPWSTR pwszGuid = NULL;
 
     // Add newline & terminating null
@@ -297,8 +290,7 @@ end:
  * a list view. If so, it's generally better to return a failure message as the
  * output, otherwise the field will simply be blank.
  */
-BOOL SetFailureInfo(const DWORD dwFormatStrType, void* pbFormat, const DWORD* pcbFormat)
-{
+BOOL SetFailureInfo(const DWORD dwFormatStrType, void* pbFormat, const DWORD* pcbFormat) {
     if (dwFormatStrType == 0) {
         if (*pcbFormat >= sizeof(wszFORMAT_FAILURE)) {
             if (wcscpy_s(pbFormat, *pcbFormat / sizeof(WCHAR), wszFORMAT_FAILURE) == 0) {
@@ -328,8 +320,7 @@ BOOL SetFailureInfo(const DWORD dwFormatStrType, void* pbFormat, const DWORD* pc
  *   CRYPT_FORMAT_STR_MULTI_LINE | CRYPT_FORMAT_STR_NO_HEX) the return value
  *   must be TRUE.
  */
-BOOL SetFormatBufferSize(const void* pbFormat, DWORD* pcbFormat, const DWORD dwSize)
-{
+BOOL SetFormatBufferSize(const void* pbFormat, DWORD* pcbFormat, const DWORD dwSize) {
     if (pbFormat != NULL || *pcbFormat != 0) {
         return FALSE;
     }
@@ -347,8 +338,7 @@ BOOL SetFormatBufferSize(const void* pbFormat, DWORD* pcbFormat, const DWORD dwS
  * It's probably redundant as subsequent calls in the formatting function will
  * fail, but it means we fail sooner and assists with debugging caller issues.
  */
-BOOL VerifyFormatBufferSize(const DWORD* pcbFormat, const DWORD dwSize)
-{
+BOOL VerifyFormatBufferSize(const DWORD* pcbFormat, const DWORD dwSize) {
     if (*pcbFormat <= dwSize) {
         return TRUE;
     }

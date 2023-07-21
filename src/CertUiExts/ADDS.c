@@ -19,38 +19,37 @@
  * 1.3.6.1.4.1.311.25.2
  */
 __declspec(dllexport)
-BOOL FormatNtdsCaSecurityExt(_In_ DWORD dwCertEncodingType,
-                             _In_ DWORD dwFormatType,
-                             _In_ DWORD dwFormatStrType,
-                             _In_opt_ void* pFormatStruct,
-                             _In_opt_ LPCSTR lpszStructType,
+BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
+                             _In_ const DWORD dwFormatType,
+                             _In_ const DWORD dwFormatStrType,
+                             _In_opt_ const void* pFormatStruct,
+                             _In_opt_ const LPCSTR lpszStructType,
                              _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                             _In_ DWORD cbEncoded,
+                             _In_ const DWORD cbEncoded,
                              _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
-                             _Inout_ DWORD* pcbFormat)
-{
-    BOOL   bStatus = FALSE;
+                             _Inout_ DWORD* pcbFormat) {
+    BOOL bStatus = FALSE;
     size_t stNumChars;
 
     // OID
-    BYTE   pbAsnOidTlv[cbNTDS_OBJECTSID_OID_TLV];
+    BYTE pbAsnOidTlv[cbNTDS_OBJECTSID_OID_TLV];
     LPSTR* ppszOid = NULL;
     LPWSTR pwszOid = NULL;
-    DWORD  cbOidA = 0;
+    DWORD cbOidA = 0;
 
     // SID
-    BYTE*  pbAsnSidTlv = NULL;
-    DWORD  cbAsnSidTlv;
-    DWORD  cbSidA;
-    LPSTR  pszSid = NULL;
+    BYTE* pbAsnSidTlv = NULL;
+    DWORD cbAsnSidTlv;
+    DWORD cbSidA;
+    LPSTR pszSid = NULL;
     LPWSTR pwszSid = NULL;
 
     // Account details
-    PSID         pSid = NULL;
-    LPWSTR       pwszSidAccountName = NULL;
-    DWORD        cbSidAccountName = 0;
-    LPWSTR       pwszSidAccountDomain = NULL;
-    DWORD        cbSidAccountDomain = 0;
+    PSID pSid = NULL;
+    LPWSTR pwszSidAccountName = NULL;
+    DWORD cbSidAccountName = 0;
+    LPWSTR pwszSidAccountDomain = NULL;
+    DWORD cbSidAccountDomain = 0;
     SID_NAME_USE sidType;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);

@@ -1,5 +1,7 @@
 #pragma once
 
+// ReSharper disable CppClangTidyClangDiagnosticUnusedMacros
+
 // StringFileInfo
 #define VER_FILEDESCRIPTION     "Registration utility for additional OIDs and certificate extensions"
 #define VER_ORIGINALFILENAME    "CertUiExtsReg.exe"

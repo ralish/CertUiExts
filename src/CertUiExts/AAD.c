@@ -16,16 +16,15 @@
  * 1.2.840.113556.1.5.284.1
  */
 __declspec(dllexport)
-BOOL FormatAadNtdsDsaIid(_In_ DWORD dwCertEncodingType,
-                         _In_ DWORD dwFormatType,
-                         _In_ DWORD dwFormatStrType,
-                         _In_opt_ void* pFormatStruct,
-                         _In_opt_ LPCSTR lpszStructType,
+BOOL FormatAadNtdsDsaIid(_In_ const DWORD dwCertEncodingType,
+                         _In_ const DWORD dwFormatType,
+                         _In_ const DWORD dwFormatStrType,
+                         _In_opt_ const void* pFormatStruct,
+                         _In_opt_ const LPCSTR lpszStructType,
                          _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                         _In_ DWORD cbEncoded,
+                         _In_ const DWORD cbEncoded,
                          _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
-                         _Inout_ DWORD* pcbFormat)
-{
+                         _Inout_ DWORD* pcbFormat) {
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
@@ -40,16 +39,15 @@ BOOL FormatAadNtdsDsaIid(_In_ DWORD dwCertEncodingType,
  * 1.2.840.113556.1.5.284.2
  */
 __declspec(dllexport)
-BOOL FormatAadDeviceId(_In_ DWORD dwCertEncodingType,
-                       _In_ DWORD dwFormatType,
-                       _In_ DWORD dwFormatStrType,
-                       _In_opt_ void* pFormatStruct,
-                       _In_opt_ LPCSTR lpszStructType,
+BOOL FormatAadDeviceId(_In_ const DWORD dwCertEncodingType,
+                       _In_ const DWORD dwFormatType,
+                       _In_ const DWORD dwFormatStrType,
+                       _In_opt_ const void* pFormatStruct,
+                       _In_opt_ const LPCSTR lpszStructType,
                        _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                       _In_ DWORD cbEncoded,
+                       _In_ const DWORD cbEncoded,
                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
-                       _Inout_ DWORD* pcbFormat)
-{
+                       _Inout_ DWORD* pcbFormat) {
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
@@ -64,16 +62,15 @@ BOOL FormatAadDeviceId(_In_ DWORD dwCertEncodingType,
  * 1.2.840.113556.1.5.284.3
  */
 __declspec(dllexport)
-BOOL FormatAadUserId(_In_ DWORD dwCertEncodingType,
-                     _In_ DWORD dwFormatType,
-                     _In_ DWORD dwFormatStrType,
-                     _In_opt_ void* pFormatStruct,
-                     _In_opt_ LPCSTR lpszStructType,
+BOOL FormatAadUserId(_In_ const DWORD dwCertEncodingType,
+                     _In_ const DWORD dwFormatType,
+                     _In_ const DWORD dwFormatStrType,
+                     _In_opt_ const void* pFormatStruct,
+                     _In_opt_ const LPCSTR lpszStructType,
                      _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                     _In_ DWORD cbEncoded,
+                     _In_ const DWORD cbEncoded,
                      _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
-                     _Inout_ DWORD* pcbFormat)
-{
+                     _Inout_ DWORD* pcbFormat) {
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
@@ -88,16 +85,15 @@ BOOL FormatAadUserId(_In_ DWORD dwCertEncodingType,
  * 1.2.840.113556.1.5.284.4
  */
 __declspec(dllexport)
-BOOL FormatAadDomainId(_In_ DWORD dwCertEncodingType,
-                       _In_ DWORD dwFormatType,
-                       _In_ DWORD dwFormatStrType,
-                       _In_opt_ void* pFormatStruct,
-                       _In_opt_ LPCSTR lpszStructType,
+BOOL FormatAadDomainId(_In_ const DWORD dwCertEncodingType,
+                       _In_ const DWORD dwFormatType,
+                       _In_ const DWORD dwFormatStrType,
+                       _In_opt_ const void* pFormatStruct,
+                       _In_opt_ const LPCSTR lpszStructType,
                        _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                       _In_ DWORD cbEncoded,
+                       _In_ const DWORD cbEncoded,
                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
-                       _Inout_ DWORD* pcbFormat)
-{
+                       _Inout_ DWORD* pcbFormat) {
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
@@ -112,16 +108,15 @@ BOOL FormatAadDomainId(_In_ DWORD dwCertEncodingType,
  * 1.2.840.113556.1.5.284.5
  */
 __declspec(dllexport)
-BOOL FormatAadTenantId(_In_ DWORD dwCertEncodingType,
-                       _In_ DWORD dwFormatType,
-                       _In_ DWORD dwFormatStrType,
-                       _In_opt_ void* pFormatStruct,
-                       _In_opt_ LPCSTR lpszStructType,
+BOOL FormatAadTenantId(_In_ const DWORD dwCertEncodingType,
+                       _In_ const DWORD dwFormatType,
+                       _In_ const DWORD dwFormatStrType,
+                       _In_opt_ const void* pFormatStruct,
+                       _In_opt_ const LPCSTR lpszStructType,
                        _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                       _In_ DWORD cbEncoded,
+                       _In_ const DWORD cbEncoded,
                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
-                       _Inout_ DWORD* pcbFormat)
-{
+                       _Inout_ DWORD* pcbFormat) {
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
@@ -136,20 +131,19 @@ BOOL FormatAadTenantId(_In_ DWORD dwCertEncodingType,
  * 1.2.840.113556.1.5.284.7
  */
 __declspec(dllexport)
-BOOL FormatAadJoinType(_In_ DWORD dwCertEncodingType,
-                       _In_ DWORD dwFormatType,
-                       _In_ DWORD dwFormatStrType,
-                       _In_opt_ void* pFormatStruct,
-                       _In_opt_ LPCSTR lpszStructType,
+BOOL FormatAadJoinType(_In_ const DWORD dwCertEncodingType,
+                       _In_ const DWORD dwFormatType,
+                       _In_ const DWORD dwFormatStrType,
+                       _In_opt_ const void* pFormatStruct,
+                       _In_opt_ const LPCSTR lpszStructType,
                        _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                       _In_ DWORD cbEncoded,
+                       _In_ const DWORD cbEncoded,
                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
-                       _Inout_ DWORD* pcbFormat)
-{
-    BOOL                bStatus = FALSE;
+                       _Inout_ DWORD* pcbFormat) {
+    BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAadJoinTypeBlob = NULL;
-    DWORD               cbAadJoinTypeBlob = 0;
-    WCHAR*              pwszJoinType;
+    DWORD cbAadJoinTypeBlob = 0;
+    WCHAR* pwszJoinType;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
@@ -209,22 +203,21 @@ end:
  * 1.2.840.113556.1.5.284.8
  */
 __declspec(dllexport)
-BOOL FormatAadTenantRegion(_In_ DWORD dwCertEncodingType,
-                           _In_ DWORD dwFormatType,
-                           _In_ DWORD dwFormatStrType,
-                           _In_opt_ void* pFormatStruct,
-                           _In_opt_ LPCSTR lpszStructType,
+BOOL FormatAadTenantRegion(_In_ const DWORD dwCertEncodingType,
+                           _In_ const DWORD dwFormatType,
+                           _In_ const DWORD dwFormatStrType,
+                           _In_opt_ const void* pFormatStruct,
+                           _In_opt_ const LPCSTR lpszStructType,
                            _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                           _In_ DWORD cbEncoded,
+                           _In_ const DWORD cbEncoded,
                            _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
-                           _Inout_ DWORD* pcbFormat)
-{
-    BOOL                bStatus = FALSE;
+                           _Inout_ DWORD* pcbFormat) {
+    BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAadTenantRegionBlob = NULL;
-    DWORD               cbAadTenantRegionBlob = 0;
-    WCHAR*              pwszTenantRegionName;
-    WCHAR               pwszTenantRegionCode[3];
-    size_t              ccTenantRegionCode;
+    DWORD cbAadTenantRegionBlob = 0;
+    WCHAR* pwszTenantRegionName;
+    WCHAR pwszTenantRegionCode[3];
+    size_t ccTenantRegionCode;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
