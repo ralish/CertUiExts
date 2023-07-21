@@ -222,3 +222,54 @@
 // Undocumented
 #define wszINTUNE_AAD_TENANT_ID_NAME L"Intune: AAD Tenant ID"
 #define szINTUNE_AAD_TENANT_ID_OID "1.2.840.113556.5.14"
+
+
+// *********************************************************
+// ***                      Sectigo                      ***
+// *********************************************************
+
+// Personal Secure Email
+#define wszSECTIGO_CERTPOL_SMIME_C1_NAME L"Sectigo: S/MIME Certificate (Class 1)"
+#define szSECTIGO_CERTPOL_SMIME_C1_OID "1.3.6.1.4.1.6449.1.2.1.1.1"
+
+// Secure Server
+#define wszSECTIGO_CERTPOL_TLS_NAME L"Sectigo: TLS Certificate"
+#define szSECTIGO_CERTPOL_TLS_OID "1.3.6.1.4.1.6449.1.2.1.3.1"
+
+// Software Publisher
+#define wszSECTIGO_CERTPOL_CS_NAME L"Sectigo: Code Signing Certificate"
+#define szSECTIGO_CERTPOL_CS_OID "1.3.6.1.4.1.6449.1.2.1.3.2"
+
+// InstantSSL
+#define wszSECTIGO_CERTPOL_TLS_OV_NAME L"Sectigo: Organization Validated (OV) TLS Certificate"
+#define szSECTIGO_CERTPOL_TLS_OV_OID "1.3.6.1.4.1.6449.1.2.1.3.4"
+
+// Corporate Secure Email
+#define wszSECTIGO_CERTPOL_SMIME_C2_NAME L"Sectigo: S/MIME Certificate (Class 2)"
+#define szSECTIGO_CERTPOL_SMIME_C2_OID "1.3.6.1.4.1.6449.1.2.1.3.5"
+
+// Enterprise-Wide Secure Email
+#define wszSECTIGO_CERTPOL_SMIME_C3_NAME L"Sectigo: S/MIME Certificate (Class 3)"
+#define szSECTIGO_CERTPOL_SMIME_C3_OID "1.3.6.1.4.1.6449.1.2.1.3.6"
+
+#define wszSECTIGO_CERTPOL_TS_NAME L"Sectigo: Timestamping Certificate"
+#define szSECTIGO_CERTPOL_TS_OID "1.3.6.1.4.1.6449.1.2.1.3.8"
+
+#define wszSECTIGO_CERTPOL_TLS_EV_NAME L"Sectigo: Extended Validation (EV) TLS Certificate"
+#define szSECTIGO_CERTPOL_TLS_EV_OID "1.3.6.1.4.1.6449.1.2.1.5.1"
+
+#define wszSECTIGO_CERTPOL_CS_EV_NAME L"Sectigo: Extended Validation (EV) Code Signing Certificate"
+#define szSECTIGO_CERTPOL_CS_EV_OID "1.3.6.1.4.1.6449.1.2.1.6.1"
+
+#define wszSECTIGO_CERTPOL_DS_LOCAL_NAME L"Sectigo: Document Signing (local)"
+#define szSECTIGO_CERTPOL_DS_LOCAL_OID "1.3.6.1.4.1.6449.1.2.1.6.6"
+
+#define wszSECTIGO_CERTPOL_DS_REMOTE_NAME L"Sectigo: Document Signing (remote)"
+#define szSECTIGO_CERTPOL_DS_REMOTE_OID "1.3.6.1.4.1.6449.1.2.1.6.7"
+
+#define wszSECTIGO_CERTPOL_DS_ETP_NAME L"Sectigo: Document Signing (external trusted partner)"
+#define szSECTIGO_CERTPOL_DS_ETP_OID "1.3.6.1.4.1.6449.1.2.1.6.8"
+
+// DV Secure Server
+#define wszSECTIGO_CERTPOL_TLS_DV_NAME L"Sectigo: Domain Validated (DV) TLS Certificate"
+#define szSECTIGO_CERTPOL_TLS_DV_OID "1.3.6.1.4.1.6449.1.2.2.7"

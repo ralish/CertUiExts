@@ -17,6 +17,7 @@ A library which extends Windows cryptography support for displaying additional O
   - [Azure AD](#azure-ad)
   - [CA/Browser Forum](#cabrowser-forum)
   - [Intune](#intune)
+  - [Sectigo](#sectigo)
 - [Security](#security)
   - [Build security](#build-security)
   - [Windows integration](#windows-integration)
@@ -152,6 +153,24 @@ Object identifiers (OIDs)
 | `1.2.840.113556.5.6`           | Extension          | Account ID                                                   |
 | `1.2.840.113556.5.10`          | Extension          | User ID                                                      |
 | `1.2.840.113556.5.14`          | Extension          | AAD Tenant ID                                                |
+
+### Sectigo
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.3.6.1.4.1.6449.1.2.1.1.1`   | Certificate Policy | S/MIME Certificate (Class 1)                                 |
+| `1.3.6.1.4.1.6449.1.2.1.3.1`   | Certificate Policy | TLS Certificate                                              |
+| `1.3.6.1.4.1.6449.1.2.1.3.2`   | Certificate Policy | Code Signing Certificate                                     |
+| `1.3.6.1.4.1.6449.1.2.1.3.4`   | Certificate Policy | Organization Validated (OV) TLS Certificate                  |
+| `1.3.6.1.4.1.6449.1.2.1.3.5`   | Certificate Policy | S/MIME Certificate (Class 2)                                 |
+| `1.3.6.1.4.1.6449.1.2.1.3.6`   | Certificate Policy | S/MIME Certificate (Class 3)                                 |
+| `1.3.6.1.4.1.6449.1.2.1.3.8`   | Certificate Policy | Timestamping Certificate                                     |
+| `1.3.6.1.4.1.6449.1.2.1.5.1`   | Certificate Policy | Extended Validation (EV) TLS Certificate                     |
+| `1.3.6.1.4.1.6449.1.2.1.6.1`   | Certificate Policy | Extended Validation (EV) Code Signing Certificate            |
+| `1.3.6.1.4.1.6449.1.2.1.6.6`   | Certificate Policy | Document Signing (local)                                     |
+| `1.3.6.1.4.1.6449.1.2.1.6.7`   | Certificate Policy | Document Signing (remote)                                    |
+| `1.3.6.1.4.1.6449.1.2.1.6.8`   | Certificate Policy | Document Signing (external trusted partner)                  |
+| `1.3.6.1.4.1.6449.1.2.2.7`     | Certificate Policy | Domain Validated (DV) TLS Certificate                        |
 
 Security
 --------
