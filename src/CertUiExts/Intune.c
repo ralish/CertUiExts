@@ -22,7 +22,7 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
                           _In_opt_ const void* pFormatStruct,
                           _In_opt_ const LPCSTR lpszStructType,
                           _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
-                          _In_ DWORD const cbEncoded,
+                          _In_ const DWORD cbEncoded,
                           _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                           _Inout_ DWORD* pcbFormat) {
     BOOL bStatus = FALSE;
