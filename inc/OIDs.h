@@ -2,15 +2,20 @@
 
 // *********************************************************
 // ***         Active Directory Domain Services          ***
+// ***                1.3.6.1.4.1.311.25                 ***
 // *********************************************************
 
 /*
- * [MS-WCCE]: Windows Client Certificate Enrollment Protocol
- * Section 2.2.2.7.7.4 szOID_NTDS_CA_SECURITY_EXT
- *
- * Certificate-based authentication changes on Windows domain controllers
- * https://support.microsoft.com/kb/5014754
+ * iso(1) / identified-organization(3) / dod(6)
+ * internet(1) / private(4) / enterprise(1)
+ * microsoft(311) / directory-service(25)
  */
+
+// [MS-WCCE]: Windows Client Certificate Enrollment Protocol
+// Section 2.2.2.7.7.4 szOID_NTDS_CA_SECURITY_EXT
+//
+// Certificate-based authentication changes on Windows domain controllers
+// https://support.microsoft.com/kb/5014754
 #define wszNTDS_CA_SECURITY_EXT_NAME L"AD DS: CA Security"
 #define szNTDS_CA_SECURITY_EXT_OID "1.3.6.1.4.1.311.25.2"
 
@@ -35,9 +40,7 @@
 // octet string value is definitely malformed.
 #define cbNTDS_CA_SECURITY_EXT_ASN_MIN (DWORD)27
 
-/*
- * Refer to comments for OID: 1.3.6.1.4.1.311.25.2
- */
+// Refer to comments for OID: 1.3.6.1.4.1.311.25.2
 #define wszNTDS_OBJECTSID_NAME L"AD DS: Object SID"
 #define szNTDS_OBJECTSID_OID "1.3.6.1.4.1.311.25.2.1"
 #define cbNTDS_OBJECTSID_OID_VALUE (DWORD)10
@@ -46,12 +49,17 @@
 
 // *********************************************************
 // ***                   ASP.NET Core                    ***
+// ***                1.3.6.1.4.1.311.84                 ***
 // *********************************************************
 
 /*
- * Undocumented but open-source
- * https://github.com/dotnet/aspnetcore/blob/main/src/Shared/CertificateGeneration/CertificateManager.cs
+ * iso(1) / identified-organization(3) / dod(6)
+ * internet(1) / private(4) / enterprise(1)
+ * microsoft(311) / unknown(84)
  */
+
+// Undocumented but open-source
+// https://github.com/dotnet/aspnetcore/blob/main/src/Shared/CertificateGeneration/CertificateManager.cs
 #define wszASPNETCORE_HTTPS_DEV_CERT_NAME L"ASP.NET Core: HTTPS Development Certificate"
 #define szASPNETCORE_HTTPS_DEV_CERT_OID "1.3.6.1.4.1.311.84.1.1"
 #define cbASPNETCORE_HTTPS_DEV_CERT_BUFFER (DWORD)32
@@ -59,33 +67,32 @@
 
 // *********************************************************
 // ***                     Azure AD                      ***
+// ***              1.2.840.113556.1.5.284               ***
 // *********************************************************
 
 /*
- * [MS-DVRE]: Device Registration Enrollment Protocol
- * Section 3.1.4.2.1: New Request Processing
- *
- * [MS-DVRJ]: Device Registration Join Protocol
- * Section 3.1.5.1.1.3: Processing Details
+ * iso(1) / member-body(2) / us(840)
+ * microsoft(113556) / active-directory(1) / unknown(5)
+ * device-registration-service(284)
  */
+
+// [MS-DVRE]: Device Registration Enrollment Protocol
+// Section 3.1.4.2.1: New Request Processing
+//
+// [MS-DVRJ]: Device Registration Join Protocol
+// Section 3.1.5.1.1.3: Processing Details
 #define wszAAD_NTDS_DSA_IID_NAME L"Azure AD: NTDS-DSA Invocation ID"
 #define szAAD_NTDS_DSA_IID_OID "1.2.840.113556.1.5.284.1"
 
-/*
- * Refer to comments for OID: 1.2.840.113556.1.5.284.1
- */
+// Refer to comments for OID: 1.2.840.113556.1.5.284.1
 #define wszAAD_DEVICE_ID_NAME L"Azure AD: Device ID"
 #define szAAD_DEVICE_ID_OID "1.2.840.113556.1.5.284.2"
 
-/*
- * Refer to comments for OID: 1.2.840.113556.1.5.284.1
- */
+// Refer to comments for OID: 1.2.840.113556.1.5.284.1
 #define wszAAD_USER_ID_NAME L"Azure AD: User ID"
 #define szAAD_USER_ID_OID "1.2.840.113556.1.5.284.3"
 
-/*
- * Refer to comments for OID: 1.2.840.113556.1.5.284.1
- */
+// Refer to comments for OID: 1.2.840.113556.1.5.284.1
 #define wszAAD_DOMAIN_ID_NAME L"Azure AD: Domain ID"
 #define szAAD_DOMAIN_ID_OID "1.2.840.113556.1.5.284.4"
 
@@ -106,13 +113,11 @@
 
 // *********************************************************
 // ***                 CA/Browser Forum                  ***
+// ***                     2.23.140                      ***
 // *********************************************************
 
 /*
- * 2.23.140
- *
- * joint-iso-itu-t(2)
- * international-organizations(23)
+ * joint-iso-itu-t(2) / international-organizations(23)
  * ca-browser-forum(140)
  */
 
@@ -195,7 +200,13 @@
 
 // *********************************************************
 // ***                      Intune                       ***
+// ***                 1.2.840.113556.5                  ***
 // *********************************************************
+
+/*
+ * iso(1) / member-body(2) / us(840)
+ * microsoft(113556) / unknown(5)
+ */
 
 // 1.2.840.113556.5.3
 // Found in certca.dll, CertEnroll.dll, CertEnrollUI.dll
@@ -226,7 +237,14 @@
 
 // *********************************************************
 // ***                      Sectigo                      ***
+// ***                 1.3.6.1.4.1.6449                  ***
 // *********************************************************
+
+/*
+ * iso(1) / identified-organization(3) / dod(6)
+ * internet(1) / private(4) / enterprise(1)
+ * sectigo(6449)
+ */
 
 // Personal Secure Email
 #define wszSECTIGO_CERTPOL_SMIME_C1_NAME L"Sectigo: S/MIME Certificate (Class 1)"
