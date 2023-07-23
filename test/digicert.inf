@@ -1,0 +1,124 @@
+; Test certificate for DigiCert OIDs
+; Generate with: certreq -new digicert.inf
+
+[Version]
+Signature = "$Windows NT$"
+
+[Strings]
+; Extensions
+;
+; Subject alternative name
+szOID_SUBJECT_ALT_NAME2     = 2.5.29.17
+; Basic constraints
+szOID_BASIC_CONSTRAINTS2    = 2.5.29.19
+; Enhanced key usage
+szOID_ENHANCED_KEY_USAGE    = 2.5.29.37
+
+; EKUs
+;
+; Server authentication
+szOID_PKIX_KP_SERVER_AUTH   = 1.3.6.1.5.5.7.3.1
+; Client authentication
+szOID_PKIX_KP_CLIENT_AUTH   = 1.3.6.1.5.5.7.3.2
+; Code-signing
+szOID_PKIX_KP_CODE_SIGNING  = 1.3.6.1.5.5.7.3.3
+
+; Certificate Practice Statements
+;
+; Baseline
+szURL_DIGICERT_CPS  = https://www.digicert.com/content/dam/digicert/pdfs/legal/digicert-cps-v5-16.pdf
+
+
+; Certificate Policies
+;
+; Organization Validated (OV) TLS Certificate
+szOID_DIGICERT_CERTPOL_TLS_OV   = 2.16.840.1.114412.1.1
+; Domain Validated (DV) TLS Certificate
+szOID_DIGICERT_CERTPOL_TLS_DV   = 2.16.840.1.114412.1.2
+; Extended Validation (EV) TLS Certificate
+szOID_DIGICERT_CERTPOL_TLS_EV   = 2.16.840.1.114412.2.1
+; Code Signing Certificate
+szOID_DIGICERT_CERTPOL_CS       = 2.16.840.1.114412.3.1.1
+; Extended Validation (EV) Code Signing Certificate
+szOID_DIGICERT_CERTPOL_CS_EV    = 2.16.840.1.114412.3.2
+; Windows Kernel Driver Code Signing Certificate
+szOID_DIGICERT_CERTPOL_CS_WK    = 2.16.840.1.114412.3.11
+; Timestamping Certificate
+szOID_DIGICERT_CERTPOL_TS       = 2.16.840.1.114412.7.1
+
+
+[NewRequest]
+; Request type
+RequestType = Cert
+
+; Friendly name
+FriendlyName = "CertUiExts - DigiCert"
+
+; Subject name
+Subject = "CN=digicert.com"
+
+; Validity period & units
+ValidityPeriod = Years
+ValidityPeriodUnits = 10
+
+; Hash algorithm
+HashAlgorithm = SHA256
+
+; Key algorithm & length
+KeyAlgorithm = RSA
+KeyLength = 2048
+
+; Encryption cipher & length
+EncryptionAlgorithm = AES
+EncryptionLength = 256
+
+
+[Extensions]
+; Critical extensions
+Critical = %szOID_BASIC_CONSTRAINTS2%
+
+; Basic constraints
+%szOID_BASIC_CONSTRAINTS2% = "{text}"
+_continue_ = "CA=false&PathLength=0"
+
+; Enhanced key usage
+%szOID_ENHANCED_KEY_USAGE% = "{text}"
+_continue_ = "%szOID_PKIX_KP_SERVER_AUTH%,"
+_continue_ = "%szOID_PKIX_KP_CLIENT_AUTH%,"
+_continue_ = "%szOID_PKIX_KP_CODE_SIGNING%"
+
+; Subject alternative name
+%szOID_SUBJECT_ALT_NAME2% = "{text}"
+_continue_ = "DNS=digicert.com"
+
+
+[PolicyStatementExtension]
+Policies = DigiCertCs, DigiCertCsEv, DigiCertCsWk, DigiCertTlsDv, DigiCertTlsOv, DigiCertTlsEv, DigiCertTs
+
+[DigiCertCs]
+OID = %szOID_DIGICERT_CERTPOL_CS%
+URL = %szURL_DIGICERT_CPS%
+
+[DigiCertCsEv]
+OID = %szOID_DIGICERT_CERTPOL_CS_EV%
+URL = %szURL_DIGICERT_CPS%
+
+[DigiCertCsWk]
+OID = %szOID_DIGICERT_CERTPOL_CS_WK%
+URL = %szURL_DIGICERT_CPS%
+
+[DigiCertTlsDv]
+OID = %szOID_DIGICERT_CERTPOL_TLS_DV%
+URL = %szURL_DIGICERT_CPS%
+
+[DigiCertTlsOv]
+OID = %szOID_DIGICERT_CERTPOL_TLS_OV%
+URL = %szURL_DIGICERT_CPS%
+
+[DigiCertTlsEv]
+OID = %szOID_DIGICERT_CERTPOL_TLS_EV%
+URL = %szURL_DIGICERT_CPS%
+
+[DigiCertTs]
+OID = %szOID_DIGICERT_CERTPOL_TS%
+URL = %szURL_DIGICERT_CPS%
