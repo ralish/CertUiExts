@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.2.0
+------
+
+- Add support for CA/Browser Forum certificate policies (`2.23.140`)
+- Add support for DigiCert certificate policies (`2.16.840.1.114412`)
+- Add support for Sectigo certificate policies (`1.3.6.1.4.1.6449`)
+- Code quality & documentation improvements
+
 v0.1.3
 ------
 
