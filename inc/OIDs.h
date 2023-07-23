@@ -199,6 +199,38 @@
 
 
 // *********************************************************
+// ***                     DigiCert                      ***
+// ***                 2.16.840.1.114412                 ***
+// *********************************************************
+
+/*
+ * joint-iso-itu-t(2) / country(16) / us(840)
+ * organization(1) / digicert(114412)
+ */
+
+#define wszDIGICERT_CERTPOL_TLS_OV_NAME L"DigiCert: Organization Validated (OV) TLS Certificate"
+#define szDIGICERT_CERTPOL_TLS_OV_OID "2.16.840.1.114412.1.1"
+
+#define wszDIGICERT_CERTPOL_TLS_DV_NAME L"DigiCert: Domain Validated (DV) TLS Certificate"
+#define szDIGICERT_CERTPOL_TLS_DV_OID "2.16.840.1.114412.1.2"
+
+#define wszDIGICERT_CERTPOL_TLS_EV_NAME L"DigiCert: Extended Validation (EV) TLS Certificate"
+#define szDIGICERT_CERTPOL_TLS_EV_OID "2.16.840.1.114412.2.1"
+
+#define wszDIGICERT_CERTPOL_CS_NAME L"DigiCert: Code Signing Certificate"
+#define szDIGICERT_CERTPOL_CS_OID "2.16.840.1.114412.3.1.1"
+
+#define wszDIGICERT_CERTPOL_CS_EV_NAME L"DigiCert: Extended Validation (EV) Code Signing Certificate"
+#define szDIGICERT_CERTPOL_CS_EV_OID "2.16.840.1.114412.3.2"
+
+#define wszDIGICERT_CERTPOL_CS_WK_NAME L"DigiCert: Windows Kernel Driver Code Signing Certificate"
+#define szDIGICERT_CERTPOL_CS_WK_OID "2.16.840.1.114412.3.11"
+
+#define wszDIGICERT_CERTPOL_TS_NAME L"DigiCert: Timestamping Certificate"
+#define szDIGICERT_CERTPOL_TS_OID "2.16.840.1.114412.7.1"
+
+
+// *********************************************************
 // ***                      Intune                       ***
 // ***                 1.2.840.113556.5                  ***
 // *********************************************************

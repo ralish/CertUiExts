@@ -16,6 +16,7 @@ A library which extends Windows cryptography support for displaying additional O
   - [ASP.NET Core](#aspnet-core)
   - [Azure AD](#azure-ad)
   - [CA/Browser Forum](#cabrowser-forum)
+  - [DigiCert](#digicert)
   - [Intune](#intune)
   - [Sectigo](#sectigo)
 - [Security](#security)
@@ -144,6 +145,18 @@ Object identifiers (OIDs)
 | `2.23.140.1.5.4.1`             | Certificate Policy | Individual Validated S/MIME Certificate (Legacy)             |
 | `2.23.140.1.5.4.2`             | Certificate Policy | Individual Validated S/MIME Certificate (Multipurpose)       |
 | `2.23.140.1.5.4.3`             | Certificate Policy | Individual Validated S/MIME Certificate (Strict)             |
+
+### DigiCert
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `2.16.840.1.114412.1.1`        | Certificate Policy | Organization Validated (OV) TLS Certificate                  |
+| `2.16.840.1.114412.1.2`        | Certificate Policy | Domain Validated (DV) TLS Certificate                        |
+| `2.16.840.1.114412.2.1`        | Certificate Policy | Extended Validation (EV) TLS Certificate                     |
+| `2.16.840.1.114412.3.1.1`      | Certificate Policy | Code Signing Certificate                                     |
+| `2.16.840.1.114412.3.2`        | Certificate Policy | Extended Validation (EV) Code Signing Certificate            |
+| `2.16.840.1.114412.3.11`       | Certificate Policy | Windows Kernel Driver Code Signing Certificate               |
+| `2.16.840.1.114412.7.1`        | Certificate Policy | Timestamping Certificate                                     |
 
 ### Intune
 
