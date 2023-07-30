@@ -22,22 +22,22 @@ MSBuild.exe -version
 ECHO.
 ECHO.
 
-ECHO [CertUiExts] Building Debug/x86 ...
+ECHO [CertUiExts] Running target "%MSBuildTarget%" for Debug/x86 ...
 MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Debug;Platform=x86
 IF %ERRORLEVEL% GEQ 1 GOTO End
 ECHO.
 
-ECHO [CertUiExts] Building Debug/x64 ...
+ECHO [CertUiExts] Running target "%MSBuildTarget%" for Debug/x64 ...
 MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Debug;Platform=x64
 IF %ERRORLEVEL% GEQ 1 GOTO End
 ECHO.
 
-ECHO [CertUiExts] Building Release/x86 ...
+ECHO [CertUiExts] Running target "%MSBuildTarget%" for Release/x86 ...
 MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Release;Platform=x86
 IF %ERRORLEVEL% GEQ 1 GOTO End
 ECHO.
 
-ECHO [CertUiExts] Building Release/x64 ...
+ECHO [CertUiExts] Running target "%MSBuildTarget%" for Release/x64 ...
 MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Release;Platform=x64
 IF %ERRORLEVEL% GEQ 1 GOTO End
 ECHO.
