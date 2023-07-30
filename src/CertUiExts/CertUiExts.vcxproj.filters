@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\inc\ASN1.h">
+    <ClInclude Include="..\Common\ASN1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\inc\OIDs.h">
+    <ClInclude Include="..\Common\OIDs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CertUiExts.h">

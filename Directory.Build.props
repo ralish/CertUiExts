@@ -16,7 +16,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <!-- General -->
-      <AdditionalIncludeDirectories>$(SolutionDir)inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\Common</AdditionalIncludeDirectories>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <!-- Language -->
@@ -34,7 +34,7 @@
     </Link>
     <ResourceCompile>
       <!-- General -->
-      <AdditionalIncludeDirectories>$(SolutionDir)inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\Common</AdditionalIncludeDirectories>
       <Culture>0x0c09</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>
