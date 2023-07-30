@@ -6,8 +6,8 @@ IF %ERRORLEVEL% GEQ 1 (
     EXIT /B 1
 )
 
-@REM Switch to batch file directory
-PUSHD "%~dp0"
+@REM Switch to repository root directory
+PUSHD "%~dp0\.."
 
 @REM Default MSBuild arguments
 SET MSBuildSln=CertUiExts.sln
