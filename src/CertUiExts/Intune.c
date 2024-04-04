@@ -25,6 +25,9 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
                           _In_ const DWORD cbEncoded,
                           _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                           _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwFormatType);
+    UNREFERENCED_PARAMETER(pFormatStruct);
+
     BOOL bStatus = FALSE;
     GUID* pGuid = NULL;
     LPWSTR pwszGuid = NULL;
@@ -97,6 +100,9 @@ BOOL FormatIntuneAccountId(_In_ const DWORD dwCertEncodingType,
                            _In_ const DWORD cbEncoded,
                            _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                            _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwFormatType);
+    UNREFERENCED_PARAMETER(pFormatStruct);
+
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
@@ -120,6 +126,9 @@ BOOL FormatIntuneUserId(_In_ const DWORD dwCertEncodingType,
                         _In_ const DWORD cbEncoded,
                         _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                         _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwFormatType);
+    UNREFERENCED_PARAMETER(pFormatStruct);
+
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
@@ -144,6 +153,9 @@ BOOL FormatIntuneUnknown11(_In_ const DWORD dwCertEncodingType,
                            _In_ const DWORD cbEncoded,
                            _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                            _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwFormatType);
+    UNREFERENCED_PARAMETER(pFormatStruct);
+
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
@@ -168,6 +180,9 @@ BOOL FormatIntuneAadTenantId(_In_ const DWORD dwCertEncodingType,
                              _In_ const DWORD cbEncoded,
                              _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                              _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwFormatType);
+    UNREFERENCED_PARAMETER(pFormatStruct);
+
     BOOL bStatus;
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);

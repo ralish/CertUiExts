@@ -26,6 +26,9 @@ BOOL FormatAspNetCoreHttpsDevCert(_In_ const DWORD dwCertEncodingType,
                                   _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void*
                                   pbFormat,
                                   _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwFormatType);
+    UNREFERENCED_PARAMETER(pFormatStruct);
+
     BOOL bStatus = FALSE;
     INT dwVersion = 0;
     WCHAR pszVersion[4]; // Largest integer for a single byte is 254

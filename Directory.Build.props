@@ -17,7 +17,7 @@
     <ClCompile>
       <!-- General -->
       <AdditionalIncludeDirectories>$(SolutionDir)src\Common</AdditionalIncludeDirectories>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <!-- Language -->
       <LanguageStandard_C>stdc17</LanguageStandard_C>
