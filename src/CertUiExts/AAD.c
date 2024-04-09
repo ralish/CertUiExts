@@ -25,8 +25,10 @@ BOOL FormatAadNtdsDsaIid(_In_ const DWORD dwCertEncodingType,
                          _In_ const DWORD cbEncoded,
                          _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                          _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
@@ -51,8 +53,10 @@ BOOL FormatAadDeviceId(_In_ const DWORD dwCertEncodingType,
                        _In_ const DWORD cbEncoded,
                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                        _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
@@ -77,8 +81,10 @@ BOOL FormatAadUserId(_In_ const DWORD dwCertEncodingType,
                      _In_ const DWORD cbEncoded,
                      _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                      _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
@@ -103,8 +109,10 @@ BOOL FormatAadDomainId(_In_ const DWORD dwCertEncodingType,
                        _In_ const DWORD cbEncoded,
                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                        _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
@@ -129,8 +137,10 @@ BOOL FormatAadTenantId(_In_ const DWORD dwCertEncodingType,
                        _In_ const DWORD cbEncoded,
                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                        _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
@@ -155,8 +165,10 @@ BOOL FormatAadJoinType(_In_ const DWORD dwCertEncodingType,
                        _In_ const DWORD cbEncoded,
                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                        _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAadJoinTypeBlob = NULL;
@@ -230,8 +242,10 @@ BOOL FormatAadTenantRegion(_In_ const DWORD dwCertEncodingType,
                            _In_ const DWORD cbEncoded,
                            _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                            _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAadTenantRegionBlob = NULL;

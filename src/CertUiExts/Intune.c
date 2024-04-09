@@ -25,8 +25,10 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
                           _In_ const DWORD cbEncoded,
                           _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                           _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus = FALSE;
     GUID* pGuid = NULL;
@@ -100,8 +102,10 @@ BOOL FormatIntuneAccountId(_In_ const DWORD dwCertEncodingType,
                            _In_ const DWORD cbEncoded,
                            _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                            _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
@@ -126,8 +130,10 @@ BOOL FormatIntuneUserId(_In_ const DWORD dwCertEncodingType,
                         _In_ const DWORD cbEncoded,
                         _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                         _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
@@ -153,8 +159,10 @@ BOOL FormatIntuneUnknown11(_In_ const DWORD dwCertEncodingType,
                            _In_ const DWORD cbEncoded,
                            _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                            _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
@@ -180,8 +188,10 @@ BOOL FormatIntuneAadTenantId(_In_ const DWORD dwCertEncodingType,
                              _In_ const DWORD cbEncoded,
                              _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                              _Inout_ DWORD* pcbFormat) {
+    UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
+    UNREFERENCED_PARAMETER(lpszStructType);
 
     BOOL bStatus;
 
