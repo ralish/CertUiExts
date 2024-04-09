@@ -30,7 +30,7 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
 
     BOOL bStatus = FALSE;
     GUID* pGuid = NULL;
-    LPWSTR pwszGuid = NULL;
+    PWSTR pwszGuid = NULL;
 
     // Add newline & terminating null
     const DWORD dwBufferSize = (dwGUID_SIZE_CHARS + 2) * sizeof(WCHAR);
@@ -41,7 +41,7 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(pcbFormat, dwBufferSize)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, dwBufferSize)) {
         return FALSE;
     }
 
@@ -83,7 +83,7 @@ end:
     free(pwszGuid);
     free(pGuid);
 
-    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, pcbFormat);
+    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, *pcbFormat);
 }
 
 /*

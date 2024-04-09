@@ -39,7 +39,7 @@ BOOL FormatAspNetCoreHttpsDevCert(_In_ const DWORD dwCertEncodingType,
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(pcbFormat, cbASPNETCORE_HTTPS_DEV_CERT_BUFFER)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, cbASPNETCORE_HTTPS_DEV_CERT_BUFFER)) {
         return FALSE;
     }
 
@@ -78,5 +78,5 @@ BOOL FormatAspNetCoreHttpsDevCert(_In_ const DWORD dwCertEncodingType,
     bStatus = TRUE;
 
 end:
-    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, pcbFormat);
+    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, *pcbFormat);
 }

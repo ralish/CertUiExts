@@ -1,7 +1,7 @@
 #pragma once
 
 BOOL ConvertGuidToStringW(const GUID* pGuid,
-                          LPWSTR* ppwszGuid);
+                          PWSTR* ppwszGuid);
 
 BOOL DecodeAsnGuid(const BYTE* pbEncoded,
                    DWORD cbEncoded,
@@ -9,7 +9,7 @@ BOOL DecodeAsnGuid(const BYTE* pbEncoded,
 
 BOOL DecodeAsnSidA(const BYTE* pbEncoded,
                    DWORD cbEncoded,
-                   LPSTR* ppszSid,
+                   PSTR* ppszSid,
                    DWORD* cbSid);
 
 BOOL FormatAsGuidStringW(DWORD dwFormatStrType,
@@ -20,13 +20,13 @@ BOOL FormatAsGuidStringW(DWORD dwFormatStrType,
 
 BOOL SetFailureInfo(DWORD dwFormatStrType,
                     void* pbFormat,
-                    const DWORD* pcbFormat);
+                    DWORD cbFormat);
 
 BOOL SetFormatBufferSize(const void* pbFormat,
                          DWORD* pcbFormat,
                          DWORD dwSize);
 
-BOOL VerifyFormatBufferSize(const DWORD* pcbFormat,
+BOOL VerifyFormatBufferSize(DWORD cbFormat,
                             DWORD dwSize);
 
 // GUID constants

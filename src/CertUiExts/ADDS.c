@@ -36,22 +36,22 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     // OID
     BYTE pbAsnOidTlv[cbNTDS_OBJECTSID_OID_TLV];
-    LPSTR* ppszOid = NULL;
-    LPWSTR pwszOid = NULL;
+    PSTR* ppszOid = NULL;
+    PWSTR pwszOid = NULL;
     DWORD cbOidA = 0;
 
     // SID
     BYTE* pbAsnSidTlv = NULL;
     DWORD cbAsnSidTlv;
     DWORD cbSidA;
-    LPSTR pszSid = NULL;
-    LPWSTR pwszSid = NULL;
+    PSTR pszSid = NULL;
+    PWSTR pwszSid = NULL;
 
     // Account details
     PSID pSid = NULL;
-    LPWSTR pwszSidAccountName = NULL;
+    PWSTR pwszSidAccountName = NULL;
     DWORD cbSidAccountName = 0;
-    LPWSTR pwszSidAccountDomain = NULL;
+    PWSTR pwszSidAccountDomain = NULL;
     DWORD cbSidAccountDomain = 0;
     SID_NAME_USE sidType;
 
@@ -61,7 +61,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(pcbFormat, cbNTDS_CA_SECURITY_EXT_BUFFER)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, cbNTDS_CA_SECURITY_EXT_BUFFER)) {
         return FALSE;
     }
 
@@ -241,5 +241,5 @@ end:
     LocalFree(ppszOid);
 
     DBG_EXIT(bStatus);
-    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, pcbFormat);
+    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, *pcbFormat);
 }

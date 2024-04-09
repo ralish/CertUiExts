@@ -169,7 +169,7 @@ BOOL FormatAadJoinType(_In_ const DWORD dwCertEncodingType,
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(pcbFormat, cbAAD_JOIN_TYPE_BUFFER)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, cbAAD_JOIN_TYPE_BUFFER)) {
         return FALSE;
     }
 
@@ -213,7 +213,7 @@ end:
     LocalFree(pbAadJoinTypeBlob);
 
     DBG_EXIT(bStatus);
-    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, pcbFormat);
+    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, *pcbFormat);
 }
 
 /*
@@ -246,7 +246,7 @@ BOOL FormatAadTenantRegion(_In_ const DWORD dwCertEncodingType,
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(pcbFormat, cbAAD_TENANT_REGION_BUFFER)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, cbAAD_TENANT_REGION_BUFFER)) {
         return FALSE;
     }
 
@@ -308,5 +308,5 @@ end:
     LocalFree(pbAadTenantRegionBlob);
 
     DBG_EXIT(bStatus);
-    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, pcbFormat);
+    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, *pcbFormat);
 }

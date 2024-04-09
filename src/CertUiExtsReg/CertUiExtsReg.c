@@ -16,7 +16,7 @@ BOOL g_bRegStatus = TRUE;
 // DLL path used in OID info & function registrations
 WCHAR g_pwszDllPath[MAX_PATH * sizeof(WCHAR)];
 
-void DisplayHelp(const BOOL bInvalidParam) {
+void DisplayHelp(_In_ const BOOL bInvalidParam) {
     if (bInvalidParam) {
         wprintf_s(L"An invalid parameter was provided.\n\n");
     }
@@ -60,9 +60,9 @@ end:
 
 #pragma region Install
 
-BOOL RegisterOIDInfo(const LPSTR pszOID,
-                     const LPWSTR pwszName,
-                     const DWORD dwGroupId) {
+BOOL RegisterOIDInfo(_In_z_ const PSTR pszOID,
+                     _In_z_ const PWSTR pwszName,
+                     _In_ const DWORD dwGroupId) {
     BOOL bStatus = FALSE;
     CRYPT_OID_INFO* pOIDInfo;
 
@@ -92,10 +92,10 @@ end:
     return bStatus;
 }
 
-BOOL RegisterOIDFunction(const LPSTR pszOID,
-                         const LPWSTR pwszName,
-                         const LPSTR pszFuncName,
-                         const LPSTR pszOverrideFuncName) {
+BOOL RegisterOIDFunction(_In_z_ const PSTR pszOID,
+                         _In_z_ const PWSTR pwszName,
+                         _In_z_ const PSTR pszFuncName,
+                         _In_z_ const PSTR pszOverrideFuncName) {
     BOOL bStatus;
 
     wprintf_s(L"[%s] Registering OID function ... ", pwszName);
@@ -254,9 +254,9 @@ void Register(void) {
 
 #pragma region Uninstall
 
-BOOL UnregisterOIDInfo(const LPSTR pszOID,
-                       const LPWSTR pwszName,
-                       const DWORD dwGroupId) {
+BOOL UnregisterOIDInfo(_In_z_ const PSTR pszOID,
+                       _In_z_ const PWSTR pwszName,
+                       _In_ const DWORD dwGroupId) {
     BOOL bStatus = FALSE;
     CRYPT_OID_INFO* pOIDInfo;
 
@@ -285,9 +285,9 @@ end:
     return bStatus;
 }
 
-BOOL UnregisterOIDFunction(const LPSTR pszOID,
-                           const LPWSTR pwszName,
-                           const LPSTR pszFuncName) {
+BOOL UnregisterOIDFunction(_In_z_ const PSTR pszOID,
+                           _In_z_ const PWSTR pwszName,
+                           _In_z_ const PSTR pszFuncName) {
     BOOL bStatus;
 
     wprintf_s(L"[%s] Unregistering OID function ... ", pwszName);
@@ -444,7 +444,8 @@ void Unregister(void) {
 
 #pragma endregion
 
-int main(const int argc, const char* argv[]) {
+int main(_In_ const int argc,
+         _In_reads_(argc) const char* argv[]) {
     LONG status = 1;
 
     switch (argc) {

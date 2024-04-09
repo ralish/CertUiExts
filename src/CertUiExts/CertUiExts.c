@@ -1,6 +1,8 @@
 #include "pch.h"
 
-BOOL WINAPI DllMain(const HINSTANCE hinstDLL, const DWORD fdwReason, const LPVOID lpvReserved) {
+BOOL WINAPI DllMain(_In_ const HINSTANCE hinstDLL,
+                    _In_ const DWORD fdwReason,
+                    _In_ const LPVOID lpvReserved) {
     UNREFERENCED_PARAMETER(lpvReserved);
 
     if (fdwReason == DLL_PROCESS_ATTACH) {
