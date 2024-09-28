@@ -14,6 +14,7 @@ A library which extends Windows cryptography support for displaying additional O
 - [Object identifiers (OIDs)](#object-identifiers-oids)
   - [Active Directory](#active-directory)
   - [ASP.NET Core](#aspnet-core)
+  - [Authenticode](#authenticode)
   - [Azure AD](#azure-ad)
   - [CA/Browser Forum](#cabrowser-forum)
   - [DigiCert](#digicert)
@@ -109,6 +110,13 @@ Object identifiers (OIDs)
 | OID                            | Type               | Description                                                  |
 | ------------------------------ | ------------------ | ------------------------------------------------------------ |
 | `1.3.6.1.4.1.311.84.1.1`       | Extension          | HTTPS Development Certificate                                |
+
+### Authenticode
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.3.6.1.4.1.311.2.1.11`       | Extension          | SPC Statement Type                                           |
+| `1.3.6.1.4.1.311.2.1.12`       | Extension          | SPC Publisher Information                                    |
 
 ### Azure AD
 

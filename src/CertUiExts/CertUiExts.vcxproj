@@ -148,6 +148,7 @@
     <ClCompile Include="AAD.c" />
     <ClCompile Include="ADDS.c" />
     <ClCompile Include="AspNetCore.c" />
+    <ClCompile Include="Authenticode.c" />
     <ClCompile Include="Intune.c" />
     <ClCompile Include="Utilities.c" />
     <ClCompile Include="pch.c">

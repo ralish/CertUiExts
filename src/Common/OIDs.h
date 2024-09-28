@@ -66,6 +66,33 @@
 
 
 // *********************************************************
+// ***                   Authenticode                    ***
+// ***                 1.3.6.1.4.1.311.2                 ***
+// *********************************************************
+
+/*
+ * iso(1) / identified-organization(3) / dod(6)
+ * internet(1) / private(4) / enterprise(1)
+ * microsoft(311) / authenticode(25)
+ */
+
+/*
+ * Attribute names deliberately omit an "Authenticode: ..." prefix for user
+ * interface consistency alongside the existing set of recognised attributes.
+ */
+
+#define wszAUTHENTICODE_SPC_STATEMENT_TYPE_NAME L"SPC Statement Type"
+#define szAUTHENTICODE_SPC_STATEMENT_TYPE_OID "1.3.6.1.4.1.311.2.1.11"
+#define cbAUTHENTICODE_SPC_STATEMENT_TYPE_BUFFER ((DWORD)16 * sizeof(WCHAR))
+
+#define wszAUTHENTICODE_SPC_SP_OPUS_INFO_NAME L"SPC Publisher Information"
+#define szAUTHENTICODE_SPC_SP_OPUS_INFO_OID "1.3.6.1.4.1.311.2.1.12"
+
+//#define wszAUTHENTICODE_RFC3161_COUNTERSIGN_NAME L"Timestamping Signature"
+//#define szAUTHENTICODE_RFC3161_COUNTERSIGN_OID "1.3.6.1.4.1.311.3.3.1"
+
+
+// *********************************************************
 // ***                     Azure AD                      ***
 // ***              1.2.840.113556.1.5.284               ***
 // *********************************************************
