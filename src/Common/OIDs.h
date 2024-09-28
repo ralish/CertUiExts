@@ -62,7 +62,7 @@
 // https://github.com/dotnet/aspnetcore/blob/main/src/Shared/CertificateGeneration/CertificateManager.cs
 #define wszASPNETCORE_HTTPS_DEV_CERT_NAME L"ASP.NET Core: HTTPS Development Certificate"
 #define szASPNETCORE_HTTPS_DEV_CERT_OID "1.3.6.1.4.1.311.84.1.1"
-#define cbASPNETCORE_HTTPS_DEV_CERT_BUFFER (DWORD)32
+#define cbASPNETCORE_HTTPS_DEV_CERT_BUFFER ((DWORD)16 * sizeof(WCHAR))
 
 
 // *********************************************************

@@ -69,7 +69,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     if (cbEncoded < cbNTDS_CA_SECURITY_EXT_ASN_MIN) {
         DBG_PRINT("ASN.1 structure is %u bytes but expected at least %u bytes\n",
-                  cbEncoded, cbNTDS_CA_SECURITY_EXT_BUFFER);
+                  cbEncoded, cbNTDS_CA_SECURITY_EXT_ASN_MIN);
         goto end;
     }
 

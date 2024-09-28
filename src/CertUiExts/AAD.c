@@ -198,7 +198,7 @@ BOOL FormatAadJoinType(_In_ const DWORD dwCertEncodingType,
     }
 
     if (pbAadJoinTypeBlob->cbData != 1) {
-        DBG_PRINT("Decoded ASN.1 octet string has %u bytes but expected 1 bytes\n", pbAadJoinTypeBlob->cbData);
+        DBG_PRINT("Decoded ASN.1 octet string has %u bytes but expected 1 byte\n", pbAadJoinTypeBlob->cbData);
         goto end;
     }
 
