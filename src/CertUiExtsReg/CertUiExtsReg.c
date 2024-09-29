@@ -1,20 +1,12 @@
 #include "pch.h"
 
-#include <stdio.h>
-
-#include <windows.h>
 #include <shlwapi.h>
-#include <wincrypt.h>
-
-#include "OIDs.h"
-
-#include "CertUiExtsReg.h"
 
 // Set to false if any (un)registration returns false
 BOOL g_bRegStatus = TRUE;
 
 // DLL path used in OID info & function registrations
-WCHAR g_pwszDllPath[MAX_PATH * sizeof(WCHAR)];
+WCHAR g_wszDllPath[MAX_PATH * sizeof(WCHAR)];
 
 void DisplayHelp(_In_ const BOOL bInvalidParam) {
     if (bInvalidParam) {
@@ -31,7 +23,7 @@ BOOL GetDllPath(void) {
     BOOL bStatus = FALSE;
     DWORD dwPathLen;
 
-    dwPathLen = GetModuleFileNameW(NULL, g_pwszDllPath, MAX_PATH * sizeof(WCHAR));
+    dwPathLen = GetModuleFileNameW(NULL, g_wszDllPath, MAX_PATH * sizeof(WCHAR));
     if (dwPathLen == 0) {
         wprintf_s(L"Retrieving executable path failed (err: %d)", GetLastError());
         goto end;
@@ -42,12 +34,12 @@ BOOL GetDllPath(void) {
         goto end;
     }
 
-    if (!PathRemoveFileSpecW(g_pwszDllPath)) {
+    if (!PathRemoveFileSpecW(g_wszDllPath)) {
         wprintf_s(L"Failed to remove file from executable path.");
         goto end;
     }
 
-    if (PathCombineW(g_pwszDllPath, g_pwszDllPath, wszDLL_NAME) == NULL) {
+    if (PathCombineW(g_wszDllPath, g_wszDllPath, wszDLL_NAME) == NULL) {
         wprintf_s(L"Failed to combine directory path with DLL file.");
         goto end;
     }
@@ -64,7 +56,7 @@ BOOL RegisterOIDInfo(_In_z_ const PSTR pszOID,
                      _In_z_ const PWSTR pwszName,
                      _In_ const DWORD dwGroupId) {
     BOOL bStatus = FALSE;
-    CRYPT_OID_INFO* pOIDInfo;
+    PCRYPT_OID_INFO pOIDInfo;
 
     wprintf_s(L"[%s] Registering OID info ... ", pwszName);
 
@@ -103,7 +95,7 @@ BOOL RegisterOIDFunction(_In_z_ const PSTR pszOID,
     bStatus = CryptRegisterOIDFunction(X509_ASN_ENCODING,
                                        pszFuncName,
                                        pszOID,
-                                       g_pwszDllPath,
+                                       g_wszDllPath,
                                        pszOverrideFuncName);
 
     if (g_bRegStatus) {
@@ -115,156 +107,19 @@ BOOL RegisterOIDFunction(_In_z_ const PSTR pszOID,
 }
 
 void Register(void) {
-    /*
-     * Active Directory Domain Services
-     * 1.3.6.1.4.1.311.25
-     */
+    PCERTUIEXTS_REG_INFO pRegInfo;
 
-    RegisterOIDInfo(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, szCRYPT_FORMAT_OBJECT,
-                        "FormatNtdsCaSecurityExt");
+    for (DWORD i = 0; i < g_cRegInfo; i++) {
+        pRegInfo = &g_rgRegInfo[i];
 
-
-    /*
-     * ASP.NET Core
-     * 1.3.6.1.4.1.311.84.1
-     */
-
-    RegisterOIDInfo(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME, szCRYPT_FORMAT_OBJECT,
-                        "FormatAspNetCoreHttpsDevCert");
-
-
-    /*
-     * Authenticode
-     * 1.3.6.1.4.1.311.2
-     */
-
-    RegisterOIDInfo(szAUTHENTICODE_SPC_STATEMENT_TYPE_OID, wszAUTHENTICODE_SPC_STATEMENT_TYPE_NAME,
-                    CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAUTHENTICODE_SPC_STATEMENT_TYPE_OID, wszAUTHENTICODE_SPC_STATEMENT_TYPE_NAME,
-                        szCRYPT_FORMAT_OBJECT, "FormatAuthenticodeSpcStatementType");
-
-    RegisterOIDInfo(szAUTHENTICODE_SPC_SP_OPUS_INFO_OID, wszAUTHENTICODE_SPC_SP_OPUS_INFO_NAME,
-                    CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-
-    RegisterOIDInfo(szAUTHENTICODE_RFC3161_COUNTERSIGN_OID, wszAUTHENTICODE_RFC3161_COUNTERSIGN_NAME,
-                    CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-
-
-    /*
-     * Azure AD
-     * 1.2.840.113556.1.5.284
-     */
-
-    RegisterOIDInfo(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadNtdsDsaIid");
-
-    RegisterOIDInfo(szAAD_DEVICE_ID_OID, wszAAD_DEVICE_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_DEVICE_ID_OID, wszAAD_DEVICE_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadDeviceId");
-
-    RegisterOIDInfo(szAAD_USER_ID_OID, wszAAD_USER_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_USER_ID_OID, wszAAD_USER_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadUserId");
-
-    RegisterOIDInfo(szAAD_DOMAIN_ID_OID, wszAAD_DOMAIN_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_DOMAIN_ID_OID, wszAAD_DOMAIN_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadDomainId");
-
-    RegisterOIDInfo(szAAD_TENANT_ID_OID, wszAAD_TENANT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_TENANT_ID_OID, wszAAD_TENANT_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadTenantId");
-
-    RegisterOIDInfo(szAAD_JOIN_TYPE_OID, wszAAD_JOIN_TYPE_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_JOIN_TYPE_OID, wszAAD_JOIN_TYPE_NAME, szCRYPT_FORMAT_OBJECT, "FormatAadJoinType");
-
-    RegisterOIDInfo(szAAD_TENANT_REGION_OID, wszAAD_TENANT_REGION_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szAAD_TENANT_REGION_OID, wszAAD_TENANT_REGION_NAME, szCRYPT_FORMAT_OBJECT,
-                        "FormatAadTenantRegion");
-
-
-    /*
-     * CA/Browser Forum
-     * 2.23.140
-     */
-
-    RegisterOIDInfo(szCAB_CERTPOL_TLS_EV_OID, wszCAB_CERTPOL_TLS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_TLS_DV_OID, wszCAB_CERTPOL_TLS_DV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_TLS_OV_OID, wszCAB_CERTPOL_TLS_OV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_TLS_IV_OID, wszCAB_CERTPOL_TLS_IV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_CS_EV_OID, wszCAB_CERTPOL_CS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_CS_OID, wszCAB_CERTPOL_CS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_TS_OID, wszCAB_CERTPOL_TS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_MV_LEGACY_OID, wszCAB_CERTPOL_SMIME_MV_LEGACY_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_MV_MULTI_OID, wszCAB_CERTPOL_SMIME_MV_MULTI_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_MV_STRICT_OID, wszCAB_CERTPOL_SMIME_MV_STRICT_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_OV_LEGACY_OID, wszCAB_CERTPOL_SMIME_OV_LEGACY_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_OV_MULTI_OID, wszCAB_CERTPOL_SMIME_OV_MULTI_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_OV_STRICT_OID, wszCAB_CERTPOL_SMIME_OV_STRICT_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_SV_LEGACY_OID, wszCAB_CERTPOL_SMIME_SV_LEGACY_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_SV_MULTI_OID, wszCAB_CERTPOL_SMIME_SV_MULTI_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_SV_STRICT_OID, wszCAB_CERTPOL_SMIME_SV_STRICT_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_IV_LEGACY_OID, wszCAB_CERTPOL_SMIME_IV_LEGACY_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_IV_MULTI_OID, wszCAB_CERTPOL_SMIME_IV_MULTI_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szCAB_CERTPOL_SMIME_IV_STRICT_OID, wszCAB_CERTPOL_SMIME_IV_STRICT_NAME, CRYPT_POLICY_OID_GROUP_ID);
-
-
-    /*
-     * DigiCert
-     * 2.16.840.1.114412
-     */
-
-    RegisterOIDInfo(szDIGICERT_CERTPOL_TLS_OV_OID, wszDIGICERT_CERTPOL_TLS_OV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szDIGICERT_CERTPOL_TLS_DV_OID, wszDIGICERT_CERTPOL_TLS_DV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szDIGICERT_CERTPOL_TLS_EV_OID, wszDIGICERT_CERTPOL_TLS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szDIGICERT_CERTPOL_CS_OID, wszDIGICERT_CERTPOL_CS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szDIGICERT_CERTPOL_CS_EV_OID, wszDIGICERT_CERTPOL_CS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szDIGICERT_CERTPOL_CS_WK_OID, wszDIGICERT_CERTPOL_CS_WK_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szDIGICERT_CERTPOL_TS_OID, wszDIGICERT_CERTPOL_TS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-
-
-    /*
-     * Intune
-     * 1.2.840.113556.5
-     */
-
-    RegisterOIDInfo(szINTUNE_DEVICE_ID_OID, wszINTUNE_DEVICE_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_DEVICE_ID_OID, wszINTUNE_DEVICE_ID_NAME, szCRYPT_FORMAT_OBJECT,
-                        "FormatIntuneDeviceId");
-
-    RegisterOIDInfo(szINTUNE_ACCOUNT_ID_OID, wszINTUNE_ACCOUNT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_ACCOUNT_ID_OID, wszINTUNE_ACCOUNT_ID_NAME, szCRYPT_FORMAT_OBJECT,
-                        "FormatIntuneAccountId");
-
-    RegisterOIDInfo(szINTUNE_USER_ID_OID, wszINTUNE_USER_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_USER_ID_OID, wszINTUNE_USER_ID_NAME, szCRYPT_FORMAT_OBJECT, "FormatIntuneUserId");
-
-#ifdef _DEBUG
-    RegisterOIDInfo(szINTUNE_UNKNOWN_11_OID, wszINTUNE_UNKNOWN_11_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_UNKNOWN_11_OID, wszINTUNE_UNKNOWN_11_NAME, szCRYPT_FORMAT_OBJECT,
-                        "FormatIntuneUnknown11");
-#endif
-
-    RegisterOIDInfo(szINTUNE_AAD_TENANT_ID_OID, wszINTUNE_AAD_TENANT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    RegisterOIDFunction(szINTUNE_AAD_TENANT_ID_OID, wszINTUNE_AAD_TENANT_ID_NAME, szCRYPT_FORMAT_OBJECT,
-                        "FormatIntuneAadTenantId");
-
-
-    /*
-     * Sectigo
-     * 1.3.6.1.4.1.6449
-     */
-
-    RegisterOIDInfo(szSECTIGO_CERTPOL_SMIME_C1_OID, wszSECTIGO_CERTPOL_SMIME_C1_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_TLS_OID, wszSECTIGO_CERTPOL_TLS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_CS_OID, wszSECTIGO_CERTPOL_CS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_TLS_OV_OID, wszSECTIGO_CERTPOL_TLS_OV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_SMIME_C2_OID, wszSECTIGO_CERTPOL_SMIME_C2_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_SMIME_C3_OID, wszSECTIGO_CERTPOL_SMIME_C3_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_TS_OID, wszSECTIGO_CERTPOL_TS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_TLS_EV_OID, wszSECTIGO_CERTPOL_TLS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_CS_EV_OID, wszSECTIGO_CERTPOL_CS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_DS_LOCAL_OID, wszSECTIGO_CERTPOL_DS_LOCAL_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_DS_REMOTE_OID, wszSECTIGO_CERTPOL_DS_REMOTE_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_DS_ETP_OID, wszSECTIGO_CERTPOL_DS_ETP_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    RegisterOIDInfo(szSECTIGO_CERTPOL_TLS_DV_OID, wszSECTIGO_CERTPOL_TLS_DV_NAME, CRYPT_POLICY_OID_GROUP_ID);
+        RegisterOIDInfo(pRegInfo->pszOID, pRegInfo->pwszName, pRegInfo->dwGroupId);
+        if (pRegInfo->pszFuncName != NULL) {
+            RegisterOIDFunction(pRegInfo->pszOID,
+                                pRegInfo->pwszName,
+                                pRegInfo->pszFuncName,
+                                pRegInfo->pszOverrideFuncName);
+        }
+    }
 }
 
 #pragma endregion
@@ -275,7 +130,7 @@ BOOL UnregisterOIDInfo(_In_z_ const PSTR pszOID,
                        _In_z_ const PWSTR pwszName,
                        _In_ const DWORD dwGroupId) {
     BOOL bStatus = FALSE;
-    CRYPT_OID_INFO* pOIDInfo;
+    PCRYPT_OID_INFO pOIDInfo;
 
     wprintf_s(L"[%s] Unregistering OID info ... ", pwszName);
 
@@ -322,158 +177,16 @@ BOOL UnregisterOIDFunction(_In_z_ const PSTR pszOID,
 }
 
 void Unregister(void) {
-    /*
-     * Active Directory Domain Services
-     * 1.3.6.1.4.1.311.25
-     */
+    PCERTUIEXTS_REG_INFO pRegInfo;
 
-    UnregisterOIDInfo(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szNTDS_CA_SECURITY_EXT_OID, wszNTDS_CA_SECURITY_EXT_NAME, szCRYPT_FORMAT_OBJECT);
+    for (DWORD i = 0; i < g_cRegInfo; i++) {
+        pRegInfo = &g_rgRegInfo[i];
 
-
-    /*
-     * ASP.NET Core
-     * 1.3.6.1.4.1.311.84
-     */
-
-    UnregisterOIDInfo(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME,
-                      CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szASPNETCORE_HTTPS_DEV_CERT_OID, wszASPNETCORE_HTTPS_DEV_CERT_NAME, szCRYPT_FORMAT_OBJECT);
-
-
-    /*
-     * Authenticode
-     * 1.3.6.1.4.1.311.2
-     */
-
-    UnregisterOIDInfo(szAUTHENTICODE_SPC_STATEMENT_TYPE_OID, wszAUTHENTICODE_SPC_STATEMENT_TYPE_NAME,
-                      CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szAUTHENTICODE_SPC_STATEMENT_TYPE_OID, wszAUTHENTICODE_SPC_STATEMENT_TYPE_NAME,
-                          szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szAUTHENTICODE_SPC_SP_OPUS_INFO_OID, wszAUTHENTICODE_SPC_SP_OPUS_INFO_NAME,
-                      CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-
-    UnregisterOIDInfo(szAUTHENTICODE_RFC3161_COUNTERSIGN_OID, wszAUTHENTICODE_RFC3161_COUNTERSIGN_NAME,
-                      CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-
-
-    /*
-     * Azure AD
-     * 1.2.840.113556.1.5.284
-     */
-
-    UnregisterOIDInfo(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szAAD_NTDS_DSA_IID_OID, wszAAD_NTDS_DSA_IID_NAME, szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szAAD_DEVICE_ID_OID, wszAAD_DEVICE_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szAAD_DEVICE_ID_OID, wszAAD_DEVICE_ID_NAME, szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szAAD_USER_ID_OID, wszAAD_USER_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szAAD_USER_ID_OID, wszAAD_USER_ID_NAME, szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szAAD_DOMAIN_ID_OID, wszAAD_DOMAIN_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szAAD_DOMAIN_ID_OID, wszAAD_DOMAIN_ID_NAME, szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szAAD_TENANT_ID_OID, wszAAD_TENANT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szAAD_TENANT_ID_OID, wszAAD_TENANT_ID_NAME, szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szAAD_JOIN_TYPE_OID, wszAAD_JOIN_TYPE_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szAAD_JOIN_TYPE_OID, wszAAD_JOIN_TYPE_NAME, szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szAAD_TENANT_REGION_OID, wszAAD_TENANT_REGION_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szAAD_TENANT_REGION_OID, wszAAD_TENANT_REGION_NAME, szCRYPT_FORMAT_OBJECT);
-
-
-    /*
-     * CA/Browser Forum
-     * 2.23.140
-     */
-
-    UnregisterOIDInfo(szCAB_CERTPOL_TLS_EV_OID, wszCAB_CERTPOL_TLS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_TLS_DV_OID, wszCAB_CERTPOL_TLS_DV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_TLS_OV_OID, wszCAB_CERTPOL_TLS_OV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_TLS_IV_OID, wszCAB_CERTPOL_TLS_IV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_CS_EV_OID, wszCAB_CERTPOL_CS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_CS_OID, wszCAB_CERTPOL_CS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_TS_OID, wszCAB_CERTPOL_TS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_MV_LEGACY_OID, wszCAB_CERTPOL_SMIME_MV_LEGACY_NAME,
-                      CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_MV_MULTI_OID, wszCAB_CERTPOL_SMIME_MV_MULTI_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_MV_STRICT_OID, wszCAB_CERTPOL_SMIME_MV_STRICT_NAME,
-                      CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_OV_LEGACY_OID, wszCAB_CERTPOL_SMIME_OV_LEGACY_NAME,
-                      CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_OV_MULTI_OID, wszCAB_CERTPOL_SMIME_OV_MULTI_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_OV_STRICT_OID, wszCAB_CERTPOL_SMIME_OV_STRICT_NAME,
-                      CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_SV_LEGACY_OID, wszCAB_CERTPOL_SMIME_SV_LEGACY_NAME,
-                      CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_SV_MULTI_OID, wszCAB_CERTPOL_SMIME_SV_MULTI_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_SV_STRICT_OID, wszCAB_CERTPOL_SMIME_SV_STRICT_NAME,
-                      CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_IV_LEGACY_OID, wszCAB_CERTPOL_SMIME_IV_LEGACY_NAME,
-                      CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_IV_MULTI_OID, wszCAB_CERTPOL_SMIME_IV_MULTI_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szCAB_CERTPOL_SMIME_IV_STRICT_OID, wszCAB_CERTPOL_SMIME_IV_STRICT_NAME,
-                      CRYPT_POLICY_OID_GROUP_ID);
-
-
-    /*
-     * DigiCert
-     * 2.16.840.1.114412
-     */
-
-    UnregisterOIDInfo(szDIGICERT_CERTPOL_TLS_OV_OID, wszDIGICERT_CERTPOL_TLS_OV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szDIGICERT_CERTPOL_TLS_DV_OID, wszDIGICERT_CERTPOL_TLS_DV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szDIGICERT_CERTPOL_TLS_EV_OID, wszDIGICERT_CERTPOL_TLS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szDIGICERT_CERTPOL_CS_OID, wszDIGICERT_CERTPOL_CS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szDIGICERT_CERTPOL_CS_EV_OID, wszDIGICERT_CERTPOL_CS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szDIGICERT_CERTPOL_CS_WK_OID, wszDIGICERT_CERTPOL_CS_WK_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szDIGICERT_CERTPOL_TS_OID, wszDIGICERT_CERTPOL_TS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-
-
-    /*
-     * Intune
-     * 1.2.840.113556.5
-     */
-
-    UnregisterOIDInfo(szINTUNE_DEVICE_ID_OID, wszINTUNE_DEVICE_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szINTUNE_DEVICE_ID_OID, wszINTUNE_DEVICE_ID_NAME, szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szINTUNE_ACCOUNT_ID_OID, wszINTUNE_ACCOUNT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szINTUNE_ACCOUNT_ID_OID, wszINTUNE_ACCOUNT_ID_NAME, szCRYPT_FORMAT_OBJECT);
-
-    UnregisterOIDInfo(szINTUNE_USER_ID_OID, wszINTUNE_USER_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szINTUNE_USER_ID_OID, wszINTUNE_USER_ID_NAME, szCRYPT_FORMAT_OBJECT);
-
-#ifdef _DEBUG
-    UnregisterOIDInfo(szINTUNE_UNKNOWN_11_OID, wszINTUNE_UNKNOWN_11_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szINTUNE_UNKNOWN_11_OID, wszINTUNE_UNKNOWN_11_NAME, szCRYPT_FORMAT_OBJECT);
-#endif
-
-    UnregisterOIDInfo(szINTUNE_AAD_TENANT_ID_OID, wszINTUNE_AAD_TENANT_ID_NAME, CRYPT_EXT_OR_ATTR_OID_GROUP_ID);
-    UnregisterOIDFunction(szINTUNE_AAD_TENANT_ID_OID, wszINTUNE_AAD_TENANT_ID_NAME, szCRYPT_FORMAT_OBJECT);
-
-
-    /*
-     * Sectigo
-     * 1.3.6.1.4.1.6449
-     */
-
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_SMIME_C1_OID, wszSECTIGO_CERTPOL_SMIME_C1_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_TLS_OID, wszSECTIGO_CERTPOL_TLS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_CS_OID, wszSECTIGO_CERTPOL_CS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_TLS_OV_OID, wszSECTIGO_CERTPOL_TLS_OV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_SMIME_C2_OID, wszSECTIGO_CERTPOL_SMIME_C2_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_SMIME_C3_OID, wszSECTIGO_CERTPOL_SMIME_C3_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_TS_OID, wszSECTIGO_CERTPOL_TS_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_TLS_EV_OID, wszSECTIGO_CERTPOL_TLS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_CS_EV_OID, wszSECTIGO_CERTPOL_CS_EV_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_DS_LOCAL_OID, wszSECTIGO_CERTPOL_DS_LOCAL_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_DS_REMOTE_OID, wszSECTIGO_CERTPOL_DS_REMOTE_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_DS_ETP_OID, wszSECTIGO_CERTPOL_DS_ETP_NAME, CRYPT_POLICY_OID_GROUP_ID);
-    UnregisterOIDInfo(szSECTIGO_CERTPOL_TLS_DV_OID, wszSECTIGO_CERTPOL_TLS_DV_NAME, CRYPT_POLICY_OID_GROUP_ID);
+        UnregisterOIDInfo(pRegInfo->pszOID, pRegInfo->pwszName, pRegInfo->dwGroupId);
+        if (pRegInfo->pszFuncName != NULL) {
+            UnregisterOIDFunction(pRegInfo->pszOID, pRegInfo->pwszName, pRegInfo->pszFuncName);
+        }
+    }
 }
 
 #pragma endregion

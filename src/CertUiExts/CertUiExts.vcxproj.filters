@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Common\ASN1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Common\OIDs.h">
+    <ClInclude Include="..\Common\Asn1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CertUiExts.h">
@@ -36,15 +33,15 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Authenticode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ntds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CertUiExts.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AAD.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ADDS.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AspNetCore.c">
@@ -53,7 +50,13 @@
     <ClCompile Include="Authenticode.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EntraId.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Intune.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ntds.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utilities.c">

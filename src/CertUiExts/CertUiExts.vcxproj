@@ -135,9 +135,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Common\ASN1.h" />
-    <ClInclude Include="..\Common\OIDs.h" />
+    <ClInclude Include="..\Common\Asn1.h" />
+    <ClInclude Include="Authenticode.h" />
     <ClInclude Include="CertUiExts.h" />
+    <ClInclude Include="Ntds.h" />
     <ClInclude Include="VersionInfo.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -145,11 +146,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CertUiExts.c" />
-    <ClCompile Include="AAD.c" />
-    <ClCompile Include="ADDS.c" />
     <ClCompile Include="AspNetCore.c" />
     <ClCompile Include="Authenticode.c" />
+    <ClCompile Include="EntraId.c" />
     <ClCompile Include="Intune.c" />
+    <ClCompile Include="Ntds.c" />
     <ClCompile Include="Utilities.c" />
     <ClCompile Include="pch.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

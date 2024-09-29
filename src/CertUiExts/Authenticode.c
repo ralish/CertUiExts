@@ -1,16 +1,17 @@
 #include "pch.h"
 
-#include <stdlib.h>
-#include <string.h>
-
 #include <wincrypt.h>
 #include <wintrust.h>
 
-#include "Shared.h"
-#include "OIDs.h"
+#include "Asn1.h"
 
-#include "CertUiExts.h"
-
+/*
+ * SPC Statement Type
+ * 1.3.6.1.4.1.311.2.1.11
+ *
+ * [MS-OSHARED]: Office Common Data Types and Objects Structures
+ * Section 2.3.2.4.4.1: SpcStatementType
+ */
 __declspec(dllexport)
 BOOL FormatAuthenticodeSpcStatementType(_In_ const DWORD dwCertEncodingType,
                                         _In_ const DWORD dwFormatType,
@@ -19,88 +20,82 @@ BOOL FormatAuthenticodeSpcStatementType(_In_ const DWORD dwCertEncodingType,
                                         _In_opt_ const LPCSTR lpszStructType,
                                         _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                                         _In_ const DWORD cbEncoded,
-                                        _At_((WCHAR *)pbFormat,
-                                             _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
+                                        _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                                         _Inout_ DWORD* pcbFormat) {
     UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
     UNREFERENCED_PARAMETER(pFormatStruct);
     UNREFERENCED_PARAMETER(lpszStructType);
 
-    BOOL bStatus = FALSE;
-    DWORD cchFormat;
-
-    // ASN.1: Sequence
-    CRYPT_SEQUENCE_OF_ANY* pbAsnSeq = NULL;
-    DWORD cbAsnSeq = 0;
-
-    // ASN.1: Sequence->OID
-    PSTR* ppszOid = NULL;
-    DWORD cbOidA = 0;
-
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
-    if (SetFormatBufferSize(pbFormat, pcbFormat, cbAUTHENTICODE_SPC_STATEMENT_TYPE_BUFFER)) {
+    if (SetFormatBufferSize(pbFormat, pcbFormat, cbFORMAT_MIN_SIZE)) {
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(*pcbFormat, cbAUTHENTICODE_SPC_STATEMENT_TYPE_BUFFER)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, cbFORMAT_MIN_SIZE)) {
         return FALSE;
     }
 
-    // ASN.1: Sequence
+    BOOL bStatus = FALSE;
+
+    // Sequence
+    CRYPT_SEQUENCE_OF_ANY* pbAsnSeq = NULL;
+    DWORD cbAsnSeq = 0;
+
+    // Object identifier
+    PSTR* ppszOid = NULL;
+    DWORD cbOidA = 0;
+
+    // Statement type
+    WCHAR* pwszType;
+
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
                              X509_SEQUENCE_OF_ANY,
                              pbEncoded,
                              cbEncoded,
                              CRYPT_DECODE_ALLOC_FLAG,
-                             NULL, // Use LocalAlloc()
-                             &pbAsnSeq,
+                             NULL,      // Use LocalAlloc()
+                             &pbAsnSeq, // NOLINT(bugprone-multi-level-implicit-pointer-conversion)
                              &cbAsnSeq)) {
         DBG_PRINT("CryptDecodeObjectEx() of X509_SEQUENCE_OF_ANY failed (err: %u)\n", GetLastError());
-        return bStatus;
-    }
-
-    if (pbAsnSeq->cValue != 1) {
-        DBG_PRINT("ASN.1 sequence has %d elements but expected only one\n", pbAsnSeq->cValue);
         goto end;
     }
 
-    // ASN.1: Sequence->OID
+    if (pbAsnSeq->cValue != 1) {
+        DBG_PRINT("ASN.1 sequence has %d elements but expected 1 element\n", pbAsnSeq->cValue);
+        goto end;
+    }
+
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
                              X509_OBJECT_IDENTIFIER,
                              pbAsnSeq->rgValue[0].pbData,
                              pbAsnSeq->rgValue[0].cbData,
                              CRYPT_DECODE_ALLOC_FLAG,
-                             NULL, // Use LocalAlloc()
-                             &ppszOid,
+                             NULL,     // Use LocalAlloc()
+                             &ppszOid, // NOLINT(bugprone-multi-level-implicit-pointer-conversion)
                              &cbOidA)) {
         DBG_PRINT("CryptDecodeObjectEx() of X509_OBJECT_IDENTIFIER failed (err: %u)\n", GetLastError());
-        return bStatus;
+        goto end;
     }
 
-    cchFormat = *pcbFormat / sizeof(WCHAR);
     if (strcmp(*ppszOid, SPC_INDIVIDUAL_SP_KEY_PURPOSE_OBJID) == 0) {
-        if (wcscpy_s(pbFormat, cchFormat, L"Individual\n") != 0) {
-            DBG_PRINT("wcscpy_s() failed copying string to output buffer (errno: %d)\n", errno);
-            goto end;
-        }
+        pwszType = L"Individual\n";
     } else if (strcmp(*ppszOid, SPC_COMMERCIAL_SP_KEY_PURPOSE_OBJID) == 0) {
-        if (wcscpy_s(pbFormat, cchFormat, L"Commercial\n") != 0) {
-            DBG_PRINT("wcscpy_s() failed copying string to output buffer (errno: %d)\n", errno);
-            goto end;
-        }
+        pwszType = L"Commercial\n";
     } else {
-        if (wcscpy_s(pbFormat, cchFormat, L"Invalid OID\n") != 0) {
-            DBG_PRINT("wcscpy_s() failed copying string to output buffer (errno: %d)\n", errno);
-            goto end;
-        }
+        pwszType = L"Invalid OID\n";
+    }
+
+    if (wcscpy_s(pbFormat, *pcbFormat / sizeof(WCHAR), pwszType) != 0) {
+        DBG_PRINT("wcscpy_s() failed copying string to format buffer (errno: %d)\n", errno);
+        goto end;
     }
 
     bStatus = TRUE;
 
 end:
-    LocalFree(ppszOid);
+    LocalFree(ppszOid); // NOLINT(bugprone-multi-level-implicit-pointer-conversion)
     LocalFree(pbAsnSeq);
 
     DBG_EXIT(bStatus);

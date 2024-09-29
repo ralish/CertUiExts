@@ -1,15 +1,6 @@
 #include "pch.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <malloc.h>
-#include <string.h>
-
 #include <wincrypt.h>
-
-#include "Shared.h"
-
-#include "CertUiExts.h"
 
 #ifdef _DEBUG
 #include <stdarg.h>
@@ -24,8 +15,8 @@ void OutputDebugFormatStringA(_In_z_ const PCSTR pszFuncName,
                               _Printf_format_string_ const PCSTR pszDebugFormat,
                               ...) {
     va_list args;
-    size_t stDebugStringOffset;
-    size_t stDebugStringSize = sizeof(CHAR); // Terminating null
+    size_t cbDebugStringOffset;
+    size_t cbDebugStringSize = sizeof(CHAR); // Terminating null
 
     va_start(args, pszDebugFormat);
 
@@ -33,19 +24,19 @@ void OutputDebugFormatStringA(_In_z_ const PCSTR pszFuncName,
         goto end;
     }
 
-    stDebugStringOffset = strnlen_s(pszDebugBuffer, DEBUG_BUFFER_SIZE);
-    stDebugStringSize += _scprintf(pszDebugStringPrefix, pszFuncName) * sizeof(CHAR);
-    stDebugStringSize += _vscprintf(pszDebugFormat, args) * sizeof(CHAR);
+    cbDebugStringOffset = strnlen_s(pszDebugBuffer, DEBUG_BUFFER_SIZE);
+    cbDebugStringSize += _scprintf(pszDebugStringPrefix, pszFuncName) * sizeof(CHAR);
+    cbDebugStringSize += _vscprintf(pszDebugFormat, args) * sizeof(CHAR);
 
-    if (stDebugStringSize <= DEBUG_BUFFER_SIZE) {
-        if (vsprintf_s(&pszDebugBuffer[stDebugStringOffset / sizeof(CHAR)],
-                       stDebugStringSize - stDebugStringOffset,
+    if (cbDebugStringSize <= DEBUG_BUFFER_SIZE) {
+        if (vsprintf_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+                       cbDebugStringSize - cbDebugStringOffset,
                        pszDebugFormat, args) < 0) {
             goto end;
         }
     } else {
-        if (strcat_s(&pszDebugBuffer[stDebugStringOffset / sizeof(CHAR)],
-                     stDebugStringSize - stDebugStringOffset,
+        if (strcat_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+                     cbDebugStringSize - cbDebugStringOffset,
                      "Formatted string exceeds debug buffer size.\n") != 0) {
             goto end;
         }
@@ -127,17 +118,17 @@ void FormatObjectDebugExitA(_In_z_ const PCSTR pszFuncName,
 #endif
 
 BOOL ConvertGuidToStringW(_In_ const GUID* pGuid,
-                          _Outptr_result_bytebuffer_maybenull_(dwGUID_SIZE_CHARS + 1) PWSTR* ppwszGuid) {
-    const DWORD dwGuidChars = dwGUID_SIZE_CHARS + 1; // Add terminating null
+                          _Outptr_result_bytebuffer_maybenull_(cchGUID_SIZE + 1) PWSTR* ppwszGuid) {
+    const DWORD cchGuid = cchGUID_SIZE + 1; // Add terminating null
 
-    *ppwszGuid = calloc(dwGuidChars, sizeof(WCHAR));
+    *ppwszGuid = calloc(cchGuid, sizeof(WCHAR));
     if (*ppwszGuid == NULL) {
         DBG_PRINT("calloc() failed to allocate WCHAR array for GUID (errno: %d)\n", errno);
         return FALSE;
     }
 
     if (swprintf_s(*ppwszGuid,
-                   dwGuidChars,
+                   cchGuid,
                    L"%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x",
                    pGuid->Data1, pGuid->Data2, pGuid->Data3,
                    pGuid->Data4[0], pGuid->Data4[1], pGuid->Data4[2], pGuid->Data4[3],
@@ -145,7 +136,7 @@ BOOL ConvertGuidToStringW(_In_ const GUID* pGuid,
         return TRUE;
     }
 
-    DBG_PRINT("swprintf_s() failed to format GUID (errno: %d)\n", errno);
+    DBG_PRINT("swprintf_s() failed formatting GUID (errno: %d)\n", errno);
 
     free(*ppwszGuid);
     *ppwszGuid = NULL;
@@ -165,15 +156,15 @@ BOOL DecodeAsnGuid(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                              pbEncoded,
                              cbEncoded,
                              CRYPT_DECODE_ALLOC_FLAG,
-                             NULL, // Use LocalAlloc()
-                             &pbAsnGuidBlob,
+                             NULL,           // Use LocalAlloc()
+                             &pbAsnGuidBlob, // NOLINT(bugprone-multi-level-implicit-pointer-conversion)
                              &cbAsnGuidBlob)) {
-        DBG_PRINT("CryptDecodeObjectEx() failed (err: %u)\n", GetLastError());
+        DBG_PRINT("CryptDecodeObjectEx() of X509_OCTET_STRING failed (err: %u)\n", GetLastError());
         return bStatus;
     }
 
     if (pbAsnGuidBlob->cbData != sizeof(GUID)) {
-        DBG_PRINT("Decoded ASN.1 octet string has %u bytes but expected %u bytes\n",
+        DBG_PRINT("Decoded ASN.1 octet string is %u bytes but expected %u bytes\n",
                   pbAsnGuidBlob->cbData, (DWORD)sizeof(GUID));
         goto end;
     }
@@ -206,35 +197,35 @@ BOOL DecodeAsnSidA(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
     BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAsnSidBlob = NULL;
     DWORD cbAsnSidBlob = 0;
-    DWORD cbSidLenA;
+    DWORD cbSidA;
 
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
                              X509_OCTET_STRING,
                              pbEncoded,
                              cbEncoded,
                              CRYPT_DECODE_ALLOC_FLAG,
-                             NULL, // Use LocalAlloc()
-                             &pbAsnSidBlob,
+                             NULL,          // Use LocalAlloc()
+                             &pbAsnSidBlob, // NOLINT(bugprone-multi-level-implicit-pointer-conversion)
                              &cbAsnSidBlob)) {
-        DBG_PRINT("CryptDecodeObjectEx() failed (err: %u)\n", GetLastError());
+        DBG_PRINT("CryptDecodeObjectEx() of X509_OCTET_STRING failed (err: %u)\n", GetLastError());
         return bStatus;
     }
 
-    cbSidLenA = pbAsnSidBlob->cbData + sizeof(CHAR); // Add terminating null
-    *ppszSid = calloc(cbSidLenA, sizeof(CHAR));
+    cbSidA = pbAsnSidBlob->cbData + sizeof(CHAR); // Add terminating null
+    *ppszSid = calloc(cbSidA, sizeof(CHAR));
     if (*ppszSid == NULL) {
         DBG_PRINT("calloc() failed to allocate CHAR array for SID (errno: %d)\n", errno);
         goto end;
     }
 
-    if (strncpy_s(*ppszSid, cbSidLenA, (CHAR*)pbAsnSidBlob->pbData, pbAsnSidBlob->cbData) != 0) {
+    if (strncpy_s(*ppszSid, cbSidA, (CHAR*)pbAsnSidBlob->pbData, pbAsnSidBlob->cbData) != 0) {
         DBG_PRINT("strncpy_s() failed copying decoded SID bytes (errno: %d)\n", errno);
         free(*ppszSid);
         *ppszSid = NULL;
         goto end;
     }
 
-    *cbSid = cbSidLenA;
+    *cbSid = cbSidA;
     bStatus = TRUE;
 
 end:
@@ -253,21 +244,14 @@ BOOL FormatAsGuidStringW(_In_ const DWORD dwFormatStrType,
     PWSTR pwszGuid = NULL;
 
     // Add newline & terminating null
-    const DWORD dwBufferSize = (dwGUID_SIZE_CHARS + 2) * sizeof(WCHAR);
+    const DWORD cbBufferSize = (cchGUID_SIZE + 2) * sizeof(WCHAR);
 
-    if (SetFormatBufferSize(pbFormat, pcbFormat, dwBufferSize)) {
+    if (SetFormatBufferSize(pbFormat, pcbFormat, cbBufferSize)) {
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(*pcbFormat, dwBufferSize)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, cbBufferSize)) {
         return FALSE;
-    }
-
-    if (*pcbFormat < dwBufferSize) {
-        DBG_PRINT("Output buffer must be at least %u bytes but is %u bytes\n", dwBufferSize, *pcbFormat);
-        *pcbFormat = dwBufferSize;
-        SetLastError(ERROR_MORE_DATA);
-        goto end;
     }
 
     if (!DecodeAsnGuid(pbEncoded, cbEncoded, &pGuid)) {
@@ -279,7 +263,7 @@ BOOL FormatAsGuidStringW(_In_ const DWORD dwFormatStrType,
     }
 
     if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR), L"%s\n", pwszGuid) == -1) {
-        DBG_PRINT("swprintf_s() failed to format GUID to output buffer (errno: %d)\n", errno);
+        DBG_PRINT("swprintf_s() failed formatting GUID to format buffer (errno: %d)\n", errno);
         goto end;
     }
 
@@ -302,17 +286,17 @@ end:
 BOOL SetFailureInfo(_In_ const DWORD dwFormatStrType,
                     _Out_writes_bytes_(cbFormat) void* pbFormat,
                     _In_ const DWORD cbFormat) {
-    if (dwFormatStrType == 0) {
+    if (dwFormatStrType == CRYPT_FORMAT_STR_SINGLE_LINE) {
         if (cbFormat >= sizeof(wszFORMAT_FAILURE)) {
             if (wcscpy_s(pbFormat, cbFormat / sizeof(WCHAR), wszFORMAT_FAILURE) == 0) {
                 return TRUE;
             }
 
-            DBG_PRINT("wcscpy_s() failed copying string to output buffer (errno: %d)\n", errno);
+            DBG_PRINT("wcscpy_s() failed copying string to format buffer (errno: %d)\n", errno);
             return FALSE;
         }
 
-        DBG_PRINT("Format function failed and output buffer of %u bytes insufficient for failure string\n", cbFormat);
+        DBG_PRINT("Format function failed and format buffer of %u bytes insufficient for failure string\n", cbFormat);
     }
 
     return FALSE;
@@ -333,12 +317,12 @@ BOOL SetFailureInfo(_In_ const DWORD dwFormatStrType,
  */
 BOOL SetFormatBufferSize(_In_ const void* pbFormat,
                          _Out_ DWORD* pcbFormat,
-                         _In_ const DWORD dwSize) {
+                         _In_ const DWORD cbSize) {
     if (pbFormat != NULL || *pcbFormat != 0) {
         return FALSE;
     }
 
-    *pcbFormat = dwSize;
+    *pcbFormat = cbSize;
     SetLastError(ERROR_MORE_DATA);
     return TRUE;
 }
@@ -352,12 +336,12 @@ BOOL SetFormatBufferSize(_In_ const void* pbFormat,
  * fail, but it means we fail sooner and assists with debugging caller issues.
  */
 BOOL VerifyFormatBufferSize(_In_ const DWORD cbFormat,
-                            _In_ const DWORD dwSize) {
-    if (cbFormat <= dwSize) {
+                            _In_ const DWORD cbSize) {
+    if (cbFormat >= cbSize) {
         return TRUE;
     }
 
-    DBG_PRINT("Output buffer is %u bytes but must be at least %u bytes\n", cbFormat, dwSize);
+    DBG_PRINT("Output buffer is %u bytes but must be at least %u bytes\n", cbFormat, cbSize);
     SetLastError(ERROR_MORE_DATA);
     return FALSE;
 }

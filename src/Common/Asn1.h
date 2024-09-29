@@ -90,4 +90,4 @@
 // Lengths larger than 127 are encoded as multiple bytes. The initial length
 // byte has bit 8 set to 1, with the remaining bits indicating the number of
 // bytes which encode the length.
-#define cbASN_LENGTH_SINGLE_BYTE_MAX 0x80
+#define cbASN_LENGTH_SINGLE_BYTE_MAX 0x7F

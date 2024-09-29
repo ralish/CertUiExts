@@ -24,13 +24,19 @@ BOOL SetFailureInfo(DWORD dwFormatStrType,
 
 BOOL SetFormatBufferSize(const void* pbFormat,
                          DWORD* pcbFormat,
-                         DWORD dwSize);
+                         DWORD cbSize);
 
 BOOL VerifyFormatBufferSize(DWORD cbFormat,
-                            DWORD dwSize);
+                            DWORD cbSize);
 
 // GUID constants
-#define dwGUID_SIZE_CHARS (DWORD)36 // Including dashes
+#define cchGUID_SIZE (DWORD)36 // Including dashes
 
-// String constants (Unicode)
+// String constants
 #define wszFORMAT_FAILURE L"Failed to decode"
+
+// Minimum format buffer size
+#define cbFORMAT_MIN_SIZE (32 * sizeof(WCHAR))
+
+// CryptFormatObject: dwFormatStrType
+#define CRYPT_FORMAT_STR_SINGLE_LINE 0

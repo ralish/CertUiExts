@@ -12,13 +12,9 @@ A library which extends Windows cryptography support for displaying additional O
   - [Uninstalling](#uninstalling)
 - [Usage](#usage)
 - [Object identifiers (OIDs)](#object-identifiers-oids)
-  - [Active Directory](#active-directory)
-  - [ASP.NET Core](#aspnet-core)
-  - [Authenticode](#authenticode)
-  - [Azure AD](#azure-ad)
   - [CA/Browser Forum](#cabrowser-forum)
   - [DigiCert](#digicert)
-  - [Intune](#intune)
+  - [Microsoft](#microsoft)
   - [Sectigo](#sectigo)
 - [Security](#security)
   - [Build security](#build-security)
@@ -98,38 +94,6 @@ CertUtil: -dump command completed successfully.
 Object identifiers (OIDs)
 -------------------------
 
-### Active Directory
-
-| OID                            | Type               | Description                                                  |
-| ------------------------------ | ------------------ | ------------------------------------------------------------ |
-| `1.3.6.1.4.1.311.25.2`         | Extension          | CA Security                                                  |
-| `1.3.6.1.4.1.311.25.2.1`       | Extension          | Object SID                                                   |
-
-### ASP.NET Core
-
-| OID                            | Type               | Description                                                  |
-| ------------------------------ | ------------------ | ------------------------------------------------------------ |
-| `1.3.6.1.4.1.311.84.1.1`       | Extension          | HTTPS Development Certificate                                |
-
-### Authenticode
-
-| OID                            | Type               | Description                                                  |
-| ------------------------------ | ------------------ | ------------------------------------------------------------ |
-| `1.3.6.1.4.1.311.2.1.11`       | Extension          | SPC Statement Type                                           |
-| `1.3.6.1.4.1.311.2.1.12`       | Extension          | SPC Publisher Information                                    |
-
-### Azure AD
-
-| OID                            | Type               | Description                                                  |
-| ------------------------------ | ------------------ | ------------------------------------------------------------ |
-| `1.2.840.113556.1.5.284.1`     | Extension          | NTDS-DSA Invocation ID                                       |
-| `1.2.840.113556.1.5.284.2`     | Extension          | Device ID                                                    |
-| `1.2.840.113556.1.5.284.3`     | Extension          | User ID                                                      |
-| `1.2.840.113556.1.5.284.4`     | Extension          | Domain ID                                                    |
-| `1.2.840.113556.1.5.284.5`     | Extension          | Tenant ID                                                    |
-| `1.2.840.113556.1.5.284.7`     | Extension          | Join Type                                                    |
-| `1.2.840.113556.1.5.284.8`     | Extension          | Tenant Region                                                |
-
 ### CA/Browser Forum
 
 | OID                            | Type               | Description                                                  |
@@ -166,14 +130,54 @@ Object identifiers (OIDs)
 | `2.16.840.1.114412.3.11`       | Certificate Policy | Windows Kernel Driver Code Signing Certificate               |
 | `2.16.840.1.114412.7.1`        | Certificate Policy | Timestamping Certificate                                     |
 
-### Intune
+### Microsoft
+
+#### Active Directory
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.3.6.1.4.1.311.25.2`         | Extension          | CA Security                                                  |
+| `1.3.6.1.4.1.311.25.2.1`       | Extension          | Object SID                                                   |
+
+#### ASP.NET Core
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.3.6.1.4.1.311.84.1.1`       | Extension          | HTTPS Development Certificate                                |
+
+#### Authenticode
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.3.6.1.4.1.311.2.1.11`       | Extension          | SPC Statement Type                                           |
+| `1.3.6.1.4.1.311.2.1.12`       | Extension          | SPC Publisher Information                                    |
+
+#### Entra ID
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.2.840.113556.1.5.284.1`     | Extension          | NTDS-DSA Invocation ID                                       |
+| `1.2.840.113556.1.5.284.2`     | Extension          | Device ID                                                    |
+| `1.2.840.113556.1.5.284.3`     | Extension          | User ID                                                      |
+| `1.2.840.113556.1.5.284.4`     | Extension          | Domain ID                                                    |
+| `1.2.840.113556.1.5.284.5`     | Extension          | Tenant ID                                                    |
+| `1.2.840.113556.1.5.284.7`     | Extension          | Join Type                                                    |
+| `1.2.840.113556.1.5.284.8`     | Extension          | Tenant Region                                                |
+
+#### Intune
 
 | OID                            | Type               | Description                                                  |
 | ------------------------------ | ------------------ | ------------------------------------------------------------ |
 | `1.2.840.113556.5.4`           | Extension          | Device ID                                                    |
 | `1.2.840.113556.5.6`           | Extension          | Account ID                                                   |
 | `1.2.840.113556.5.10`          | Extension          | User ID                                                      |
-| `1.2.840.113556.5.14`          | Extension          | AAD Tenant ID                                                |
+| `1.2.840.113556.5.14`          | Extension          | Entra ID Tenant ID                                           |
+
+#### Time Stamping
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `1.3.6.1.4.1.311.3.3.1`        | Extension          | Timestamping Signature                                       |
 
 ### Sectigo
 
