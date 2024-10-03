@@ -14,7 +14,3 @@
 
 // Windows headers
 #include <windows.h>
-
-// Common headers
-#include "Shared.h"
-#include "CertUiExtsReg.h"

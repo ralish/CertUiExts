@@ -1,6 +1,9 @@
 #include "pch.h"
 
 #include <shlwapi.h>
+#include <wincrypt.h>
+
+#include "CertUiExtsReg.h"
 
 // Set to false if any (un)registration returns false
 BOOL g_bRegStatus = TRUE;
@@ -52,13 +55,12 @@ end:
 
 #pragma region Install
 
-BOOL RegisterOIDInfo(_In_z_ const PSTR pszOID,
-                     _In_z_ const PWSTR pwszName,
-                     _In_ const DWORD dwGroupId) {
+BOOL RegisterOIDInfo(_In_ const PCERTUIEXTS_REG_INFO pRegInfo) {
     BOOL bStatus = FALSE;
     PCRYPT_OID_INFO pOIDInfo;
 
-    wprintf_s(L"[%s] Registering OID info ... ", pwszName);
+    WCHAR* pwszRegName = pRegInfo->pwszRegName != NULL ? pRegInfo->pwszRegName : pRegInfo->pwszName;
+    wprintf_s(L"[%s] Registering OID info ... ", pwszRegName);
 
     pOIDInfo = malloc(sizeof(CRYPT_OID_INFO));
     if (pOIDInfo == NULL) {
@@ -68,9 +70,9 @@ BOOL RegisterOIDInfo(_In_z_ const PSTR pszOID,
     memset(pOIDInfo, 0, sizeof(CRYPT_OID_INFO));
 
     pOIDInfo->cbSize = sizeof(CRYPT_OID_INFO);
-    pOIDInfo->pszOID = pszOID;
-    pOIDInfo->pwszName = pwszName;
-    pOIDInfo->dwGroupId = dwGroupId;
+    pOIDInfo->pszOID = pRegInfo->pszOID;
+    pOIDInfo->pwszName = pRegInfo->pwszName;
+    pOIDInfo->dwGroupId = pRegInfo->dwGroupId;
 
     bStatus = CryptRegisterOIDInfo(pOIDInfo, 0);
     free(pOIDInfo);
@@ -80,29 +82,27 @@ end:
         g_bRegStatus = bStatus;
     }
 
-    bStatus ? wprintf_s(L"OK.\n") : wprintf_s(L"Failed.\n");
+    bStatus ? wprintf_s(L"OK\n") : wprintf_s(L"Failed\n");
     return bStatus;
 }
 
-BOOL RegisterOIDFunction(_In_z_ const PSTR pszOID,
-                         _In_z_ const PWSTR pwszName,
-                         _In_z_ const PSTR pszFuncName,
-                         _In_z_ const PSTR pszOverrideFuncName) {
+BOOL RegisterOIDFunction(_In_ const PCERTUIEXTS_REG_INFO pRegInfo) {
     BOOL bStatus;
 
-    wprintf_s(L"[%s] Registering OID function ... ", pwszName);
+    WCHAR* pwszRegName = pRegInfo->pwszRegName != NULL ? pRegInfo->pwszRegName : pRegInfo->pwszName;
+    wprintf_s(L"[%s] Registering OID function ... ", pwszRegName);
 
     bStatus = CryptRegisterOIDFunction(X509_ASN_ENCODING,
-                                       pszFuncName,
-                                       pszOID,
+                                       pRegInfo->pszFuncName,
+                                       pRegInfo->pszOID,
                                        g_wszDllPath,
-                                       pszOverrideFuncName);
+                                       pRegInfo->pszOverrideFuncName);
 
     if (g_bRegStatus) {
         g_bRegStatus = bStatus;
     }
 
-    bStatus ? wprintf_s(L"OK.\n") : wprintf_s(L"Failed.\n");
+    bStatus ? wprintf_s(L"OK\n") : wprintf_s(L"Failed\n");
     return bStatus;
 }
 
@@ -112,12 +112,9 @@ void Register(void) {
     for (DWORD i = 0; i < g_cRegInfo; i++) {
         pRegInfo = &g_rgRegInfo[i];
 
-        RegisterOIDInfo(pRegInfo->pszOID, pRegInfo->pwszName, pRegInfo->dwGroupId);
+        RegisterOIDInfo(pRegInfo);
         if (pRegInfo->pszFuncName != NULL) {
-            RegisterOIDFunction(pRegInfo->pszOID,
-                                pRegInfo->pwszName,
-                                pRegInfo->pszFuncName,
-                                pRegInfo->pszOverrideFuncName);
+            RegisterOIDFunction(pRegInfo);
         }
     }
 }
@@ -126,13 +123,12 @@ void Register(void) {
 
 #pragma region Uninstall
 
-BOOL UnregisterOIDInfo(_In_z_ const PSTR pszOID,
-                       _In_z_ const PWSTR pwszName,
-                       _In_ const DWORD dwGroupId) {
+BOOL UnregisterOIDInfo(_In_ const PCERTUIEXTS_REG_INFO pRegInfo) {
     BOOL bStatus = FALSE;
     PCRYPT_OID_INFO pOIDInfo;
 
-    wprintf_s(L"[%s] Unregistering OID info ... ", pwszName);
+    WCHAR* pwszRegName = pRegInfo->pwszRegName != NULL ? pRegInfo->pwszRegName : pRegInfo->pwszName;
+    wprintf_s(L"[%s] Unregistering OID info ... ", pwszRegName);
 
     pOIDInfo = malloc(sizeof(CRYPT_OID_INFO));
     if (pOIDInfo == NULL) {
@@ -142,8 +138,8 @@ BOOL UnregisterOIDInfo(_In_z_ const PSTR pszOID,
     memset(pOIDInfo, 0, sizeof(CRYPT_OID_INFO));
 
     pOIDInfo->cbSize = sizeof(CRYPT_OID_INFO);
-    pOIDInfo->pszOID = pszOID;
-    pOIDInfo->dwGroupId = dwGroupId;
+    pOIDInfo->pszOID = pRegInfo->pszOID;
+    pOIDInfo->dwGroupId = pRegInfo->dwGroupId;
 
     bStatus = CryptUnregisterOIDInfo(pOIDInfo);
     free(pOIDInfo);
@@ -153,26 +149,25 @@ end:
         g_bRegStatus = bStatus;
     }
 
-    bStatus ? wprintf_s(L"OK.\n") : wprintf_s(L"Failed.\n");
+    bStatus ? wprintf_s(L"OK\n") : wprintf_s(L"Failed\n");
     return bStatus;
 }
 
-BOOL UnregisterOIDFunction(_In_z_ const PSTR pszOID,
-                           _In_z_ const PWSTR pwszName,
-                           _In_z_ const PSTR pszFuncName) {
+BOOL UnregisterOIDFunction(_In_ const PCERTUIEXTS_REG_INFO pRegInfo) {
     BOOL bStatus;
 
-    wprintf_s(L"[%s] Unregistering OID function ... ", pwszName);
+    WCHAR* pwszRegName = pRegInfo->pwszRegName != NULL ? pRegInfo->pwszRegName : pRegInfo->pwszName;
+    wprintf_s(L"[%s] Unregistering OID function ... ", pwszRegName);
 
     bStatus = CryptUnregisterOIDFunction(X509_ASN_ENCODING,
-                                         pszFuncName,
-                                         pszOID);
+                                         pRegInfo->pszFuncName,
+                                         pRegInfo->pszOID);
 
     if (g_bRegStatus) {
         g_bRegStatus = bStatus;
     }
 
-    bStatus ? wprintf_s(L"OK.\n") : wprintf_s(L"Failed.\n");
+    bStatus ? wprintf_s(L"OK\n") : wprintf_s(L"Failed\n");
     return bStatus;
 }
 
@@ -182,9 +177,9 @@ void Unregister(void) {
     for (DWORD i = 0; i < g_cRegInfo; i++) {
         pRegInfo = &g_rgRegInfo[i];
 
-        UnregisterOIDInfo(pRegInfo->pszOID, pRegInfo->pwszName, pRegInfo->dwGroupId);
+        UnregisterOIDInfo(pRegInfo);
         if (pRegInfo->pszFuncName != NULL) {
-            UnregisterOIDFunction(pRegInfo->pszOID, pRegInfo->pwszName, pRegInfo->pszFuncName);
+            UnregisterOIDFunction(pRegInfo);
         }
     }
 }
