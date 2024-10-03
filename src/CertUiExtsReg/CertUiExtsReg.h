@@ -277,8 +277,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         "1.3.6.1.4.1.311.2.1.12",
         L"SPC Publisher Information",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        NULL,
-        NULL
+        szCRYPT_FORMAT_OBJECT,
+        "FormatAuthenticodeSpcPublisherInfo"
     },
 
     /*
