@@ -226,18 +226,18 @@ Binaries are built using Azure Pipelines with the build steps located in [azure-
 
 The library uses documented Windows cryptographic interfaces to support displaying additional OIDs and formatting their extension data:
 
-- [CryptEnumOIDInfo](https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptenumoidinfo)
-- [CryptFindOIDInfo](https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptfindoidinfo)
-- [CryptFormatObject](https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptformatobject)
+- [CryptEnumOIDInfo](https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptenumoidinfo)
+- [CryptFindOIDInfo](https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptfindoidinfo)
+- [CryptFormatObject](https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptformatobject)
 
 All of these functions only take public information in certificates. Private cryptographic material is never passed to the library.
 
 Registration and deregistration of the OID information and formatting functions is performed via the following documented APIs:
 
-- [CryptRegisterOIDFunction](https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptregisteroidfunction)
-- [CryptRegisterOIDInfo](https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptregisteroidinfo)
-- [CryptUnregisterOIDFunction](https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptunregisteroidfunction)
-- [CryptUnregisterOIDInfo](https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptunregisteroidinfo)
+- [CryptRegisterOIDFunction](https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptregisteroidfunction)
+- [CryptRegisterOIDInfo](https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptregisteroidinfo)
+- [CryptUnregisterOIDFunction](https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptunregisteroidfunction)
+- [CryptUnregisterOIDInfo](https://learn.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptunregisteroidinfo)
 
 License
 -------
