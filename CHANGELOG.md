@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v0.3.0
+------
+
+- Add support for Authenticode SPC Statement Type extension (`1.3.6.1.4.1.311.2.1.11`)
+- Add support for Authenticode SPC Publisher Information extension (`1.3.6.1.4.1.311.2.1.12`)
+- Add registration for Timestamping Signature OID (`1.3.6.1.4.1.311.3.3.1`)
+- Renamed Azure AD extensions to Entra ID
+- Code quality & tooling improvements
+- Countless minor tweaks
+
 v0.2.0
 ------
 
