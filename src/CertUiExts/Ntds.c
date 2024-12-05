@@ -21,7 +21,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
                              _In_ const DWORD dwFormatType,
                              _In_ const DWORD dwFormatStrType,
                              _In_opt_ const void* pFormatStruct,
-                             _In_opt_ const LPCSTR lpszStructType,
+                             _In_z_ const LPCSTR lpszStructType,
                              _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                              _In_ const DWORD cbEncoded,
                              _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
@@ -112,21 +112,21 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     // OID context: Max length
     if (pbEncoded[cbByteOffset] > cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset) {
-        DBG_PRINT("OID context is %u bytes but expected at most %u bytes\n",
+        DBG_PRINT("OID context is %u bytes but expected at most %zu bytes\n",
                   pbEncoded[cbByteOffset], cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset);
         goto end;
     }
 
     // OID context: Min length (minus type & length bytes)
     if (pbEncoded[cbByteOffset] < cbCA_SECURITY_EXT_ASN_MIN - (cbAttrOffset + 2)) {
-        DBG_PRINT("OID context is %u bytes but expected at least %u bytes\n",
+        DBG_PRINT("OID context is %u bytes but expected at least %zu bytes\n",
                   pbEncoded[cbByteOffset], cbCA_SECURITY_EXT_ASN_MIN - (cbAttrOffset + 2));
         goto end;
     }
 
     // OID context: Buffer size (minus type & length bytes)
     if (pbEncoded[cbByteOffset] > cbEncoded - (cbAttrOffset + 2)) {
-        DBG_PRINT("OID context is %u bytes but buffer has only %u bytes\n",
+        DBG_PRINT("OID context is %u bytes but buffer has only %zu bytes\n",
                   pbEncoded[cbByteOffset], cbEncoded - (cbAttrOffset + 2));
         goto end;
     }
@@ -150,7 +150,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     // OID: Buffer size (minus type & length bytes)
     if (pbEncoded[cbByteOffset] > cbEncoded - (cbAttrOffset + 2)) {
-        DBG_PRINT("OID is %u bytes but buffer has only %u bytes\n",
+        DBG_PRINT("OID is %u bytes but buffer has only %zu bytes\n",
                   pbEncoded[cbByteOffset], cbEncoded - (cbAttrOffset + 2));
         goto end;
     }
@@ -185,7 +185,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     // SID context: Max length
     if (pbEncoded[cbByteOffset] > cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset) {
-        DBG_PRINT("SID context is %u bytes but expected at most %u bytes\n",
+        DBG_PRINT("SID context is %u bytes but expected at most %zu bytes\n",
                   pbEncoded[cbByteOffset], cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset);
         goto end;
     }
@@ -199,7 +199,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     // SID context: Buffer size (minus type & length bytes)
     if (pbEncoded[cbByteOffset] > cbEncoded - (cbAttrOffset + 2)) {
-        DBG_PRINT("SID context is %u bytes but buffer has only %u bytes\n",
+        DBG_PRINT("SID context is %u bytes but buffer has only %zu bytes\n",
                   pbEncoded[cbByteOffset], cbEncoded - (cbAttrOffset + 2));
         goto end;
     }
@@ -216,7 +216,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     // SID: Max length
     if (pbEncoded[cbByteOffset] > cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset) {
-        DBG_PRINT("SID has %u bytes but expected at most %u bytes\n",
+        DBG_PRINT("SID has %u bytes but expected at most %zu bytes\n",
                   pbEncoded[cbByteOffset], cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset);
         goto end;
     }
@@ -230,7 +230,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     // SID: Buffer size (minus type & length bytes)
     if (pbEncoded[cbByteOffset] > cbEncoded - (cbAttrOffset + 2)) {
-        DBG_PRINT("SID has %u bytes but buffer has only %u bytes\n",
+        DBG_PRINT("SID has %u bytes but buffer has only %zu bytes\n",
                   pbEncoded[cbByteOffset], cbEncoded - (cbAttrOffset + 2));
         goto end;
     }
@@ -242,7 +242,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     cbByteOffset += pbEncoded[cbAttrOffset + 1];
 
     if (cbByteOffset != cbEncoded) {
-        DBG_PRINT("Decoded %u bytes but buffer has only %u bytes\n", cbByteOffset, cbEncoded);
+        DBG_PRINT("Decoded %zu bytes but buffer has only %u bytes\n", cbByteOffset, cbEncoded);
     }
 
     cchNumChars = strnlen_s(*ppszOid, cbOidA) + 1; // Add terminating null

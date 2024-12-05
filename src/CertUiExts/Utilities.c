@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include <assert.h>
 
-#define DEBUG_BUFFER_SIZE 1024
+#define DEBUG_BUFFER_SIZE (size_t)1024
 
 CHAR pszDebugBuffer[DEBUG_BUFFER_SIZE];
 CHAR* pszDebugStringPrefix = "[%-25s] ";
@@ -117,8 +117,9 @@ void FormatObjectDebugExitA(_In_z_ const PCSTR pszFuncName,
 }
 #endif
 
+_Success_(return != FALSE)
 BOOL ConvertGuidToStringW(_In_ const GUID* pGuid,
-                          _Outptr_result_bytebuffer_maybenull_(cchGUID_SIZE + 1) PWSTR* ppwszGuid) {
+                          _Outptr_result_z_ PWSTR* ppwszGuid) {
     const DWORD cchGuid = cchGUID_SIZE + 1; // Add terminating null
 
     *ppwszGuid = calloc(cchGuid, sizeof(WCHAR));
@@ -144,9 +145,10 @@ BOOL ConvertGuidToStringW(_In_ const GUID* pGuid,
     return FALSE;
 }
 
+_Success_(return != FALSE)
 BOOL DecodeAsnGuid(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                    _In_ const DWORD cbEncoded,
-                   _Outptr_result_maybenull_ GUID** ppGuid) {
+                   _Outptr_ GUID** ppGuid) {
     BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAsnGuidBlob = NULL;
     DWORD cbAsnGuidBlob = 0;
@@ -164,14 +166,14 @@ BOOL DecodeAsnGuid(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
     }
 
     if (pbAsnGuidBlob->cbData != sizeof(GUID)) {
-        DBG_PRINT("Decoded ASN.1 octet string is %u bytes but expected %u bytes\n",
-                  pbAsnGuidBlob->cbData, (DWORD)sizeof(GUID));
+        DBG_PRINT("Decoded ASN.1 octet string is %u bytes but expected %zu bytes\n",
+                  pbAsnGuidBlob->cbData, sizeof(GUID));
         goto end;
     }
 
     *ppGuid = malloc(sizeof(GUID));
     if (*ppGuid == NULL) {
-        DBG_PRINT("malloc() failed to allocate %u bytes (errno: %d)\n", sizeof(GUID), errno);
+        DBG_PRINT("malloc() failed to allocate %zu bytes (errno: %d)\n", sizeof(GUID), errno);
         goto end;
     }
 
@@ -190,9 +192,10 @@ end:
     return bStatus;
 }
 
+_Success_(return != FALSE)
 BOOL DecodeAsnSidA(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                    _In_ const DWORD cbEncoded,
-                   _Outptr_result_bytebuffer_maybenull_(*cbSid) PSTR* ppszSid,
+                   _Outptr_result_bytebuffer_(*cbSid) PSTR* ppszSid,
                    _Out_ DWORD* cbSid) {
     BOOL bStatus = FALSE;
     CRYPT_INTEGER_BLOB* pbAsnSidBlob = NULL;
@@ -237,7 +240,7 @@ end:
 BOOL FormatAsGuidStringW(_In_ const DWORD dwFormatStrType,
                          _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                          _In_ const DWORD cbEncoded,
-                         _Out_writes_bytes_(*pcbFormat) void* pbFormat,
+                         _At_((WCHAR *)pbFormat, _Out_writes_bytes_(*pcbFormat)) void* pbFormat,
                          _Inout_ DWORD* pcbFormat) {
     BOOL bStatus = FALSE;
     GUID* pGuid = NULL;
@@ -284,7 +287,7 @@ end:
  * output, otherwise the field will simply be blank.
  */
 BOOL SetFailureInfo(_In_ const DWORD dwFormatStrType,
-                    _Out_writes_bytes_(cbFormat) void* pbFormat,
+                    _At_((WCHAR *)pbFormat, _Out_writes_bytes_(cbFormat)) void* pbFormat,
                     _In_ const DWORD cbFormat) {
     if (dwFormatStrType == CRYPT_FORMAT_STR_SINGLE_LINE) {
         if (cbFormat >= sizeof(wszFORMAT_FAILURE)) {
@@ -315,8 +318,9 @@ BOOL SetFailureInfo(_In_ const DWORD dwFormatStrType,
  *   CRYPT_FORMAT_STR_MULTI_LINE | CRYPT_FORMAT_STR_NO_HEX) the return value
  *   must be TRUE.
  */
-BOOL SetFormatBufferSize(_In_ const void* pbFormat,
-                         _Out_ DWORD* pcbFormat,
+_Success_(return != FALSE)
+BOOL SetFormatBufferSize(_Out_opt_ const void* pbFormat,
+                         _Inout_ DWORD* pcbFormat,
                          _In_ const DWORD cbSize) {
     if (pbFormat != NULL || *pcbFormat != 0) {
         return FALSE;

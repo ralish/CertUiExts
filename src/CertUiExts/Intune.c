@@ -24,7 +24,7 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
                           _In_ const DWORD dwFormatType,
                           _In_ const DWORD dwFormatStrType,
                           _In_opt_ const void* pFormatStruct,
-                          _In_opt_ const LPCSTR lpszStructType,
+                          _In_z_ const LPCSTR lpszStructType,
                           _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                           _In_ const DWORD cbEncoded,
                           _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
@@ -54,13 +54,13 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
     PWSTR pwszGuid = NULL;
 
     if (cbEncoded != sizeof(GUID)) {
-        DBG_PRINT("Extension is %u bytes but expected %u bytes\n", cbEncoded, (DWORD)sizeof(GUID));
+        DBG_PRINT("Extension is %u bytes but expected %zu bytes\n", cbEncoded, sizeof(GUID));
         goto end;
     }
 
     pGuid = malloc(sizeof(GUID));
     if (pGuid == NULL) {
-        DBG_PRINT("malloc() failed to allocate %u bytes (errno: %d)\n", sizeof(GUID), errno);
+        DBG_PRINT("malloc() failed to allocate %zu bytes (errno: %d)\n", sizeof(GUID), errno);
         goto end;
     }
 
@@ -99,7 +99,7 @@ BOOL FormatIntuneAccountId(_In_ const DWORD dwCertEncodingType,
                            _In_ const DWORD dwFormatType,
                            _In_ const DWORD dwFormatStrType,
                            _In_opt_ const void* pFormatStruct,
-                           _In_opt_ const LPCSTR lpszStructType,
+                           _In_z_ const LPCSTR lpszStructType,
                            _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                            _In_ const DWORD cbEncoded,
                            _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
@@ -129,7 +129,7 @@ BOOL FormatIntuneUserId(_In_ const DWORD dwCertEncodingType,
                         _In_ const DWORD dwFormatType,
                         _In_ const DWORD dwFormatStrType,
                         _In_opt_ const void* pFormatStruct,
-                        _In_opt_ const LPCSTR lpszStructType,
+                        _In_z_ const LPCSTR lpszStructType,
                         _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                         _In_ const DWORD cbEncoded,
                         _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
@@ -160,7 +160,7 @@ BOOL FormatIntuneUnknown11(_In_ const DWORD dwCertEncodingType,
                            _In_ const DWORD dwFormatType,
                            _In_ const DWORD dwFormatStrType,
                            _In_opt_ const void* pFormatStruct,
-                           _In_opt_ const LPCSTR lpszStructType,
+                           _In_z_ const LPCSTR lpszStructType,
                            _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                            _In_ const DWORD cbEncoded,
                            _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
@@ -191,7 +191,7 @@ BOOL FormatIntuneEntraIdTenantId(_In_ const DWORD dwCertEncodingType,
                                  _In_ const DWORD dwFormatType,
                                  _In_ const DWORD dwFormatStrType,
                                  _In_opt_ const void* pFormatStruct,
-                                 _In_opt_ const LPCSTR lpszStructType,
+                                 _In_z_ const LPCSTR lpszStructType,
                                  _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                                  _In_ const DWORD cbEncoded,
                                  _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,

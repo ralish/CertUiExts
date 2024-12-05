@@ -18,7 +18,7 @@ BOOL FormatAuthenticodeSpcStatementType(_In_ const DWORD dwCertEncodingType,
                                         _In_ const DWORD dwFormatType,
                                         _In_ const DWORD dwFormatStrType,
                                         _In_opt_ const void* pFormatStruct,
-                                        _In_opt_ const LPCSTR lpszStructType,
+                                        _In_z_ const LPCSTR lpszStructType,
                                         _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                                         _In_ const DWORD cbEncoded,
                                         _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
@@ -115,7 +115,7 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
                                         _In_ const DWORD dwFormatType,
                                         _In_ const DWORD dwFormatStrType,
                                         _In_opt_ const void* pFormatStruct,
-                                        _In_opt_ const LPCSTR lpszStructType,
+                                        _In_z_ const LPCSTR lpszStructType,
                                         _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                                         _In_ const DWORD cbEncoded,
                                         _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
@@ -144,12 +144,12 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
 
     // Program name (Project)
     BOOL bProgramName = FALSE;
-    WCHAR wszProgName[cbASN_LENGTH_SINGLE_BYTE_MAX / sizeof(WCHAR) + 1];
+    WCHAR wszProgName[cbASN_LENGTH_SINGLE_BYTE_MAX / sizeof(WCHAR) + 1] = L"";
 
     // More information (URL)
     BOOL bMoreInfo = FALSE;
-    CHAR szMoreInfo[cbASN_LENGTH_SINGLE_BYTE_MAX + 1];
-    WCHAR wszMoreInfo[cbASN_LENGTH_SINGLE_BYTE_MAX / sizeof(WCHAR) + 1];
+    CHAR szMoreInfo[cbASN_LENGTH_SINGLE_BYTE_MAX + 1] = "";
+    WCHAR wszMoreInfo[cbASN_LENGTH_SINGLE_BYTE_MAX / sizeof(WCHAR) + 1] = L"";
 
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
                              X509_SEQUENCE_OF_ANY,

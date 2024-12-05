@@ -1,18 +1,18 @@
 #pragma once
 
 #ifdef _DEBUG
-void OutputDebugFormatStringA(PCSTR pszFuncName,
-                              PCSTR pszDebugFormat,
+void OutputDebugFormatStringA(_In_z_ PCSTR pszFuncName,
+                              _Printf_format_string_ PCSTR pszDebugFormat,
                               ...);
 
-void FormatObjectDebugEntryA(PCSTR pszFuncName,
-                             DWORD dwCertEncodingType,
-                             DWORD dwFormatStrType,
-                             PCSTR pszStructType,
-                             DWORD cbFormat);
+void FormatObjectDebugEntryA(_In_z_ PCSTR pszFuncName,
+                             _In_ DWORD dwCertEncodingType,
+                             _In_ DWORD dwFormatStrType,
+                             _In_z_ PCSTR pszStructType,
+                             _In_ DWORD cbFormat);
 
-void FormatObjectDebugExitA(PCSTR pszFuncName,
-                            BOOL bStatus);
+void FormatObjectDebugExitA(_In_z_ PCSTR pszFuncName,
+                            _In_ BOOL bStatus);
 
 #define DBG_PRINT(kszDebugFormatString, ...) \
     OutputDebugFormatStringA(__func__, kszDebugFormatString, __VA_ARGS__)

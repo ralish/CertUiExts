@@ -1,33 +1,37 @@
 #pragma once
 
-BOOL ConvertGuidToStringW(const GUID* pGuid,
-                          PWSTR* ppwszGuid);
+_Success_(return != FALSE)
+BOOL ConvertGuidToStringW(_In_ const GUID* pGuid,
+                          _Outptr_result_z_ PWSTR* ppwszGuid);
 
-BOOL DecodeAsnGuid(const BYTE* pbEncoded,
-                   DWORD cbEncoded,
-                   GUID** ppGuid);
+_Success_(return != FALSE)
+BOOL DecodeAsnGuid(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
+                   _In_ DWORD cbEncoded,
+                   _Outptr_ GUID** ppGuid);
 
-BOOL DecodeAsnSidA(const BYTE* pbEncoded,
-                   DWORD cbEncoded,
-                   PSTR* ppszSid,
-                   DWORD* cbSid);
+_Success_(return != FALSE)
+BOOL DecodeAsnSidA(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
+                   _In_ DWORD cbEncoded,
+                   _Outptr_result_bytebuffer_(*cbSid) PSTR* ppszSid,
+                   _Out_ DWORD* cbSid);
 
-BOOL FormatAsGuidStringW(DWORD dwFormatStrType,
-                         const BYTE* pbEncoded,
-                         DWORD cbEncoded,
-                         void* pbFormat,
-                         DWORD* pcbFormat);
+BOOL FormatAsGuidStringW(_In_ DWORD dwFormatStrType,
+                         _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
+                         _In_ DWORD cbEncoded,
+                         _At_((WCHAR *)pbFormat, _Out_writes_bytes_(*pcbFormat)) void* pbFormat,
+                         _Inout_ DWORD* pcbFormat);
 
-BOOL SetFailureInfo(DWORD dwFormatStrType,
-                    void* pbFormat,
-                    DWORD cbFormat);
+BOOL SetFailureInfo(_In_ DWORD dwFormatStrType,
+                    _At_((WCHAR *)pbFormat, _Out_writes_bytes_(cbFormat)) void* pbFormat,
+                    _In_ DWORD cbFormat);
 
-BOOL SetFormatBufferSize(const void* pbFormat,
-                         DWORD* pcbFormat,
-                         DWORD cbSize);
+_Success_(return != FALSE)
+BOOL SetFormatBufferSize(_Out_opt_ void* pbFormat,
+                         _Inout_ DWORD* pcbFormat,
+                         _In_ DWORD cbSize);
 
-BOOL VerifyFormatBufferSize(DWORD cbFormat,
-                            DWORD cbSize);
+BOOL VerifyFormatBufferSize(_In_ DWORD cbFormat,
+                            _In_ DWORD cbSize);
 
 // GUID constants
 #define cchGUID_SIZE (DWORD)36 // Including dashes
