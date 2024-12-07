@@ -32,6 +32,9 @@
     <PlatformToolset>v143</PlatformToolset>
     <!-- Advanced -->
     <CharacterSet>Unicode</CharacterSet>
+    <!-- Code analysis -->
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <!-- Advanced -->
@@ -70,6 +73,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup>
+    <ClCompile>
+      <!-- Code analysis -->
+      <EnablePREfast>true</EnablePREfast>
+    </ClCompile>
     <Link>
       <!-- Input -->
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);crypt32.lib</AdditionalDependencies>
@@ -114,10 +121,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <!-- Preprocessor -->
-      <PreprocessorDefinitions>NDEBUG;CERTUIEXTS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <!-- Optimization -->
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <!-- Preprocessor -->
+      <PreprocessorDefinitions>NDEBUG;CERTUIEXTS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <!-- Code generation -->
       <ControlFlowGuard>Guard</ControlFlowGuard>
       <FunctionLevelLinking>true</FunctionLevelLinking>
