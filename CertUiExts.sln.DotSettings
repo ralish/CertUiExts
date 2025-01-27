@@ -2,7 +2,10 @@
 	<!-- Code Inspection / Settings -->
 	<s:String x:Key="/Default/CodeInspection/Highlighting/AnalysisEnabled/@EntryValue">SOLUTION</s:String>
 
-	<!-- Code Editing / C++ / Naming Style -->
+	<!-- Code Inspection / Inspection Severity -->
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=CppJoinDeclarationAndAssignment/@EntryIndexedValue">DO_NOT_SHOW</s:String>
+
+	<!-- Code Editing / C/C++ / Naming Style -->
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Namespaces/@EntryIndexedValue">&lt;NamingElement Priority="1"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="namespace" /&gt;&lt;type Name="namespace alias" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/NamingElement&gt;</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Types/@EntryIndexedValue">&lt;NamingElement Priority="2"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="__interface" /&gt;&lt;type Name="class" /&gt;&lt;type Name="concept" /&gt;&lt;type Name="enum" /&gt;&lt;type Name="struct" /&gt;&lt;type Name="type alias" /&gt;&lt;type Name="type template parameter" /&gt;&lt;type Name="typedef" /&gt;&lt;type Name="union" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="AA_BB"&gt;&lt;ExtraRule Prefix="_" Suffix="" Style="AA_BB" /&gt;&lt;/Policy&gt;&lt;/NamingElement&gt;</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Functions/@EntryIndexedValue">&lt;NamingElement Priority="3"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="global function" /&gt;&lt;type Name="member function" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/NamingElement&gt;</s:String>
@@ -47,15 +50,12 @@
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=DLL/@EntryIndexedValue">DLL</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=OID/@EntryIndexedValue">OID</s:String>
 
-	<!-- Code Editing / C++ / Formatting Style / Line breaks and Wrapping -->
+	<!-- Code Editing / C/C++ / Formatting Style / Line breaks and Wrapping -->
 	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CppFormatting/WRAP_LIMIT/@EntryValue">160</s:Int64>
 
-	<!-- Code Editing / C++ / Syntax Style -->
-	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=CppJoinDeclarationAndAssignment/@EntryIndexedValue">DO_NOT_SHOW</s:String>
-
-	<!-- Code Editing / C++ / Clang-Tidy -->
+	<!-- Code Editing / C/C++ / Clang-Tidy -->
 	<s:String x:Key="/Default/CodeInspection/CppClangTidy/Checks/@EntryValue"></s:String>
 
-	<!-- Internal -->
+	<!-- Settings Migrations -->
 	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EFeature_002EServices_002ECpp_002ECodeStyle_002ESettingsUpgrade_002EFunctionReturnStyleSettingsUpgrader/@EntryIndexedValue">True</s:Boolean>
 </wpf:ResourceDictionary>
