@@ -8,71 +8,70 @@ Signature = "$Windows NT$"
 ; Extensions
 ;
 ; Subject alternative name
-szOID_SUBJECT_ALT_NAME2     = 2.5.29.17
+szOID_SUBJECT_ALT_NAME2  = 2.5.29.17
 ; Basic constraints
-szOID_BASIC_CONSTRAINTS2    = 2.5.29.19
+szOID_BASIC_CONSTRAINTS2 = 2.5.29.19
 ; Enhanced key usage
-szOID_ENHANCED_KEY_USAGE    = 2.5.29.37
+szOID_ENHANCED_KEY_USAGE = 2.5.29.37
 
 ; EKUs
 ;
 ; Server authentication
-szOID_PKIX_KP_SERVER_AUTH   = 1.3.6.1.5.5.7.3.1
+szOID_PKIX_KP_SERVER_AUTH  = 1.3.6.1.5.5.7.3.1
 ; Client authentication
-szOID_PKIX_KP_CLIENT_AUTH   = 1.3.6.1.5.5.7.3.2
+szOID_PKIX_KP_CLIENT_AUTH  = 1.3.6.1.5.5.7.3.2
 ; Code-signing
-szOID_PKIX_KP_CODE_SIGNING  = 1.3.6.1.5.5.7.3.3
+szOID_PKIX_KP_CODE_SIGNING = 1.3.6.1.5.5.7.3.3
 
 ; Baseline Requirements
 ;
-; SSL/TLS Server Certificates
-szURL_CAB_BR_TLS    = https://cabforum.org/baseline-requirements-documents/
-; Code Signing
-szURL_CAB_BR_CS     = https://cabforum.org/baseline-requirements-code-signing/
-; S/MIME
-szURL_CAB_BR_SMIME  = https://cabforum.org/smime-br/
+; Code Signing Certificates
+szURL_CAB_BR_CS    = https://cabforum.org/working-groups/code-signing/documents/
+; S/MIME Certificates
+szURL_CAB_BR_SMIME = https://cabforum.org/working-groups/smime/documents/
+; TLS Server Certificates
+szURL_CAB_BR_TLS   = https://cabforum.org/working-groups/server/baseline-requirements/documents/
 
 ; Certificate Policies
 ;
 ; Extended Validation (EV) TLS Certificate
-szOID_CAB_CERTPOL_TLS_EV            = 2.23.140.1.1
+szOID_CAB_CERTPOL_TLS_EV          = 2.23.140.1.1
 ; Domain Validated (DV) TLS Certificate
-szOID_CAB_CERTPOL_TLS_DV            = 2.23.140.1.2.1
+szOID_CAB_CERTPOL_TLS_DV          = 2.23.140.1.2.1
 ; Organization Validated (OV) TLS Certificate
-szOID_CAB_CERTPOL_TLS_OV            = 2.23.140.1.2.2
+szOID_CAB_CERTPOL_TLS_OV          = 2.23.140.1.2.2
 ; Individual Validated (IV) TLS Certificate
-szOID_CAB_CERTPOL_TLS_IV            = 2.23.140.1.2.3
+szOID_CAB_CERTPOL_TLS_IV          = 2.23.140.1.2.3
 ; Extended Validation (EV) Code Signing Certificate
-szOID_CAB_CERTPOL_CS_EV             = 2.23.140.1.3
+szOID_CAB_CERTPOL_CS_EV           = 2.23.140.1.3
 ; Code Signing Certificate
-szOID_CAB_CERTPOL_CS                = 2.23.140.1.4.1
+szOID_CAB_CERTPOL_CS              = 2.23.140.1.4.1
 ; Timestamping Certificate
-szOID_CAB_CERTPOL_TS                = 2.23.140.1.4.2
+szOID_CAB_CERTPOL_TS              = 2.23.140.1.4.2
 ; Mailbox Validated S/MIME Certificate (Legacy)
-szOID_CAB_CERTPOL_SMIME_MV_LEGACY   = 2.23.140.1.5.1.1
+szOID_CAB_CERTPOL_SMIME_MV_LEGACY = 2.23.140.1.5.1.1
 ; Mailbox Validated S/MIME Certificate (Multipurpose)
-szOID_CAB_CERTPOL_SMIME_MV_MULTI    = 2.23.140.1.5.1.2
+szOID_CAB_CERTPOL_SMIME_MV_MULTI  = 2.23.140.1.5.1.2
 ; Mailbox Validated S/MIME Certificate (Strict)
-szOID_CAB_CERTPOL_SMIME_MV_STRICT   = 2.23.140.1.5.1.3
+szOID_CAB_CERTPOL_SMIME_MV_STRICT = 2.23.140.1.5.1.3
 ; Organization Validated S/MIME Certificate (Legacy)
-szOID_CAB_CERTPOL_SMIME_OV_LEGACY   = 2.23.140.1.5.2.1
+szOID_CAB_CERTPOL_SMIME_OV_LEGACY = 2.23.140.1.5.2.1
 ; Organization Validated S/MIME Certificate (Multipurpose)
-szOID_CAB_CERTPOL_SMIME_OV_MULTI    = 2.23.140.1.5.2.2
+szOID_CAB_CERTPOL_SMIME_OV_MULTI  = 2.23.140.1.5.2.2
 ; Organization Validated S/MIME Certificate (Strict)
-szOID_CAB_CERTPOL_SMIME_OV_STRICT   = 2.23.140.1.5.2.3
+szOID_CAB_CERTPOL_SMIME_OV_STRICT = 2.23.140.1.5.2.3
 ; Sponsor Validated S/MIME Certificate (Legacy)
-szOID_CAB_CERTPOL_SMIME_SV_LEGACY   = 2.23.140.1.5.3.1
+szOID_CAB_CERTPOL_SMIME_SV_LEGACY = 2.23.140.1.5.3.1
 ; Sponsor Validated S/MIME Certificate (Multipurpose)
-szOID_CAB_CERTPOL_SMIME_SV_MULTI    = 2.23.140.1.5.3.2
+szOID_CAB_CERTPOL_SMIME_SV_MULTI  = 2.23.140.1.5.3.2
 ; Sponsor Validated S/MIME Certificate (Strict)
-szOID_CAB_CERTPOL_SMIME_SV_STRICT   = 2.23.140.1.5.3.3
+szOID_CAB_CERTPOL_SMIME_SV_STRICT = 2.23.140.1.5.3.3
 ; Individual Validated S/MIME Certificate (Legacy)
-szOID_CAB_CERTPOL_SMIME_IV_LEGACY   = 2.23.140.1.5.4.1
+szOID_CAB_CERTPOL_SMIME_IV_LEGACY = 2.23.140.1.5.4.1
 ; Individual Validated S/MIME Certificate (Multipurpose)
-szOID_CAB_CERTPOL_SMIME_IV_MULTI    = 2.23.140.1.5.4.2
+szOID_CAB_CERTPOL_SMIME_IV_MULTI  = 2.23.140.1.5.4.2
 ; Individual Validated S/MIME Certificate (Strict)
-szOID_CAB_CERTPOL_SMIME_IV_STRICT   = 2.23.140.1.5.4.3
-
+szOID_CAB_CERTPOL_SMIME_IV_STRICT = 2.23.140.1.5.4.3
 
 [NewRequest]
 ; Request type
@@ -99,7 +98,6 @@ KeyLength = 2048
 EncryptionAlgorithm = AES
 EncryptionLength = 256
 
-
 [Extensions]
 ; Critical extensions
 Critical = %szOID_BASIC_CONSTRAINTS2%
@@ -117,7 +115,6 @@ _continue_ = "%szOID_PKIX_KP_CODE_SIGNING%"
 ; Subject alternative name
 %szOID_SUBJECT_ALT_NAME2% = "{text}"
 _continue_ = "DNS=cabforum.org"
-
 
 [PolicyStatementExtension]
 Policies = CabCs, CabCsEv, CabSmimeMvLegacy, CabSmimeMvMulti, CabSmimeMvStrict, CabSmimeOvLegacy, CabSmimeOvMulti, CabSmimeOvStrict, CabSmimeSvLegacy, CabSmimeSvMulti, CabSmimeSvStrict, CabSmimeIvLegacy, CabSmimeIvMulti, CabSmimeIvStrict, CabTlsDv, CabTlsOv, CabTlsIv, CabTlsEv, CabTs

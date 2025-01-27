@@ -8,27 +8,31 @@ Signature = "$Windows NT$"
 ; Extensions
 ;
 ; Subject alternative name
-szOID_SUBJECT_ALT_NAME2     = 2.5.29.17
+szOID_SUBJECT_ALT_NAME2  = 2.5.29.17
 ; Basic constraints
-szOID_BASIC_CONSTRAINTS2    = 2.5.29.19
+szOID_BASIC_CONSTRAINTS2 = 2.5.29.19
 ; Enhanced key usage
-szOID_ENHANCED_KEY_USAGE    = 2.5.29.37
+szOID_ENHANCED_KEY_USAGE = 2.5.29.37
 
 ; EKUs
 ;
 ; Server authentication
-szOID_PKIX_KP_SERVER_AUTH   = 1.3.6.1.5.5.7.3.1
+szOID_PKIX_KP_SERVER_AUTH  = 1.3.6.1.5.5.7.3.1
 ; Client authentication
-szOID_PKIX_KP_CLIENT_AUTH   = 1.3.6.1.5.5.7.3.2
+szOID_PKIX_KP_CLIENT_AUTH  = 1.3.6.1.5.5.7.3.2
 ; Code-signing
-szOID_PKIX_KP_CODE_SIGNING  = 1.3.6.1.5.5.7.3.3
+szOID_PKIX_KP_CODE_SIGNING = 1.3.6.1.5.5.7.3.3
 
-; Certificate Practice Statements
+; Certificate Practices Statements
 ;
-; Baseline
-szURL_SECTIGO_CPS       = https://www.sectigo.com/uploads/files/Sectigo_CPS_v5_3_7.pdf
+; Code Signing
+szURL_SECTIGO_CPS_CS    = https://www.sectigo.com/uploads/files/Code-Signing-Certification-Practice-Statement-1.0.1.pdf
 ; Document Signing
-szURL_SECTIGO_CPS_DS    = https://www.sectigo.com/uploads/files/Sectigo_CPS_Document_Signing_v1_0_1.pdf
+szURL_SECTIGO_CPS_DS    = https://www.sectigo.com/uploads/files/Sectigo_CPS_Document_Signing_v1_0_3.pdf
+; S/MIME
+szURL_SECTIGO_CPS_SMIME = https://www.sectigo.com/uploads/files/SMIME-Certification-Practice-Statement-1.0.2.pdf
+; TLS
+szURL_SECTIGO_CPS_TLS   = https://www.sectigo.com/uploads/files/Sectigo_TLS_CPS_v6_0_1.pdf
 
 ; Certificate Policies
 ;
@@ -59,7 +63,6 @@ szOID_SECTIGO_CERTPOL_DS_ETP    = 1.3.6.1.4.1.6449.1.2.1.6.8
 ; Domain Validated (DV) TLS Certificate
 szOID_SECTIGO_CERTPOL_TLS_DV    = 1.3.6.1.4.1.6449.1.2.2.7
 
-
 [NewRequest]
 ; Request type
 RequestType = Cert
@@ -85,7 +88,6 @@ KeyLength = 2048
 EncryptionAlgorithm = AES
 EncryptionLength = 256
 
-
 [Extensions]
 ; Critical extensions
 Critical = %szOID_BASIC_CONSTRAINTS2%
@@ -104,17 +106,16 @@ _continue_ = "%szOID_PKIX_KP_CODE_SIGNING%"
 %szOID_SUBJECT_ALT_NAME2% = "{text}"
 _continue_ = "DNS=sectigo.com"
 
-
 [PolicyStatementExtension]
 Policies = SectigoCs, SectigoCsEv, SectigoDsLocal, SectigoDsRemote, SectigoDsEtp, SectigoSmimeC1, SectigoSmimeC2, SectigoSmimeC3, SectigoTls, SectigoTlsDv, SectigoTlsOv, SectigoTlsEv, SectigoTs
 
 [SectigoCs]
 OID = %szOID_SECTIGO_CERTPOL_CS%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_CS%
 
 [SectigoCsEv]
 OID = %szOID_SECTIGO_CERTPOL_CS_EV%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_CS%
 
 [SectigoDsLocal]
 OID = %szOID_SECTIGO_CERTPOL_DS_LOCAL%
@@ -130,32 +131,32 @@ URL = %szURL_SECTIGO_CPS_DS%
 
 [SectigoSmimeC1]
 OID = %szOID_SECTIGO_CERTPOL_SMIME_C1%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_SMIME%
 
 [SectigoSmimeC2]
 OID = %szOID_SECTIGO_CERTPOL_SMIME_C2%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_SMIME%
 
 [SectigoSmimeC3]
 OID = %szOID_SECTIGO_CERTPOL_SMIME_C3%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_SMIME%
 
 [SectigoTls]
 OID = %szOID_SECTIGO_CERTPOL_TLS%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_TLS%
 
 [SectigoTlsDv]
 OID = %szOID_SECTIGO_CERTPOL_TLS_DV%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_TLS%
 
 [SectigoTlsOv]
 OID = %szOID_SECTIGO_CERTPOL_TLS_OV%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_TLS%
 
 [SectigoTlsEv]
 OID = %szOID_SECTIGO_CERTPOL_TLS_EV%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_TLS%
 
 [SectigoTs]
 OID = %szOID_SECTIGO_CERTPOL_TS%
-URL = %szURL_SECTIGO_CPS%
+URL = %szURL_SECTIGO_CPS_CS%
