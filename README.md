@@ -14,6 +14,7 @@ A library which extends Windows cryptography support for displaying additional O
 - [Object identifiers (OIDs)](#object-identifiers-oids)
   - [CA/Browser Forum](#cabrowser-forum)
   - [DigiCert](#digicert)
+  - [Entrust](#entrust)
   - [Microsoft](#microsoft)
   - [Sectigo](#sectigo)
 - [Security](#security)
@@ -129,6 +130,20 @@ Object identifiers (OIDs)
 | `2.16.840.1.114412.3.2`        | Certificate Policy | Extended Validation (EV) Code Signing Certificate            |
 | `2.16.840.1.114412.3.11`       | Certificate Policy | Windows Kernel Driver Code Signing Certificate               |
 | `2.16.840.1.114412.7.1`        | Certificate Policy | Timestamping Certificate                                     |
+
+### Entrust
+
+| OID                            | Type               | Description                                                  |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `2.16.840.1.114028.10.1.2`     | Certificate Policy | Extended Validation (EV) SSL or Code Signing Certificate     |
+| `2.16.840.1.114028.10.1.3`     | Certificate Policy | Code Signing Certificate                                     |
+| `2.16.840.1.114028.10.1.4.1`   | Certificate Policy | Client Certificate (Class 1)                                 |
+| `2.16.840.1.114028.10.1.4.2`   | Certificate Policy | Client Certificate (Class 2)                                 |
+| `2.16.840.1.114028.10.1.5`     | Certificate Policy | SSL Certificate                                              |
+| `2.16.840.1.114028.10.1.6`     | Certificate Policy | Document Signing Certificate                                 |
+| `2.16.840.1.114028.10.1.7`     | Certificate Policy | Timestamping Certificate                                     |
+| `2.16.840.1.114028.10.1.11`    | Certificate Policy | Verified Mark Certificate                                    |
+| `2.16.840.1.114028.10.3.5`     | Certificate Policy | Timestamping Certificate                                     |
 
 ### Microsoft
 

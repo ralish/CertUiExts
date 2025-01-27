@@ -257,6 +257,83 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     },
 
     /*
+     * Entrust
+     * 2.16.840.1.114028
+     */
+    {
+        "2.16.840.1.114028.10.1.2",
+        L"Entrust: Extended Validation (EV) SSL or Code Signing Certificate",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "2.16.840.1.114028.10.1.3",
+        L"Entrust: Code Signing Certificate",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "2.16.840.1.114028.10.1.4.1",
+        L"Entrust: Client Certificate (Class 1)",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "2.16.840.1.114028.10.1.4.2",
+        L"Entrust: Client Certificate (Class 2)",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "2.16.840.1.114028.10.1.5",
+        L"Entrust: SSL Certificate",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "2.16.840.1.114028.10.1.6",
+        L"Entrust: Document Signing Certificate",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "2.16.840.1.114028.10.1.7",
+        L"Entrust: Timestamping Certificate",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "2.16.840.1.114028.10.1.11",
+        L"Entrust: Verified Mark Certificate",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "2.16.840.1.114028.10.3.5",
+        L"Entrust: Timestamping Certificate",
+        NULL,
+        CRYPT_POLICY_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+
+    /*
      * Microsoft: Active Directory
      * 1.3.6.1.4.1.311.25
      */
