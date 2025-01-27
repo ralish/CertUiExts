@@ -1,0 +1,132 @@
+; Test certificate for Entrust OIDs
+; Generate with: certreq -new entrust.inf
+
+[Version]
+Signature = "$Windows NT$"
+
+[Strings]
+; Extensions
+;
+; Subject alternative name
+szOID_SUBJECT_ALT_NAME2  = 2.5.29.17
+; Basic constraints
+szOID_BASIC_CONSTRAINTS2 = 2.5.29.19
+; Enhanced key usage
+szOID_ENHANCED_KEY_USAGE = 2.5.29.37
+
+; EKUs
+;
+; Server authentication
+szOID_PKIX_KP_SERVER_AUTH  = 1.3.6.1.5.5.7.3.1
+; Client authentication
+szOID_PKIX_KP_CLIENT_AUTH  = 1.3.6.1.5.5.7.3.2
+; Code-signing
+szOID_PKIX_KP_CODE_SIGNING = 1.3.6.1.5.5.7.3.3
+
+; Certificate Practices Statements
+;
+; Baseline
+szURL_ENTRUST_CPS = https://www.entrust.com/sites/default/files/documentation/licensingandagreements/entrust-certificate-services-cps-3-28.pdf
+
+; Certificate Policies
+;
+; Extended Validation (EV) SSL or Code Signing Certificate
+szOID_ENTRUST_CERTPOL_TLS_EV    = 2.16.840.1.114028.10.1.2
+; Code Signing Certificate
+szOID_ENTRUST_CERTPOL_CS        = 2.16.840.1.114028.10.1.3
+; Client Certificate (Class 1)
+szOID_ENTRUST_CERTPOL_TLS_CL_C1 = 2.16.840.1.114028.10.1.4.1
+; Client Certificate (Class 2)
+szOID_ENTRUST_CERTPOL_TLS_CL_C2 = 2.16.840.1.114028.10.1.4.2
+; SSL Certificate
+szOID_ENTRUST_CERTPOL_TLS       = 2.16.840.1.114028.10.1.5
+; Document Signing Certificate
+szOID_ENTRUST_CERTPOL_DS        = 2.16.840.1.114028.10.1.6
+; Timestamping Certificate
+szOID_ENTRUST_CERTPOL_TS_1      = 2.16.840.1.114028.10.1.7
+; Verified Mark Certificate
+szOID_ENTRUST_CERTPOL_VM        = 2.16.840.1.114028.10.1.11
+; Timestamping Certificate
+szOID_ENTRUST_CERTPOL_TS_2      = 2.16.840.1.114028.10.3.5
+
+[NewRequest]
+; Request type
+RequestType = Cert
+
+; Friendly name
+FriendlyName = "CertUiExts - Entrust"
+
+; Subject name
+Subject = "CN=entrust.com"
+
+; Validity period & units
+ValidityPeriod = Years
+ValidityPeriodUnits = 10
+
+; Hash algorithm
+HashAlgorithm = SHA256
+
+; Key algorithm & length
+KeyAlgorithm = RSA
+KeyLength = 2048
+
+; Encryption cipher & length
+EncryptionAlgorithm = AES
+EncryptionLength = 256
+
+[Extensions]
+; Critical extensions
+Critical = %szOID_BASIC_CONSTRAINTS2%
+
+; Basic constraints
+%szOID_BASIC_CONSTRAINTS2% = "{text}"
+_continue_ = "CA=false&PathLength=0"
+
+; Enhanced key usage
+%szOID_ENHANCED_KEY_USAGE% = "{text}"
+_continue_ = "%szOID_PKIX_KP_SERVER_AUTH%,"
+_continue_ = "%szOID_PKIX_KP_CLIENT_AUTH%,"
+_continue_ = "%szOID_PKIX_KP_CODE_SIGNING%"
+
+; Subject alternative name
+%szOID_SUBJECT_ALT_NAME2% = "{text}"
+_continue_ = "DNS=entrust.com"
+
+[PolicyStatementExtension]
+Policies = EntrustCs, EntrustDs, EntrustTls, EntrustTlsEv, EntrustTlsClC1, EntrustTlsClC2, EntrustTs1, EntrustTs2, EntrustVm
+
+[EntrustCs]
+OID = %szOID_ENTRUST_CERTPOL_CS%
+URL = %szURL_ENTRUST_CPS%
+
+[EntrustDs]
+OID = %szOID_ENTRUST_CERTPOL_DS%
+URL = %szURL_ENTRUST_CPS%
+
+[EntrustTls]
+OID = %szOID_ENTRUST_CERTPOL_TLS%
+URL = %szURL_ENTRUST_CPS%
+
+[EntrustTlsEv]
+OID = %szOID_ENTRUST_CERTPOL_TLS_EV%
+URL = %szURL_ENTRUST_CPS%
+
+[EntrustTlsClC1]
+OID = %szOID_ENTRUST_CERTPOL_TLS_CL_C1%
+URL = %szURL_ENTRUST_CPS%
+
+[EntrustTlsClC2]
+OID = %szOID_ENTRUST_CERTPOL_TLS_CL_C2%
+URL = %szURL_ENTRUST_CPS%
+
+[EntrustTs1]
+OID = %szOID_ENTRUST_CERTPOL_TS_1%
+URL = %szURL_ENTRUST_CPS%
+
+[EntrustTs2]
+OID = %szOID_ENTRUST_CERTPOL_TS_2%
+URL = %szURL_ENTRUST_CPS%
+
+[EntrustVm]
+OID = %szOID_ENTRUST_CERTPOL_VM%
+URL = %szURL_ENTRUST_CPS%
