@@ -57,8 +57,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> ev-guidelines(1)
         "2.23.140.1.1",
-        L"CA/Browser Forum: Extended Validation (EV) TLS Certificate",
-        NULL,
+        L"CA/Browser Forum Extended Validation (EV) TLS Certificate",
+        L"CA/Browser Forum: Extended Validation (EV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -66,8 +66,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> baseline-requirements(2) -> domain-validated(1)
         "2.23.140.1.2.1",
-        L"CA/Browser Forum: Domain Validated (DV) TLS Certificate",
-        NULL,
+        L"CA/Browser Forum Domain Validated (DV) TLS Certificate",
+        L"CA/Browser Forum: Domain Validated (DV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -75,8 +75,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> baseline-requirements(2) -> organization-validated(2)
         "2.23.140.1.2.2",
-        L"CA/Browser Forum: Organization Validated (OV) TLS Certificate",
-        NULL,
+        L"CA/Browser Forum Organization Validated (OV) TLS Certificate",
+        L"CA/Browser Forum: Organization Validated (OV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -84,8 +84,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> baseline-requirements(2) -> individual-validated(3)
         "2.23.140.1.2.3",
-        L"CA/Browser Forum: Individual Validated (IV) TLS Certificate",
-        NULL,
+        L"CA/Browser Forum Individual Validated (IV) TLS Certificate",
+        L"CA/Browser Forum: Individual Validated (IV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -93,8 +93,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> extended-validation-codesigning(3)
         "2.23.140.1.3",
-        L"CA/Browser Forum: Extended Validation (EV) Code Signing Certificate",
-        NULL,
+        L"CA/Browser Forum Extended Validation (EV) Code Signing Certificate",
+        L"CA/Browser Forum: Extended Validation (EV) Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -102,8 +102,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> code-signing-requirements(4) -> code-signing(1)
         "2.23.140.1.4.1",
-        L"CA/Browser Forum: Code Signing Certificate",
-        NULL,
+        L"CA/Browser Forum Code Signing Certificate",
+        L"CA/Browser Forum: Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -111,8 +111,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> code-signing-requirements(4) -> timestamping(2)
         "2.23.140.1.4.2",
-        L"CA/Browser Forum: Timestamping Certificate",
-        NULL,
+        L"CA/Browser Forum Timestamping Certificate",
+        L"CA/Browser Forum: Timestamping Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -120,8 +120,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> mailbox-validated(1) -> legacy(1)
         "2.23.140.1.5.1.1",
-        L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Legacy)",
-        NULL,
+        L"CA/Browser Forum Mailbox Validated S/MIME Certificate (Legacy)",
+        L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Legacy) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -129,8 +129,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> mailbox-validated(1) -> multipurpose(2)
         "2.23.140.1.5.1.2",
-        L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Multipurpose)",
-        NULL,
+        L"CA/Browser Forum Mailbox Validated S/MIME Certificate (Multipurpose)",
+        L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Multipurpose) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -138,8 +138,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> mailbox-validated(1) -> strict(3)
         "2.23.140.1.5.1.3",
-        L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Strict)",
-        NULL,
+        L"CA/Browser Forum Mailbox Validated S/MIME Certificate (Strict)",
+        L"CA/Browser Forum: Mailbox Validated S/MIME Certificate (Strict) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -147,8 +147,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> organization-validated(2) -> legacy(1)
         "2.23.140.1.5.2.1",
-        L"CA/Browser Forum: Organization Validated S/MIME Certificate (Legacy)",
-        NULL,
+        L"CA/Browser Forum Organization Validated S/MIME Certificate (Legacy)",
+        L"CA/Browser Forum: Organization Validated S/MIME Certificate (Legacy) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -156,8 +156,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> organization-validated(2) -> multipurpose(2)
         "2.23.140.1.5.2.2",
-        L"CA/Browser Forum: Organization Validated S/MIME Certificate (Multipurpose)",
-        NULL,
+        L"CA/Browser Forum Organization Validated S/MIME Certificate (Multipurpose)",
+        L"CA/Browser Forum: Organization Validated S/MIME Certificate (Multipurpose) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -165,8 +165,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> organization-validated(2) -> strict(3)
         "2.23.140.1.5.2.3",
-        L"CA/Browser Forum: Organization Validated S/MIME Certificate (Strict)",
-        NULL,
+        L"CA/Browser Forum Organization Validated S/MIME Certificate (Strict)",
+        L"CA/Browser Forum: Organization Validated S/MIME Certificate (Strict) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -174,8 +174,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> sponsor-validated(3) -> legacy(1)
         "2.23.140.1.5.3.1",
-        L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Legacy)",
-        NULL,
+        L"CA/Browser Forum Sponsor Validated S/MIME Certificate (Legacy)",
+        L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Legacy) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -183,8 +183,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> sponsor-validated(3) -> multipurpose(2)
         "2.23.140.1.5.3.2",
-        L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Multipurpose)",
-        NULL,
+        L"CA/Browser Forum Sponsor Validated S/MIME Certificate (Multipurpose)",
+        L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Multipurpose) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -192,8 +192,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> sponsor-validated(3) -> strict(3)
         "2.23.140.1.5.3.3",
-        L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Strict)",
-        NULL,
+        L"CA/Browser Forum Sponsor Validated S/MIME Certificate (Strict)",
+        L"CA/Browser Forum: Sponsor Validated S/MIME Certificate (Strict) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -201,8 +201,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> individual-validated(4) -> legacy(1)
         "2.23.140.1.5.4.1",
-        L"CA/Browser Forum: Individual Validated S/MIME Certificate (Legacy)",
-        NULL,
+        L"CA/Browser Forum Individual Validated S/MIME Certificate (Legacy)",
+        L"CA/Browser Forum: Individual Validated S/MIME Certificate (Legacy) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -210,8 +210,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> individual-validated(4) -> multipurpose(2)
         "2.23.140.1.5.4.2",
-        L"CA/Browser Forum: Individual Validated S/MIME Certificate (Multipurpose)",
-        NULL,
+        L"CA/Browser Forum Individual Validated S/MIME Certificate (Multipurpose)",
+        L"CA/Browser Forum: Individual Validated S/MIME Certificate (Multipurpose) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -219,8 +219,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // certificate-policies(1) -> smime-baseline(5) -> individual-validated(4) -> strict(3)
         "2.23.140.1.5.4.3",
-        L"CA/Browser Forum: Individual Validated S/MIME Certificate (Strict)",
-        NULL,
+        L"CA/Browser Forum Individual Validated S/MIME Certificate (Strict)",
+        L"CA/Browser Forum: Individual Validated S/MIME Certificate (Strict) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -232,56 +232,56 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
      */
     {
         "2.16.840.1.114412.1.1",
-        L"DigiCert: Organization Validated (OV) TLS Certificate",
-        NULL,
+        L"DigiCert Organization Validated (OV) TLS Certificate",
+        L"DigiCert: Organization Validated (OV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114412.1.2",
-        L"DigiCert: Domain Validated (DV) TLS Certificate",
-        NULL,
+        L"DigiCert Domain Validated (DV) TLS Certificate",
+        L"DigiCert: Domain Validated (DV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114412.2.1",
-        L"DigiCert: Extended Validation (EV) TLS Certificate",
-        NULL,
+        L"DigiCert Extended Validation (EV) TLS Certificate",
+        L"DigiCert: Extended Validation (EV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114412.3.1.1",
-        L"DigiCert: Code Signing Certificate",
-        NULL,
+        L"DigiCert Code Signing Certificate",
+        L"DigiCert: Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114412.3.2",
-        L"DigiCert: Extended Validation (EV) Code Signing Certificate",
-        NULL,
+        L"DigiCert Extended Validation (EV) Code Signing Certificate",
+        L"DigiCert: Extended Validation (EV) Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114412.3.11",
-        L"DigiCert: Windows Kernel Driver Code Signing Certificate",
-        NULL,
+        L"DigiCert Windows Kernel Driver Code Signing Certificate",
+        L"DigiCert: Windows Kernel Driver Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114412.7.1",
-        L"DigiCert: Timestamping Certificate",
-        NULL,
+        L"DigiCert Timestamping Certificate",
+        L"DigiCert: Timestamping Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -293,72 +293,72 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
      */
     {
         "2.16.840.1.114028.10.1.2",
-        L"Entrust: Extended Validation (EV) SSL or Code Signing Certificate",
-        NULL,
+        L"Entrust Extended Validation (EV) SSL or Code Signing Certificate",
+        L"Entrust: Extended Validation (EV) SSL or Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114028.10.1.3",
-        L"Entrust: Code Signing Certificate",
-        NULL,
+        L"Entrust Code Signing Certificate",
+        L"Entrust: Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114028.10.1.4.1",
-        L"Entrust: Client Certificate (Class 1)",
-        NULL,
+        L"Entrust Client Certificate (Class 1)",
+        L"Entrust: Client Certificate (Class 1) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114028.10.1.4.2",
-        L"Entrust: Client Certificate (Class 2)",
-        NULL,
+        L"Entrust Client Certificate (Class 2)",
+        L"Entrust: Client Certificate (Class 2) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114028.10.1.5",
-        L"Entrust: SSL Certificate",
-        NULL,
+        L"Entrust SSL Certificate",
+        L"Entrust: SSL Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114028.10.1.6",
-        L"Entrust: Document Signing Certificate",
-        NULL,
+        L"Entrust Document Signing Certificate",
+        L"Entrust: Document Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114028.10.1.7",
-        L"Entrust: Timestamping Certificate",
-        NULL,
+        L"Entrust Timestamping Certificate",
+        L"Entrust: Timestamping Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114028.10.1.11",
-        L"Entrust: Verified Mark Certificate",
-        NULL,
+        L"Entrust Verified Mark Certificate",
+        L"Entrust: Verified Mark Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "2.16.840.1.114028.10.3.5",
-        L"Entrust: Timestamping Certificate",
-        NULL,
+        L"Entrust Timestamping Certificate",
+        L"Entrust: Timestamping Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -547,8 +547,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // Personal Secure Email
         "1.3.6.1.4.1.6449.1.2.1.1.1",
-        L"Sectigo: S/MIME Certificate (Class 1)",
-        NULL,
+        L"Sectigo S/MIME Certificate (Class 1)",
+        L"Sectigo: S/MIME Certificate (Class 1) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -556,8 +556,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // Secure Server
         "1.3.6.1.4.1.6449.1.2.1.3.1",
-        L"Sectigo: TLS Certificate",
-        NULL,
+        L"Sectigo TLS Certificate",
+        L"Sectigo: TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -565,8 +565,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // Software Publisher
         "1.3.6.1.4.1.6449.1.2.1.3.2",
-        L"Sectigo: Code Signing Certificate",
-        NULL,
+        L"Sectigo Code Signing Certificate",
+        L"Sectigo: Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -574,8 +574,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // InstantSSL
         "1.3.6.1.4.1.6449.1.2.1.3.4",
-        L"Sectigo: Organization Validated (OV) TLS Certificate",
-        NULL,
+        L"Sectigo Organization Validated (OV) TLS Certificate",
+        L"Sectigo: Organization Validated (OV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -583,8 +583,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // Corporate Secure Email
         "1.3.6.1.4.1.6449.1.2.1.3.5",
-        L"Sectigo: S/MIME Certificate (Class 2)",
-        NULL,
+        L"Sectigo S/MIME Certificate (Class 2)",
+        L"Sectigo: S/MIME Certificate (Class 2) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -592,56 +592,56 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // Enterprise-Wide Secure Email
         "1.3.6.1.4.1.6449.1.2.1.3.6",
-        L"Sectigo: S/MIME Certificate (Class 3)",
-        NULL,
+        L"Sectigo S/MIME Certificate (Class 3)",
+        L"Sectigo: S/MIME Certificate (Class 3) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "1.3.6.1.4.1.6449.1.2.1.3.8",
-        L"Sectigo: Timestamping Certificate",
-        NULL,
+        L"Sectigo Timestamping Certificate",
+        L"Sectigo: Timestamping Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "1.3.6.1.4.1.6449.1.2.1.5.1",
-        L"Sectigo: Extended Validation (EV) TLS Certificate",
-        NULL,
+        L"Sectigo Extended Validation (EV) TLS Certificate",
+        L"Sectigo: Extended Validation (EV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "1.3.6.1.4.1.6449.1.2.1.6.1",
-        L"Sectigo: Extended Validation (EV) Code Signing Certificate",
-        NULL,
+        L"Sectigo Extended Validation (EV) Code Signing Certificate",
+        L"Sectigo: Extended Validation (EV) Code Signing Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "1.3.6.1.4.1.6449.1.2.1.6.6",
-        L"Sectigo: Document Signing (local)",
-        NULL,
+        L"Sectigo Document Signing (local)",
+        L"Sectigo: Document Signing (local) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "1.3.6.1.4.1.6449.1.2.1.6.7",
-        L"Sectigo: Document Signing (remote)",
-        NULL,
+        L"Sectigo Document Signing (remote)",
+        L"Sectigo: Document Signing (remote) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
     },
     {
         "1.3.6.1.4.1.6449.1.2.1.6.8",
-        L"Sectigo: Document Signing (external trusted partner)",
-        NULL,
+        L"Sectigo Document Signing (external trusted partner)",
+        L"Sectigo: Document Signing (external trusted partner) Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
@@ -649,8 +649,8 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     {
         // DV Secure Server
         "1.3.6.1.4.1.6449.1.2.2.7",
-        L"Sectigo: Domain Validated (DV) TLS Certificate",
-        NULL,
+        L"Sectigo Domain Validated (DV) TLS Certificate",
+        L"Sectigo: Domain Validated (DV) TLS Certificate Policy",
         CRYPT_POLICY_OID_GROUP_ID,
         NULL,
         NULL
