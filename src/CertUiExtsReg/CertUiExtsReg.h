@@ -9,11 +9,42 @@
 
 // Registration information
 typedef struct _CERTUIEXTS_REG_INFO {
+    /*
+     * The OID being (un)registered.
+     */
     PSTR pszOID;
+
+    /*
+     * The display name associated with the OID.
+     */
     PWSTR pwszName;
+
+    /*
+     * Optional OID name output by CertUiExtsReg when (un)registering the OID.
+     * If not provided, will default to the value of the pwszName field. The
+     * value of this field is not passed to any Windows cryptography APIs.
+     */
     PWSTR pwszRegName;
+
+    /*
+     * One of the identifiers documented for the dwGroupId field of the
+     * CRYPT_OID_INFO structure. Specifies the group the OID belongs to.
+     */
     DWORD dwGroupId;
+
+    /*
+     * Optional name of the cryptographic function which when called to decode
+     * the OID should instead invoke the function of the same name exported
+     * from this library. If NULL, calling CryptRegisterOIDFunction(...) will
+     * be skipped when registering the OID (and equivalent when unregistering).
+     */
     PSTR pszFuncName;
+
+    /*
+     * When pszFuncName is set, overrides the name of the exported function to
+     * be called. This allows implementing multiple different decoders in the
+     * same library without having to implement our own dispatcher.
+     */
     PSTR pszOverrideFuncName;
 } CERTUIEXTS_REG_INFO, *PCERTUIEXTS_REG_INFO;
 
