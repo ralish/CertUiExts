@@ -6,49 +6,71 @@
 	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=CppJoinDeclarationAndAssignment/@EntryIndexedValue">DO_NOT_SHOW</s:String>
 
 	<!-- Code Editing / C/C++ / Naming Style -->
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Namespaces/@EntryIndexedValue">&lt;NamingElement Priority="1"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="namespace" /&gt;&lt;type Name="namespace alias" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Types/@EntryIndexedValue">&lt;NamingElement Priority="2"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="__interface" /&gt;&lt;type Name="class" /&gt;&lt;type Name="concept" /&gt;&lt;type Name="enum" /&gt;&lt;type Name="struct" /&gt;&lt;type Name="type alias" /&gt;&lt;type Name="type template parameter" /&gt;&lt;type Name="typedef" /&gt;&lt;type Name="union" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="AA_BB"&gt;&lt;ExtraRule Prefix="_" Suffix="" Style="AA_BB" /&gt;&lt;/Policy&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Functions/@EntryIndexedValue">&lt;NamingElement Priority="3"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="global function" /&gt;&lt;type Name="member function" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Properties/@EntryIndexedValue">&lt;NamingElement Priority="4"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="property" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Events/@EntryIndexedValue">&lt;NamingElement Priority="5"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="event" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Fields/@EntryIndexedValue">&lt;NamingElement Priority="6"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="class field" /&gt;&lt;type Name="struct field" /&gt;&lt;type Name="union member" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="AaBb"&gt;&lt;ExtraRule Prefix="" Suffix="" Style="aaBb" /&gt;&lt;/Policy&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Enumerators/@EntryIndexedValue">&lt;NamingElement Priority="7"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="scoped enumerator" /&gt;&lt;type Name="unscoped enumerator" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AA_BB" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Variables/@EntryIndexedValue">&lt;NamingElement Priority="8"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="global variable" /&gt;&lt;type Name="local variable" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb"&gt;&lt;ExtraRule Prefix="g_" Suffix="" Style="aaBb" /&gt;&lt;/Policy&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Parameters/@EntryIndexedValue">&lt;NamingElement Priority="9"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="function parameter" /&gt;&lt;type Name="lambda parameter" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Other_0020constants/@EntryIndexedValue">&lt;NamingElement Priority="10"&gt;&lt;Descriptor Static="True" Constexpr="Indeterminate" Const="True" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="class field" /&gt;&lt;type Name="local variable" /&gt;&lt;type Name="struct field" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AA_BB" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Global_0020constants/@EntryIndexedValue">&lt;NamingElement Priority="11"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="True" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="global variable" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AA_BB" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Macros/@EntryIndexedValue">&lt;NamingElement Priority="12"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="macro" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="False" Prefix="" Suffix="" Style="AA_BB" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Non_002DType_0020Template_0020Parameters/@EntryIndexedValue">&lt;NamingElement Priority="13"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="non-type template parameter" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/NamingElement&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Class_0020and_0020struct_0020fields/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Class_0020and_0020struct_0020fields/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Class_0020and_0020struct_0020methods/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Class_0020and_0020struct_0020methods/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Class_0020and_0020struct_0020public_0020fields/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Class_0020and_0020struct_0020public_0020fields/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Classes_0020and_0020structs/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Classes_0020and_0020structs/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Concepts/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Concepts/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Enums/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Enums/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Enum_0020members/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Enum_0020members/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Global_0020functions/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Global_0020functions/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Global_0020variables/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Global_0020variables/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Local_0020variables/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Local_0020variables/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Template_0020parameters/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Template_0020parameters/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Typedefs/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Typedefs/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Unions/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Unions/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Union_0020members/@EntryIndexedValue"></s:String>
-	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNaming/Rules/=Union_0020members/@EntryIndexRemoved">True</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=DLL/@EntryIndexedValue">DLL</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=OID/@EntryIndexedValue">OID</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=05D45346A5B5B54F93A9F94C46B14079/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=05D45346A5B5B54F93A9F94C46B14079/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=0AFB7787612DF743B09AD9412E48D4CC/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=0AFB7787612DF743B09AD9412E48D4CC/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=0B82708A1BA7774EB13D27F245698A56/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=0B82708A1BA7774EB13D27F245698A56/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=1350D079A82E0740947E85445B5AF47C/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=1350D079A82E0740947E85445B5AF47C/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=18392FF80FA40749AA8CC53981A32AE0/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=18392FF80FA40749AA8CC53981A32AE0/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=1CBDD658AEE8EA4382EE1F914B5B3314/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=1CBDD658AEE8EA4382EE1F914B5B3314/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2229A2BE1AA9214483A51F028530E042/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2229A2BE1AA9214483A51F028530E042/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2AD8EC23F81C6F4AB06852FBF796A3D1/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2AD8EC23F81C6F4AB06852FBF796A3D1/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2B232F1067F0324F8FF4B9D63ACECDB2/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2B232F1067F0324F8FF4B9D63ACECDB2/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2FC02DDBA710F545AFE46040FEA970CF/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2FC02DDBA710F545AFE46040FEA970CF/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=4203BE6F332C5149B409B4D5F7197E54/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=4203BE6F332C5149B409B4D5F7197E54/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=47ACC8834F4E8244A48CCB1B9ABB2DB8/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=47ACC8834F4E8244A48CCB1B9ABB2DB8/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=5653BA7B6222F349B94149A2A53C35B8/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=5653BA7B6222F349B94149A2A53C35B8/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=72514D5DF422D442B71A277F97B72887/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=72514D5DF422D442B71A277F97B72887/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=821F3C5CF47D5640AD3511BCBADE17C4/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=821F3C5CF47D5640AD3511BCBADE17C4/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=8F69F48E2532F54CBAA0039D4557825E/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=8F69F48E2532F54CBAA0039D4557825E/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=9E4D28CA929F6B4AB5F6F3FEB9E69A47/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=9E4D28CA929F6B4AB5F6F3FEB9E69A47/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=A42D627FA43B054F91D1E1C4281D8896/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=A42D627FA43B054F91D1E1C4281D8896/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=A4FAA2257682A94F8C2C93E123FAFC7A/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=A4FAA2257682A94F8C2C93E123FAFC7A/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=A7EBF16DA3BDCB42A0B710704BC8A053/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=A7EBF16DA3BDCB42A0B710704BC8A053/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=B6E900853D6D05429D8C57765B2E546A/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=B6E900853D6D05429D8C57765B2E546A/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=B82A063F0DDD98498A70D8D7EBB97F8D/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=B82A063F0DDD98498A70D8D7EBB97F8D/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=BBE8AA08E662BF409B2CB08EC597C493/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=BBE8AA08E662BF409B2CB08EC597C493/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=BF0D1AE66D64FE4FAF613448A12051A0/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=BF0D1AE66D64FE4FAF613448A12051A0/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=C529A6E18CC0D940AD25DC3A4CB96C06/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=C529A6E18CC0D940AD25DC3A4CB96C06/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=CAFF0FAA857D68499A13B95B971378BC/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=CAFF0FAA857D68499A13B95B971378BC/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=E2299B88B3B84848984E24E0F64C1894/@EntryIndexedValue"></s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=E2299B88B3B84848984E24E0F64C1894/@EntryIndexRemoved">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=4BA5EEE763D4C547A2D3ACC1FBD0AB52/@EntryIndexedValue">&lt;NamingElement Priority="1" Title="Types"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="__interface" /&gt;&lt;type Name="class" /&gt;&lt;type Name="concept" /&gt;&lt;type Name="enum" /&gt;&lt;type Name="struct" /&gt;&lt;type Name="type alias" /&gt;&lt;type Name="typedef" /&gt;&lt;type Name="union" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="AA_BB"&gt;&lt;ExtraRule Prefix="_" Suffix="" Style="AA_BB" /&gt;&lt;/Policy&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=235841F7DA9D5E43BE793A67474F6141/@EntryIndexedValue">&lt;NamingElement Priority="2" Title="Fields"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="class field" /&gt;&lt;type Name="struct field" /&gt;&lt;type Name="union member" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="aaBb" /&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=9E8174B37389194982DE7E39E19ED494/@EntryIndexedValue">&lt;NamingElement Priority="3" Title="Functions"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="global function" /&gt;&lt;type Name="member function" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=2FFC7ED6FAE93B42B2E832CD5C5B93D5/@EntryIndexedValue">&lt;NamingElement Priority="4" Title="Local variables"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="local variable" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="aaBb" /&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=31190247407CA445B81A50442BC92784/@EntryIndexedValue">&lt;NamingElement Priority="5" Title="Global variables"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="global variable" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="g_" Suffix="" Style="aaBb" /&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=E22B69DA54B13A4097149392F3F095EE/@EntryIndexedValue">&lt;NamingElement Priority="6" Title="Parameters"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="function parameter" /&gt;&lt;type Name="lambda parameter" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="aaBb" /&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=6A6AA857DA97504C969C7E62EC289461/@EntryIndexedValue">&lt;NamingElement Priority="7" Title="Global constants"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="True" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="global variable" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="AA_BB" /&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=0329B5B6F849C94C88C6339F16152B2F/@EntryIndexedValue">&lt;NamingElement Priority="8" Title="Other constants"&gt;&lt;Descriptor Static="True" Constexpr="Indeterminate" Const="True" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="class field" /&gt;&lt;type Name="local variable" /&gt;&lt;type Name="struct field" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="AA_BB" /&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Rules/=B1A27AC9B9BCE04CAE6E47FA693414B4/@EntryIndexedValue">&lt;NamingElement Priority="9" Title="Macros"&gt;&lt;Descriptor Static="Indeterminate" Constexpr="Indeterminate" Const="Indeterminate" Volatile="Indeterminate" Accessibility="NOT_APPLICABLE"&gt;&lt;type Name="macro" /&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" WarnAboutPrefixesAndSuffixes="False" Prefix="" Suffix="" Style="AA_BB" /&gt;&lt;/NamingElement&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Abbreviations/=DLL/@EntryIndexedValue">DLL</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CppNamingOptions/Abbreviations/=OID/@EntryIndexedValue">OID</s:String>
 
 	<!-- Code Editing / C/C++ / Formatting Style / Line breaks and Wrapping -->
 	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CppFormatting/WRAP_LIMIT/@EntryValue">160</s:Int64>
