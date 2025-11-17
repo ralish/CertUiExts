@@ -5,7 +5,7 @@ pool:
   vmImage: windows-latest
 
 variables:
-  solution: CertUiExts.sln
+  solution: CertUiExts.slnx
 
 steps:
 - task: VSBuild@1

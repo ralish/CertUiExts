@@ -10,7 +10,7 @@ IF %ERRORLEVEL% GEQ 1 (
 PUSHD "%~dp0\.."
 
 @REM Default MSBuild arguments
-SET MSBuildSln=CertUiExts.sln
+SET MSBuildSln=CertUiExts.slnx
 SET MSBuildArgs=-noLogo -verbosity:minimal -maxCpuCount
 SET MSBuildTarget=Build
 

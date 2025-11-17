@@ -9,7 +9,7 @@
         "*.DotSettings": "xml",
         "*.DotSettings.user": "xml",
         // Visual Studio
-        "*.sln": "properties",
+        "*.slnx": "xml",
         // Windows
         "*.rc2": "rc-script"
     },
