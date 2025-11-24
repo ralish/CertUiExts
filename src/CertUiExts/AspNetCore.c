@@ -53,7 +53,7 @@ BOOL FormatAspNetCoreHttpsDevCert(_In_ const DWORD dwCertEncodingType,
     }
 
     pwszPrefix = dwFormatStrType == CRYPT_FORMAT_STR_SINGLE_LINE ? L"V" : L"Version ";
-    if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR), L"%s%u\n", pwszPrefix, bVersion) == -1) {
+    if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR), L"%s%u\n", pwszPrefix, bVersion) == -1) {
         DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
         goto end;
     }

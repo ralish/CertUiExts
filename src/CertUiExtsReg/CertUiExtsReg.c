@@ -62,7 +62,7 @@ BOOL RegisterOIDInfo(_In_ const PCERTUIEXTS_REG_INFO pRegInfo) {
     WCHAR* pwszRegName = pRegInfo->pwszRegName != NULL ? pRegInfo->pwszRegName : pRegInfo->pwszName;
     wprintf_s(L"[%s] Registering OID info ... ", pwszRegName);
 
-    pOIDInfo = malloc(sizeof(CRYPT_OID_INFO));
+    pOIDInfo = (PCRYPT_OID_INFO)malloc(sizeof(CRYPT_OID_INFO));
     if (pOIDInfo == NULL) {
         goto end;
     }
@@ -130,7 +130,7 @@ BOOL UnregisterOIDInfo(_In_ const PCERTUIEXTS_REG_INFO pRegInfo) {
     WCHAR* pwszRegName = pRegInfo->pwszRegName != NULL ? pRegInfo->pwszRegName : pRegInfo->pwszName;
     wprintf_s(L"[%s] Unregistering OID info ... ", pwszRegName);
 
-    pOIDInfo = malloc(sizeof(CRYPT_OID_INFO));
+    pOIDInfo = (PCRYPT_OID_INFO)malloc(sizeof(CRYPT_OID_INFO));
     if (pOIDInfo == NULL) {
         goto end;
     }

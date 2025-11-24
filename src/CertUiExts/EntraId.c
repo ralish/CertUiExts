@@ -223,7 +223,7 @@ BOOL FormatEntraIdJoinType(_In_ const DWORD dwCertEncodingType,
             goto end;
     }
 
-    if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR), L"%s\n", pwszJoinType) == -1) {
+    if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR), L"%s\n", pwszJoinType) == -1) {
         DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
         goto end;
     }
@@ -251,8 +251,7 @@ BOOL FormatEntraIdTenantRegion(_In_ const DWORD dwCertEncodingType,
                                _In_z_ const LPCSTR lpszStructType,
                                _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
                                _In_ const DWORD cbEncoded,
-                               _At_((WCHAR *)pbFormat,
-                                    _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
+                               _At_((WCHAR *)pbFormat, _Out_writes_bytes_to_opt_(*pcbFormat, *pcbFormat)) void* pbFormat,
                                _Inout_ DWORD* pcbFormat) {
     UNREFERENCED_PARAMETER(dwCertEncodingType);
     UNREFERENCED_PARAMETER(dwFormatType);
@@ -322,7 +321,7 @@ BOOL FormatEntraIdTenantRegion(_In_ const DWORD dwCertEncodingType,
         pwszTenantRegionName = L"Unknown";
     }
 
-    if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR),
+    if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR),
                    L"%s (%s)\n", pwszTenantRegionName, wszTenantRegionCode) == -1) {
         DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
         goto end;

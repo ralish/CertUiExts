@@ -122,7 +122,7 @@ BOOL ConvertGuidToStringW(_In_ const GUID* pGuid,
                           _Outptr_result_z_ PWSTR* ppwszGuid) {
     const DWORD cchGuid = cchGUID_SIZE + 1; // Add terminating null
 
-    *ppwszGuid = calloc(cchGuid, sizeof(WCHAR));
+    *ppwszGuid = (PWSTR)calloc(cchGuid, sizeof(WCHAR));
     if (*ppwszGuid == NULL) {
         DBG_PRINT("calloc() failed to allocate WCHAR array for GUID (errno: %d)\n", errno);
         return FALSE;
@@ -171,7 +171,7 @@ BOOL DecodeAsnGuid(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
         goto end;
     }
 
-    *ppGuid = malloc(sizeof(GUID));
+    *ppGuid = (GUID*)malloc(sizeof(GUID));
     if (*ppGuid == NULL) {
         DBG_PRINT("malloc() failed to allocate %zu bytes (errno: %d)\n", sizeof(GUID), errno);
         goto end;
@@ -215,7 +215,7 @@ BOOL DecodeAsnSidA(_In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
     }
 
     cbSidA = pbAsnSidBlob->cbData + sizeof(CHAR); // Add terminating null
-    *ppszSid = calloc(cbSidA, sizeof(CHAR));
+    *ppszSid = (PSTR)calloc(cbSidA, sizeof(CHAR));
     if (*ppszSid == NULL) {
         DBG_PRINT("calloc() failed to allocate CHAR array for SID (errno: %d)\n", errno);
         goto end;
@@ -265,7 +265,7 @@ BOOL FormatAsGuidStringW(_In_ const DWORD dwFormatStrType,
         goto end;
     }
 
-    if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR), L"%s\n", pwszGuid) == -1) {
+    if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR), L"%s\n", pwszGuid) == -1) {
         DBG_PRINT("swprintf_s() failed formatting GUID to format buffer (errno: %d)\n", errno);
         goto end;
     }

@@ -186,7 +186,7 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
 
     for (DWORD i = 0; i < pbAsnSeq->cValue; i++) {
         BYTE* pbData = pbAsnSeq->rgValue[i].pbData;
-        DWORD cbData = pbAsnSeq->rgValue[i].cbData;
+        const DWORD cbData = pbAsnSeq->rgValue[i].cbData;
 
         if (cbData < 4) {
             DBG_PRINT("ASN.1 sequence field %u is %u bytes but expected at least 4 bytes\n", i, cbData);
@@ -195,12 +195,18 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
 
         switch (pbData[0]) {
             case SPC_PUBLISHER_INFO_PROGNAME_TAG:
-                if (bProgramName) bDuplicate = TRUE;
-                else bProgramName = TRUE;
+                if (bProgramName) {
+                    bDuplicate = TRUE;
+                } else {
+                    bProgramName = TRUE;
+                }
                 break;
             case SPC_PUBLISHER_INFO_MOREINFO_TAG:
-                if (bMoreInfo) bDuplicate = TRUE;
-                else bMoreInfo = TRUE;
+                if (bMoreInfo) {
+                    bDuplicate = TRUE;
+                } else {
+                    bMoreInfo = TRUE;
+                }
                 break;
             default:
                 DBG_PRINT("Unexpected outer tag: 0x%x\n", pbData[0]);
@@ -276,7 +282,7 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
     }
 
     if (dwFormatStrType == CRYPT_FORMAT_STR_SINGLE_LINE) {
-        WCHAR* pwszSrc = bProgramName ? (WCHAR*)&wszProgName : L"(empty)";
+        const WCHAR* pwszSrc = bProgramName ? (WCHAR*)&wszProgName : L"(empty)";
 
         if (wcscpy_s(pbFormat, *pcbFormat / sizeof(WCHAR), pwszSrc) == 0) {
             bStatus = TRUE;
@@ -289,7 +295,7 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
 
     ((WCHAR*)pbFormat)[0] = L'\0';
     if (bProgramName) {
-        if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR),
+        if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR),
                        L"Project: %s\n", (WCHAR*)&wszProgName) == -1) {
             DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
             goto end;
@@ -297,7 +303,7 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
     }
 
     if (bMoreInfo) {
-        if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR),
+        if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR),
                        L"%sURL: %s\n", (WCHAR*)pbFormat, (WCHAR*)&wszMoreInfo) == -1) {
             DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
             goto end;

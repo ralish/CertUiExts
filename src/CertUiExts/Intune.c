@@ -58,7 +58,7 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
         goto end;
     }
 
-    pGuid = malloc(sizeof(GUID));
+    pGuid = (GUID*)malloc(sizeof(GUID));
     if (pGuid == NULL) {
         DBG_PRINT("malloc() failed to allocate %zu bytes (errno: %d)\n", sizeof(GUID), errno);
         goto end;
@@ -73,7 +73,7 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
         goto end;
     }
 
-    if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR), L"%s\n", pwszGuid) == -1) {
+    if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR), L"%s\n", pwszGuid) == -1) {
         DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
         goto end;
     }

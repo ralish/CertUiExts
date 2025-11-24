@@ -246,7 +246,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     }
 
     cchNumChars = strnlen_s(*ppszOid, cbOidA) + 1; // Add terminating null
-    pwszOid = calloc(cchNumChars, sizeof(WCHAR));
+    pwszOid = (PWSTR)calloc(cchNumChars, sizeof(WCHAR));
     if (pwszOid == NULL) {
         DBG_PRINT("calloc() failed to allocate WCHAR array for OID (errno: %d)\n", errno);
         goto end;
@@ -258,7 +258,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     }
 
     cchNumChars = strnlen_s(pszSid, cbSidA) + 1; // Add terminating null
-    pwszSid = calloc(cchNumChars, sizeof(WCHAR));
+    pwszSid = (PWSTR)calloc(cchNumChars, sizeof(WCHAR));
     if (pwszSid == NULL) {
         DBG_PRINT("calloc() failed to allocate WCHAR array for SID (errno: %d)\n", errno);
         goto end;
@@ -275,7 +275,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     }
 
     if (dwFormatStrType == CRYPT_FORMAT_STR_SINGLE_LINE) {
-        if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR), L"Object SID: %s", pwszSid) != -1) {
+        if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR), L"Object SID: %s", pwszSid) != -1) {
             bStatus = TRUE;
         } else {
             DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
@@ -296,13 +296,13 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
         }
     }
 
-    pwszSidAccountName = calloc(cbSidAccountName, sizeof(WCHAR));
+    pwszSidAccountName = (PWSTR)calloc(cbSidAccountName, sizeof(WCHAR));
     if (pwszSidAccountName == NULL) {
         DBG_PRINT("calloc() failed to allocate WCHAR array for SID account name (errno: %d)\n", errno);
         goto end;
     }
 
-    pwszSidAccountDomain = calloc(cbSidAccountDomain, sizeof(WCHAR));
+    pwszSidAccountDomain = (PWSTR)calloc(cbSidAccountDomain, sizeof(WCHAR));
     if (pwszSidAccountDomain == NULL) {
         DBG_PRINT("calloc() failed to allocate WCHAR array for SID domain name (errno: %d)\n", errno);
         goto end;
@@ -318,7 +318,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
         goto lookupErr;
     }
 
-    if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR),
+    if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR),
                    L"Account: %s\\%s\nSID: %s\n",
                    pwszSidAccountDomain, pwszSidAccountName, pwszSid) == -1) {
         DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
@@ -328,7 +328,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     goto end;
 
 lookupErr:
-    if (swprintf_s(pbFormat, *pcbFormat / sizeof(WCHAR),
+    if (swprintf_s((WCHAR*)pbFormat, *pcbFormat / sizeof(WCHAR),
                    L"SID: %s\n\nUnable to resolve SID to account name (err: %u)\n",
                    pwszSid, dwLookupError) == -1) {
         DBG_PRINT("swprintf_s() failed formatting string to format buffer (errno: %d)\n", errno);
