@@ -4,6 +4,11 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/Solution Items/">
+    <File Path="CHANGELOG.md" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/Common/">
+    <File Path="src/Common/Asn1.h" />
     <File Path="src/Common/BaseVersionInfo.h" />
     <File Path="src/Common/Shared.h" />
     <File Path="src/Common/VersionInfo.rc2" />
