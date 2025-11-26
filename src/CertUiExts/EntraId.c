@@ -1,7 +1,5 @@
 #include "pch.h"
 
-#include <wincrypt.h>
-
 /*
  * NTDS-DSA Invocation ID
  * 1.2.840.113556.1.5.284.1

@@ -14,3 +14,5 @@
 
 // Windows headers
 #include <windows.h>
+#include <shlwapi.h>
+#include <wincrypt.h>

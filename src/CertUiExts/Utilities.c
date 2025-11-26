@@ -1,7 +1,5 @@
 #include "pch.h"
 
-#include <wincrypt.h>
-
 #ifdef _DEBUG
 #include <stdarg.h>
 #include <assert.h>

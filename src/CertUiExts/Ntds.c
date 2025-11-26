@@ -1,8 +1,5 @@
 #include "pch.h"
 
-#include <sddl.h>
-#include <wincrypt.h>
-
 #include "Asn1.h"
 #include "Ntds.h"
 

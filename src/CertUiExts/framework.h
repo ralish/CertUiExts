@@ -14,6 +14,9 @@
 
 // Windows headers
 #include <windows.h>
+#include <sddl.h>
+#include <wincrypt.h>
+#include <wintrust.h>
 
 // Common headers
 #include "Shared.h"

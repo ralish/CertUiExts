@@ -1,8 +1,5 @@
 #include "pch.h"
 
-#include <shlwapi.h>
-#include <wincrypt.h>
-
 #include "CertUiExtsReg.h"
 
 // Set to false if any (un)registration returns false

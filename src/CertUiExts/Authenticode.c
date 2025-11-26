@@ -1,8 +1,5 @@
 #include "pch.h"
 
-#include <wincrypt.h>
-#include <wintrust.h>
-
 #include "Asn1.h"
 #include "Authenticode.h"
 
