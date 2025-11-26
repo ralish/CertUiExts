@@ -2,9 +2,12 @@ Checks: >-
   bugprone-*,
   cert-*,
   modernize-*,
-  -modernize-macro-to-enum,
   performance-*,
-  misc-*
+  misc-*,
+  -bugprone-reserved-identifier,
+  -clang-diagnostic-padded,
+  -clang-diagnostic-reserved-identifier,
+  -modernize-macro-to-enum
 
 CheckOptions:
   # Removed: wprintf_s
@@ -85,10 +88,10 @@ CheckOptions:
     ::realloc;
     ::remove;
     ::rename;
-    ::scanf;
-    ::scanf_s;
     ::setlocale;
     ::setvbuf;
+    ::scanf;
+    ::scanf_s;
     ::signal;
     ::snprintf;
     ::snprintf_s;
@@ -110,9 +113,9 @@ CheckOptions:
     ::strtol;
     ::strtold;
     ::strtoll;
+    ::strtoumax;
     ::strtoul;
     ::strtoull;
-    ::strtoumax;
     ::strxfrm;
     ::swprintf;
     ::swprintf_s;
@@ -175,9 +178,9 @@ CheckOptions:
     ::wcstoll;
     ::wcstombs;
     ::wcstombs_s;
+    ::wcstoumax;
     ::wcstoul;
     ::wcstoull;
-    ::wcstoumax;
     ::wcsxfrm;
     ::wctob;
     ::wctrans;
