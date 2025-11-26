@@ -6,8 +6,8 @@
 
 #define DEBUG_BUFFER_SIZE (size_t)1024
 
-CHAR pszDebugBuffer[DEBUG_BUFFER_SIZE];
-CHAR* pszDebugStringPrefix = "[%-25s] ";
+CHAR g_pszDebugBuffer[DEBUG_BUFFER_SIZE];
+CHAR* g_pszDebugStringPrefix = "[%-25s] ";
 
 void OutputDebugFormatStringA(_In_z_ const PCSTR pszFuncName,
                               _Printf_format_string_ const PCSTR pszDebugFormat,
@@ -18,29 +18,29 @@ void OutputDebugFormatStringA(_In_z_ const PCSTR pszFuncName,
 
     va_start(args, pszDebugFormat);
 
-    if (sprintf_s(pszDebugBuffer, DEBUG_BUFFER_SIZE, pszDebugStringPrefix, pszFuncName) == -1) {
+    if (sprintf_s(g_pszDebugBuffer, DEBUG_BUFFER_SIZE, g_pszDebugStringPrefix, pszFuncName) == -1) {
         goto end;
     }
 
-    cbDebugStringOffset = strnlen_s(pszDebugBuffer, DEBUG_BUFFER_SIZE);
-    cbDebugStringSize += _scprintf(pszDebugStringPrefix, pszFuncName) * sizeof(CHAR);
+    cbDebugStringOffset = strnlen_s(g_pszDebugBuffer, DEBUG_BUFFER_SIZE);
+    cbDebugStringSize += _scprintf(g_pszDebugStringPrefix, pszFuncName) * sizeof(CHAR);
     cbDebugStringSize += _vscprintf(pszDebugFormat, args) * sizeof(CHAR);
 
     if (cbDebugStringSize <= DEBUG_BUFFER_SIZE) {
-        if (vsprintf_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+        if (vsprintf_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                        cbDebugStringSize - cbDebugStringOffset,
                        pszDebugFormat, args) < 0) {
             goto end;
         }
     } else {
-        if (strcat_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+        if (strcat_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                      cbDebugStringSize - cbDebugStringOffset,
                      "Formatted string exceeds debug buffer size.\n") != 0) {
             goto end;
         }
     }
 
-    OutputDebugStringA(pszDebugBuffer);
+    OutputDebugStringA(g_pszDebugBuffer);
 
 end:
     va_end(args);
@@ -56,36 +56,36 @@ void FormatObjectDebugEntryA(_In_z_ const PCSTR pszFuncName,
 
     assert(dwCertEncodingType == X509_ASN_ENCODING);
 
-    ret = sprintf_s(pszDebugBuffer,
+    ret = sprintf_s(g_pszDebugBuffer,
                     DEBUG_BUFFER_SIZE,
-                    pszDebugStringPrefix, pszFuncName);
+                    g_pszDebugStringPrefix, pszFuncName);
     if (ret != -1) { cbDebugStringOffset += ret; }
 
-    ret = sprintf_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+    ret = sprintf_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                     DEBUG_BUFFER_SIZE - cbDebugStringOffset - 1,
                     "dwFormatStrType: %u", dwFormatStrType);
     if (ret != -1) { cbDebugStringOffset += ret; }
 
     if ((size_t)pszStructType >> 16 == 0) {
-        ret = sprintf_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+        ret = sprintf_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                         DEBUG_BUFFER_SIZE - cbDebugStringOffset - 1,
                         ", lpszStructType: %zu", (size_t)pszStructType & 0xFFFF);
     } else {
-        ret = sprintf_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+        ret = sprintf_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                         DEBUG_BUFFER_SIZE - cbDebugStringOffset - 1,
                         ", lpszStructType: %s", pszStructType);
     }
     if (ret != -1) { cbDebugStringOffset += ret; }
 
-    ret = sprintf_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+    ret = sprintf_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                     DEBUG_BUFFER_SIZE - cbDebugStringOffset - 1,
                     ", pcbFormat: %u", cbFormat);
     if (ret != -1) { cbDebugStringOffset += ret; }
 
-    if (strcat_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+    if (strcat_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                  DEBUG_BUFFER_SIZE - cbDebugStringOffset - 1,
                  "\n") == 0) {
-        OutputDebugStringA(pszDebugBuffer);
+        OutputDebugStringA(g_pszDebugBuffer);
     }
 }
 
@@ -97,20 +97,20 @@ void FormatObjectDebugExitA(_In_z_ const PCSTR pszFuncName,
     // Only output on exit for failures
     if (bStatus) { return; }
 
-    ret = sprintf_s(pszDebugBuffer,
+    ret = sprintf_s(g_pszDebugBuffer,
                     DEBUG_BUFFER_SIZE,
-                    pszDebugStringPrefix, pszFuncName);
+                    g_pszDebugStringPrefix, pszFuncName);
     if (ret != -1) { cbDebugStringOffset += ret; }
 
-    ret = sprintf_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+    ret = sprintf_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                     DEBUG_BUFFER_SIZE - cbDebugStringOffset - 1,
                     "Return status: %s", bStatus ? "true" : "false");
     if (ret != -1) { cbDebugStringOffset += ret; }
 
-    if (strcat_s(&pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
+    if (strcat_s(&g_pszDebugBuffer[cbDebugStringOffset / sizeof(CHAR)],
                  DEBUG_BUFFER_SIZE - cbDebugStringOffset - 1,
                  "\n") == 0) {
-        OutputDebugStringA(pszDebugBuffer);
+        OutputDebugStringA(g_pszDebugBuffer);
     }
 }
 #endif
