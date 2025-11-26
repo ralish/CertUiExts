@@ -30,11 +30,11 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
-    if (SetFormatBufferSize(pbFormat, pcbFormat, cbCA_SECURITY_EXT_BUFFER)) {
+    if (SetFormatBufferSize(pbFormat, pcbFormat, CA_SECURITY_EXT_BUFFER_CB)) {
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(*pcbFormat, cbCA_SECURITY_EXT_BUFFER)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, CA_SECURITY_EXT_BUFFER_CB)) {
         return FALSE;
     }
 
@@ -62,9 +62,9 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     SID_NAME_USE sidType;
     DWORD dwLookupError;
 
-    if (cbEncoded < cbCA_SECURITY_EXT_ASN_MIN) {
+    if (cbEncoded < CA_SECURITY_EXT_ASN_MIN_CB) {
         DBG_PRINT("ASN.1 structure is %u bytes but expected at least %u bytes\n",
-                  cbEncoded, cbCA_SECURITY_EXT_ASN_MIN);
+                  cbEncoded, CA_SECURITY_EXT_ASN_MIN_CB);
         goto end;
     }
 
@@ -77,16 +77,16 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     cbByteOffset++;
 
     // Sequence: Max length
-    if (pbEncoded[cbByteOffset] > cbASN_LENGTH_SINGLE_BYTE_MAX) {
+    if (pbEncoded[cbByteOffset] > ASN_LENGTH_SINGLE_BYTE_MAX_CB) {
         DBG_PRINT("ASN.1 sequence is %u bytes but expected at most %u bytes\n",
-                  pbEncoded[cbByteOffset], cbASN_LENGTH_SINGLE_BYTE_MAX);
+                  pbEncoded[cbByteOffset], ASN_LENGTH_SINGLE_BYTE_MAX_CB);
         goto end;
     }
 
     // Sequence: Min length (minus type & length bytes)
-    if (pbEncoded[cbByteOffset] < cbCA_SECURITY_EXT_ASN_MIN - 2) {
+    if (pbEncoded[cbByteOffset] < CA_SECURITY_EXT_ASN_MIN_CB - 2) {
         DBG_PRINT("ASN.1 sequence is %u bytes but expected at least %u bytes\n",
-                  pbEncoded[cbByteOffset], cbCA_SECURITY_EXT_ASN_MIN - 2);
+                  pbEncoded[cbByteOffset], CA_SECURITY_EXT_ASN_MIN_CB - 2);
         goto end;
     }
 
@@ -108,16 +108,16 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     cbByteOffset++;
 
     // OID context: Max length
-    if (pbEncoded[cbByteOffset] > cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset) {
+    if (pbEncoded[cbByteOffset] > ASN_LENGTH_SINGLE_BYTE_MAX_CB - cbAttrOffset) {
         DBG_PRINT("OID context is %u bytes but expected at most %zu bytes\n",
-                  pbEncoded[cbByteOffset], cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset);
+                  pbEncoded[cbByteOffset], ASN_LENGTH_SINGLE_BYTE_MAX_CB - cbAttrOffset);
         goto end;
     }
 
     // OID context: Min length (minus type & length bytes)
-    if (pbEncoded[cbByteOffset] < cbCA_SECURITY_EXT_ASN_MIN - (cbAttrOffset + 2)) {
+    if (pbEncoded[cbByteOffset] < CA_SECURITY_EXT_ASN_MIN_CB - (cbAttrOffset + 2)) {
         DBG_PRINT("OID context is %u bytes but expected at least %zu bytes\n",
-                  pbEncoded[cbByteOffset], cbCA_SECURITY_EXT_ASN_MIN - (cbAttrOffset + 2));
+                  pbEncoded[cbByteOffset], CA_SECURITY_EXT_ASN_MIN_CB - (cbAttrOffset + 2));
         goto end;
     }
 
@@ -139,9 +139,9 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     cbByteOffset++;
 
     // OID: Length
-    if (pbEncoded[cbByteOffset] != cbOBJECTSID_OID_VALUE) {
+    if (pbEncoded[cbByteOffset] != OBJECTSID_OID_VALUE_CB) {
         DBG_PRINT("OID is %u bytes but expected %u bytes\n",
-                  pbEncoded[cbByteOffset], cbOBJECTSID_OID_VALUE);
+                  pbEncoded[cbByteOffset], OBJECTSID_OID_VALUE_CB);
         goto end;
     }
 
@@ -156,7 +156,7 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
                              X509_OBJECT_IDENTIFIER,
                              pbEncoded + cbAttrOffset,
-                             cbOBJECTSID_OID_TLV,
+                             OBJECTSID_OID_TLV_CB,
                              CRYPT_DECODE_ALLOC_FLAG,
                              NULL,     // Use LocalAlloc()
                              &ppszOid, // NOLINT(bugprone-multi-level-implicit-pointer-conversion)
@@ -167,8 +167,8 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     cbByteOffset += pbEncoded[cbAttrOffset + 1];
     cbAttrOffset = cbByteOffset;
 
-    if (strcmp(szOBJECTSID_OID, *ppszOid) != 0) {
-        DBG_PRINT("Expected OID is %s but decoded OID is %s\n", szOBJECTSID_OID, *ppszOid);
+    if (strcmp(OBJECTSID_OID_A, *ppszOid) != 0) {
+        DBG_PRINT("Expected OID is %s but decoded OID is %s\n", OBJECTSID_OID_A, *ppszOid);
         goto end;
     }
 
@@ -181,16 +181,16 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     cbByteOffset++;
 
     // SID context: Max length
-    if (pbEncoded[cbByteOffset] > cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset) {
+    if (pbEncoded[cbByteOffset] > ASN_LENGTH_SINGLE_BYTE_MAX_CB - cbAttrOffset) {
         DBG_PRINT("SID context is %u bytes but expected at most %zu bytes\n",
-                  pbEncoded[cbByteOffset], cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset);
+                  pbEncoded[cbByteOffset], ASN_LENGTH_SINGLE_BYTE_MAX_CB - cbAttrOffset);
         goto end;
     }
 
     // SID context: Min length
-    if (pbEncoded[cbByteOffset] < cbASN_SID_TLV_MIN) {
+    if (pbEncoded[cbByteOffset] < ASN_SID_TLV_MIN_CB) {
         DBG_PRINT("SID context is %u bytes but expected at least %u bytes\n",
-                  pbEncoded[cbByteOffset], cbASN_SID_TLV_MIN);
+                  pbEncoded[cbByteOffset], ASN_SID_TLV_MIN_CB);
         goto end;
     }
 
@@ -212,16 +212,16 @@ BOOL FormatNtdsCaSecurityExt(_In_ const DWORD dwCertEncodingType,
     cbByteOffset++;
 
     // SID: Max length
-    if (pbEncoded[cbByteOffset] > cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset) {
+    if (pbEncoded[cbByteOffset] > ASN_LENGTH_SINGLE_BYTE_MAX_CB - cbAttrOffset) {
         DBG_PRINT("SID has %u bytes but expected at most %zu bytes\n",
-                  pbEncoded[cbByteOffset], cbASN_LENGTH_SINGLE_BYTE_MAX - cbAttrOffset);
+                  pbEncoded[cbByteOffset], ASN_LENGTH_SINGLE_BYTE_MAX_CB - cbAttrOffset);
         goto end;
     }
 
     // SID: Min length
-    if (pbEncoded[cbByteOffset] < cbASN_SID_VALUE_MIN) {
+    if (pbEncoded[cbByteOffset] < ASN_SID_VALUE_MIN_CB) {
         DBG_PRINT("SID has %u bytes but expected at least %u bytes\n",
-                  pbEncoded[cbByteOffset], cbASN_SID_VALUE_MIN);
+                  pbEncoded[cbByteOffset], ASN_SID_VALUE_MIN_CB);
         goto end;
     }
 

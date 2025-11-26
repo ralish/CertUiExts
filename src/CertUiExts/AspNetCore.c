@@ -24,11 +24,11 @@ BOOL FormatAspNetCoreHttpsDevCert(_In_ const DWORD dwCertEncodingType,
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
-    if (SetFormatBufferSize(pbFormat, pcbFormat, cbFORMAT_MIN_SIZE)) {
+    if (SetFormatBufferSize(pbFormat, pcbFormat, FORMAT_MIN_SIZE_CB)) {
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(*pcbFormat, cbFORMAT_MIN_SIZE)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, FORMAT_MIN_SIZE_CB)) {
         return FALSE;
     }
 

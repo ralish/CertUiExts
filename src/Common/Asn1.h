@@ -79,8 +79,8 @@
 // - Z is one or more subauthorities
 //
 // Encoded as an octet string this corresponds to 7 bytes.
-#define cbASN_SID_VALUE_MIN 7
-#define cbASN_SID_TLV_MIN (cbASN_SID_VALUE_MIN + 2)
+#define ASN_SID_VALUE_MIN_CB 7
+#define ASN_SID_TLV_MIN_CB (ASN_SID_VALUE_MIN_CB + 2)
 
 
 /*
@@ -90,4 +90,4 @@
 // Lengths larger than 127 are encoded as multiple bytes. The initial length
 // byte has bit 8 set to 1, with the remaining bits indicating the number of
 // bytes which encode the length.
-#define cbASN_LENGTH_SINGLE_BYTE_MAX 0x7F
+#define ASN_LENGTH_SINGLE_BYTE_MAX_CB 0x7F

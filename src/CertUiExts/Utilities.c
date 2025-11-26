@@ -118,7 +118,7 @@ void FormatObjectDebugExitA(_In_z_ const PCSTR pszFuncName,
 _Success_(return != FALSE)
 BOOL ConvertGuidToStringW(_In_ const GUID* pGuid,
                           _Outptr_result_z_ PWSTR* ppwszGuid) {
-    const DWORD cchGuid = cchGUID_SIZE + 1; // Add terminating null
+    const DWORD cchGuid = GUID_SIZE_CCH + 1; // Add terminating null
 
     *ppwszGuid = (PWSTR)calloc(cchGuid, sizeof(WCHAR));
     if (*ppwszGuid == NULL) {
@@ -245,7 +245,7 @@ BOOL FormatAsGuidStringW(_In_ const DWORD dwFormatStrType,
     PWSTR pwszGuid = NULL;
 
     // Add newline & terminating null
-    const DWORD cbBufferSize = (cchGUID_SIZE + 2) * sizeof(WCHAR);
+    const DWORD cbBufferSize = (GUID_SIZE_CCH + 2) * sizeof(WCHAR);
 
     if (SetFormatBufferSize(pbFormat, pcbFormat, cbBufferSize)) {
         return TRUE;
@@ -288,8 +288,8 @@ BOOL SetFailureInfo(_In_ const DWORD dwFormatStrType,
                     _At_((WCHAR *)pbFormat, _Out_writes_bytes_(cbFormat)) void* pbFormat,
                     _In_ const DWORD cbFormat) {
     if (dwFormatStrType == CRYPT_FORMAT_STR_SINGLE_LINE) {
-        if (cbFormat >= sizeof(wszFORMAT_FAILURE)) {
-            if (wcscpy_s(pbFormat, cbFormat / sizeof(WCHAR), wszFORMAT_FAILURE) == 0) {
+        if (cbFormat >= sizeof(FORMAT_FAILURE_W)) {
+            if (wcscpy_s(pbFormat, cbFormat / sizeof(WCHAR), FORMAT_FAILURE_W) == 0) {
                 return TRUE;
             }
 

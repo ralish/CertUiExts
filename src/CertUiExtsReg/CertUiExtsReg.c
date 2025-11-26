@@ -14,7 +14,7 @@ void DisplayHelp(_In_ const BOOL bInvalidParam) {
     }
 
     wprintf_s(L"Certificate UI Extensions\n\n");
-    wprintf_s(L"Usage: %s [/i | /u]\n", wszEXE_NAME);
+    wprintf_s(L"Usage: %s [/i | /u]\n", EXE_NAME_W);
     wprintf_s(L"  /i    Register the extension\n");
     wprintf_s(L"  /u    Unregister the extension");
 }
@@ -39,7 +39,7 @@ BOOL GetDllPath(void) {
         goto end;
     }
 
-    if (PathCombineW(g_wszDllPath, g_wszDllPath, wszDLL_NAME) == NULL) {
+    if (PathCombineW(g_wszDllPath, g_wszDllPath, DLL_NAME_W) == NULL) {
         wprintf_s(L"Failed to combine directory path with DLL file.");
         goto end;
     }

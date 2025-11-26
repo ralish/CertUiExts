@@ -27,11 +27,11 @@ BOOL FormatAuthenticodeSpcStatementType(_In_ const DWORD dwCertEncodingType,
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
-    if (SetFormatBufferSize(pbFormat, pcbFormat, cbFORMAT_MIN_SIZE)) {
+    if (SetFormatBufferSize(pbFormat, pcbFormat, FORMAT_MIN_SIZE_CB)) {
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(*pcbFormat, cbFORMAT_MIN_SIZE)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, FORMAT_MIN_SIZE_CB)) {
         return FALSE;
     }
 
@@ -124,11 +124,11 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
 
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
-    if (SetFormatBufferSize(pbFormat, pcbFormat, cbSPC_PUBLISHER_INFO_BUFFER)) {
+    if (SetFormatBufferSize(pbFormat, pcbFormat, SPC_PUBLISHER_INFO_BUFFER_CB)) {
         return TRUE;
     }
 
-    if (!VerifyFormatBufferSize(*pcbFormat, cbSPC_PUBLISHER_INFO_BUFFER)) {
+    if (!VerifyFormatBufferSize(*pcbFormat, SPC_PUBLISHER_INFO_BUFFER_CB)) {
         return FALSE;
     }
 
@@ -141,12 +141,12 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
 
     // Program name (Project)
     BOOL bProgramName = FALSE;
-    WCHAR wszProgName[cbASN_LENGTH_SINGLE_BYTE_MAX / sizeof(WCHAR) + 1] = L"";
+    WCHAR wszProgName[ASN_LENGTH_SINGLE_BYTE_MAX_CB / sizeof(WCHAR) + 1] = L"";
 
     // More information (URL)
     BOOL bMoreInfo = FALSE;
-    CHAR szMoreInfo[cbASN_LENGTH_SINGLE_BYTE_MAX + 1] = "";
-    WCHAR wszMoreInfo[cbASN_LENGTH_SINGLE_BYTE_MAX / sizeof(WCHAR) + 1] = L"";
+    CHAR szMoreInfo[ASN_LENGTH_SINGLE_BYTE_MAX_CB + 1] = "";
+    WCHAR wszMoreInfo[ASN_LENGTH_SINGLE_BYTE_MAX_CB / sizeof(WCHAR) + 1] = L"";
 
     if (!CryptDecodeObjectEx(X509_ASN_ENCODING,
                              X509_SEQUENCE_OF_ANY,
@@ -220,8 +220,8 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
             continue;
         }
 
-        if (pbData[1] > cbASN_LENGTH_SINGLE_BYTE_MAX) {
-            DBG_PRINT("Length is greater than %u bytes\n", cbASN_LENGTH_SINGLE_BYTE_MAX);
+        if (pbData[1] > ASN_LENGTH_SINGLE_BYTE_MAX_CB) {
+            DBG_PRINT("Length is greater than %u bytes\n", ASN_LENGTH_SINGLE_BYTE_MAX_CB);
             return FALSE;
         }
 
@@ -235,8 +235,8 @@ BOOL FormatAuthenticodeSpcPublisherInfo(_In_ const DWORD dwCertEncodingType,
             return FALSE;
         }
 
-        if (pbData[3] > cbASN_LENGTH_SINGLE_BYTE_MAX) {
-            DBG_PRINT("Length is greater than %u bytes\n", cbASN_LENGTH_SINGLE_BYTE_MAX);
+        if (pbData[3] > ASN_LENGTH_SINGLE_BYTE_MAX_CB) {
+            DBG_PRINT("Length is greater than %u bytes\n", ASN_LENGTH_SINGLE_BYTE_MAX_CB);
             return FALSE;
         }
 

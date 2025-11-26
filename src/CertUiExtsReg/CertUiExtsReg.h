@@ -1,11 +1,11 @@
 #pragma once
 
 // String constants (ASCII)
-#define szCRYPT_FORMAT_OBJECT "CryptDllFormatObject"
+#define CRYPT_FORMAT_OBJECT_A "CryptDllFormatObject"
 
 // String constants (Unicode)
-#define wszDLL_NAME L"CertUiExts.dll"
-#define wszEXE_NAME L"CertUiExtsReg.exe"
+#define DLL_NAME_W L"CertUiExts.dll"
+#define EXE_NAME_W L"CertUiExtsReg.exe"
 
 // Registration information
 typedef struct _CERTUIEXTS_REG_INFO {
@@ -373,7 +373,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"AD DS: CA Security",
         L"Microsoft: Active Directory - CA Security",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatNtdsCaSecurityExt"
     },
     {
@@ -394,7 +394,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"ASP.NET Core: HTTPS Development Certificate",
         L"Microsoft: ASP.NET Core - HTTPS Development Certificate",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatAspNetCoreHttpsDevCert"
     },
 
@@ -407,7 +407,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Statement Type",
         L"Microsoft: Authenticode - SPC Statement Type",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatAuthenticodeSpcStatementType"
     },
     {
@@ -415,7 +415,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Publisher Info",
         L"Microsoft: Authenticode - SPC Publisher Information",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatAuthenticodeSpcPublisherInfo"
     },
 
@@ -428,7 +428,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Entra ID: NTDS-DSA Invocation ID",
         L"Microsoft: Entra ID - NTDS-DSA Invocation ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatEntraIdNtdsDsaInvId"
     },
     {
@@ -436,7 +436,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Entra ID: Device ID",
         L"Microsoft: Entra ID - Device ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatEntraIdDeviceId"
     },
     {
@@ -444,7 +444,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Entra ID: User ID",
         L"Microsoft: Entra ID - User ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatEntraIdUserId"
     },
     {
@@ -452,7 +452,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Entra ID: Domain ID",
         L"Microsoft: Entra ID - Domain ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatEntraIdDomainId"
     },
     {
@@ -460,7 +460,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Entra ID: Tenant ID",
         L"Microsoft: Entra ID - Tenant ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatEntraIdTenantId"
     },
     {
@@ -468,7 +468,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Entra ID: Join Type",
         L"Microsoft: Entra ID - Join Type",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatEntraIdJoinType"
     },
     {
@@ -476,7 +476,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Entra ID: Tenant Region",
         L"Microsoft: Entra ID - Tenant Region",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatEntraIdTenantRegion"
     },
 
@@ -489,7 +489,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Intune: Device ID",
         L"Microsoft: Intune - Device ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatIntuneDeviceId"
     },
     {
@@ -497,7 +497,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Intune: Account ID",
         L"Microsoft: Intune - Account ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatIntuneAccountId"
     },
     {
@@ -505,7 +505,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Intune: User ID",
         L"Microsoft: Intune - User ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatIntuneUserId"
     },
 #ifdef _DEBUG
@@ -514,7 +514,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Intune: Unknown (11)",
         L"Microsoft: Intune - Unknown (11)",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatIntuneUnknown11"
     },
 #endif
@@ -523,7 +523,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Intune: Entra ID Tenant ID",
         L"Microsoft: Intune - Entra ID Tenant ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
-        szCRYPT_FORMAT_OBJECT,
+        CRYPT_FORMAT_OBJECT_A,
         "FormatIntuneEntraIdTenantId"
     },
 

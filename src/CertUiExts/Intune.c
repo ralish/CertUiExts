@@ -37,7 +37,7 @@ BOOL FormatIntuneDeviceId(_In_ const DWORD dwCertEncodingType,
     DBG_ENTER(dwCertEncodingType, dwFormatStrType, lpszStructType, *pcbFormat);
 
     // Add newline & terminating null
-    const DWORD cbBufferSize = (cchGUID_SIZE + 2) * sizeof(WCHAR);
+    const DWORD cbBufferSize = (GUID_SIZE_CCH + 2) * sizeof(WCHAR);
 
     if (SetFormatBufferSize(pbFormat, pcbFormat, cbBufferSize)) {
         return TRUE;
