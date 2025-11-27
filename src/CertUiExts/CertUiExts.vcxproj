@@ -155,6 +155,7 @@
     <ClCompile Include="AspNetCore.c" />
     <ClCompile Include="Authenticode.c" />
     <ClCompile Include="EntraId.c" />
+    <ClCompile Include="Generic.c" />
     <ClCompile Include="Intune.c" />
     <ClCompile Include="Ntds.c" />
     <ClCompile Include="Utilities.c" />

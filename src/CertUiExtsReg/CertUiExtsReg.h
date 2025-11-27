@@ -424,36 +424,46 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
      * 1.2.840.113556.1.5.284
      */
     {
+        /*
+         * [MS-DVRE]: Device Registration Enrollment Protocol
+         * Section 3.1.4.2.1: New Request Processing
+         *
+         * [MS-DVRJ]: Device Registration Join Protocol
+         * Section 3.1.5.1.1.3: Processing Details
+         */
         "1.2.840.113556.1.5.284.1",
         L"Entra ID: NTDS-DSA Invocation ID",
         L"Microsoft: Entra ID - NTDS-DSA Invocation ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatEntraIdNtdsDsaInvId"
+        "FormatGenericAsnGuid"
     },
     {
+        // Refer to OID: 1.2.840.113556.1.5.284.1
         "1.2.840.113556.1.5.284.2",
         L"Entra ID: Device ID",
         L"Microsoft: Entra ID - Device ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatEntraIdDeviceId"
+        "FormatGenericAsnGuid"
     },
     {
+        // Refer to OID: 1.2.840.113556.1.5.284.1
         "1.2.840.113556.1.5.284.3",
         L"Entra ID: User ID",
         L"Microsoft: Entra ID - User ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatEntraIdUserId"
+        "FormatGenericAsnGuid"
     },
     {
+        // Refer to OID: 1.2.840.113556.1.5.284.1
         "1.2.840.113556.1.5.284.4",
         L"Entra ID: Domain ID",
         L"Microsoft: Entra ID - Domain ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatEntraIdDomainId"
+        "FormatGenericAsnGuid"
     },
     {
         "1.2.840.113556.1.5.284.5",
@@ -461,7 +471,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Microsoft: Entra ID - Tenant ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatEntraIdTenantId"
+        "FormatGenericAsnGuid"
     },
     {
         "1.2.840.113556.1.5.284.7",
@@ -498,7 +508,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Microsoft: Intune - Account ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatIntuneAccountId"
+        "FormatGenericAsnGuid"
     },
     {
         "1.2.840.113556.5.10",
@@ -506,7 +516,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Microsoft: Intune - User ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatIntuneUserId"
+        "FormatGenericAsnGuid"
     },
 #ifdef _DEBUG
     {
@@ -515,7 +525,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Microsoft: Intune - Unknown (11)",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatIntuneUnknown11"
+        "FormatGenericAsnGuid"
     },
 #endif
     {
@@ -524,7 +534,7 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         L"Microsoft: Intune - Entra ID Tenant ID",
         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
         CRYPT_FORMAT_OBJECT_A,
-        "FormatIntuneEntraIdTenantId"
+        "FormatGenericAsnGuid"
     },
 
     /*

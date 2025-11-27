@@ -50,6 +50,9 @@
     <ClCompile Include="EntraId.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Generic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Intune.c">
       <Filter>Source Files</Filter>
     </ClCompile>
