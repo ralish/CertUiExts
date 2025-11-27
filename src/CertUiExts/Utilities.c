@@ -1,5 +1,7 @@
 #include "pch.h"
 
+#include "Asn1.h"
+
 #ifdef _DEBUG
 #include <stdarg.h>
 #include <assert.h>
@@ -274,6 +276,77 @@ end:
     free(pwszGuid);
     free(pGuid);
 
+    return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, *pcbFormat);
+}
+
+BOOL FormatAsIntStringW(_In_ const DWORD dwFormatStrType,
+                        _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
+                        _In_ const DWORD cbEncoded,
+                        _At_((WCHAR*)pbFormat, _Out_writes_bytes_(*pcbFormat)) void* pbFormat,
+                        _Inout_ DWORD* pcbFormat) {
+    BOOL bStatus = FALSE;
+    LONGLONG integer = 0;
+
+    // Includes sign and terminating null
+    const DWORD cbBufferSize = _MAX_I64TOSTR_BASE10_COUNT * sizeof(WCHAR);
+
+    if (SetFormatBufferSize(pbFormat, pcbFormat, cbBufferSize)) {
+        return TRUE;
+    }
+
+    if (!VerifyFormatBufferSize(*pcbFormat, cbBufferSize)) {
+        return FALSE;
+    }
+
+    if (cbEncoded < ASN_TYPE_INT64_MIN_CB) {
+        DBG_PRINT("ASN.1 structure is %u bytes but expected at least %u bytes\n",
+                  cbEncoded, ASN_TYPE_INT64_MIN_CB);
+        goto end;
+    }
+
+    if (cbEncoded > ASN_TYPE_INT64_MAX_CB) {
+        DBG_PRINT("ASN.1 structure is %u bytes but expected at most %u bytes\n",
+                  cbEncoded, ASN_TYPE_INT64_MAX_CB);
+        goto end;
+    }
+
+    if (pbEncoded[0] != ASN_INTEGER) {
+        DBG_PRINT("Expected an integer tag but found: 0x%x\n",
+                  pbEncoded[0]);
+        goto end;
+    }
+
+    if (pbEncoded[1] < ASN_LENGTH_INT_MIN_CB) {
+        DBG_PRINT("ASN.1 integer is %u bytes but expected at least %u bytes\n",
+                  pbEncoded[1], ASN_LENGTH_INT_MIN_CB);
+        goto end;
+    }
+
+    if (pbEncoded[1] > ASN_LENGTH_INT64_MAX_CB) {
+        DBG_PRINT("ASN.1 integer is %u bytes but expected at most %u bytes\n",
+                  pbEncoded[1], ASN_LENGTH_INT64_MAX_CB);
+        goto end;
+    }
+
+    if (pbEncoded[1] > cbEncoded - 2) {
+        DBG_PRINT("ASN.1 integer is %u bytes but buffer has only %u bytes\n",
+                  pbEncoded[1], cbEncoded - 2);
+        goto end;
+    }
+
+    if (memcpy_s(&integer, sizeof(integer), &pbEncoded[2], pbEncoded[1]) != 0) {
+        DBG_PRINT("memcpy_s() failed copying integer from ASN.1 structure (errno: %d)\n", errno);
+        goto end;
+    }
+
+    if (_i64tow_s(integer, pbFormat, _MAX_I64TOSTR_BASE10_COUNT, 10) != 0) {
+        DBG_PRINT("_itow_s() failed converting integer to string (errno: %d)\n", errno);
+        goto end;
+    }
+
+    bStatus = TRUE;
+
+end:
     return bStatus ? TRUE : SetFailureInfo(dwFormatStrType, pbFormat, *pcbFormat);
 }
 

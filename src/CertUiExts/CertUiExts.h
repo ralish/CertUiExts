@@ -21,6 +21,12 @@ BOOL FormatAsGuidStringW(_In_ DWORD dwFormatStrType,
                          _At_((WCHAR *)pbFormat, _Out_writes_bytes_(*pcbFormat)) void* pbFormat,
                          _Inout_ DWORD* pcbFormat);
 
+BOOL FormatAsIntStringW(_In_ DWORD dwFormatStrType,
+                        _In_reads_bytes_(cbEncoded) const BYTE* pbEncoded,
+                        _In_ DWORD cbEncoded,
+                        _At_((WCHAR*)pbFormat, _Out_writes_bytes_(*pcbFormat)) void* pbFormat,
+                        _Inout_ DWORD* pcbFormat);
+
 BOOL SetFailureInfo(_In_ DWORD dwFormatStrType,
                     _At_((WCHAR *)pbFormat, _Out_writes_bytes_(cbFormat)) void* pbFormat,
                     _In_ DWORD cbFormat);

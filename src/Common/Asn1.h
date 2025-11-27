@@ -67,6 +67,22 @@
 #define ASN_DATE_TIME           0x21                            // DATE-TIME
 #define ASN_DURATION            0x22                            // DURATION
 
+/*
+ * Integers
+ */
+
+// Minimum bytes to encode a 64-bit signed integer
+#define ASN_TYPE_INT64_MIN_CB 3
+
+// Maximum bytes to encode a 64-bit signed integer
+#define ASN_TYPE_INT64_MAX_CB 10
+
+// Minimum length value for an integer
+#define ASN_LENGTH_INT_MIN_CB 1
+
+// Maximum length value for a 64-bit signed integer
+#define ASN_LENGTH_INT64_MAX_CB 8
+
 
 /*
  * Security Identifiers (SIDs)
