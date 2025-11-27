@@ -536,6 +536,64 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         CRYPT_FORMAT_OBJECT_A,
         "FormatGenericAsnGuid"
     },
+#ifdef _DEBUG
+    {
+        "1.2.840.113556.5.15",
+        L"Intune: Unknown (15)",
+        L"Microsoft: Intune - Unknown (15)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnInteger"
+    },
+    {
+        "1.2.840.113556.5.16",
+        L"Intune: Unknown (16)",
+        L"Microsoft: Intune - Unknown (16)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnInteger"
+    },
+    {
+        "1.2.840.113556.5.17",
+        L"Intune: Unknown (17)",
+        L"Microsoft: Intune - Unknown (17)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnInteger"
+    },
+    {
+        "1.2.840.113556.5.18",
+        L"Intune: Unknown (18)",
+        L"Microsoft: Intune - Unknown (18)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnInteger"
+    },
+    {
+        "1.2.840.113556.5.19",
+        L"Intune: Unknown (19)",
+        L"Microsoft: Intune - Unknown (19)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnInteger"
+    },
+    {
+        "1.2.840.113556.5.23",
+        L"Intune: Unknown (23)",
+        L"Microsoft: Intune - Unknown (23)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+    {
+        "1.2.840.113556.5.24",
+        L"Intune: Unknown (24)",
+        L"Microsoft: Intune - Unknown (24)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+#endif
 
     /*
      * Microsoft: Time Stamping
