@@ -420,6 +420,55 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     },
 
     /*
+     * Microsoft: Defender for Endpoint
+     * 1.3.6.1.4.1.311.126
+     */
+#ifdef _DEBUG
+    {
+        "1.3.6.1.4.1.311.126.4",
+        L"Defender for Endpoint: Unknown (4)",
+        L"Microsoft: Defender for Endpoint - Unknown (4)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnGuid"
+    },
+#endif
+    {
+        "1.3.6.1.4.1.311.126.6",
+        L"Defender for Endpoint: Entra ID Tenant ID",
+        L"Microsoft: Defender for Endpoint - Entra ID Tenant ID",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnGuid"
+    },
+#ifdef _DEBUG
+    {
+        "1.3.6.1.4.1.311.126.15",
+        L"Defender for Endpoint: Unknown (15)",
+        L"Microsoft: Defender for Endpoint - Unknown (15)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnInteger"
+    },
+    {
+        "1.3.6.1.4.1.311.126.17",
+        L"Defender for Endpoint: Unknown (17)",
+        L"Microsoft: Defender for Endpoint - Unknown (17)",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnInteger"
+    },
+#endif
+    {
+        "1.3.6.1.4.1.311.126.20",
+        L"Defender for Endpoint: Entra ID Device ID",
+        L"Microsoft: Defender for Endpoint - Entra ID Device ID",
+        CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+        CRYPT_FORMAT_OBJECT_A,
+        "FormatGenericAsnGuid"
+    },
+
+    /*
      * Microsoft: Entra ID
      * 1.2.840.113556.1.5.284
      */

@@ -167,6 +167,13 @@ Object identifiers (OIDs)
 | `1.3.6.1.4.1.311.2.1.11` | Extension | SPC Statement Type        |
 | `1.3.6.1.4.1.311.2.1.12` | Extension | SPC Publisher Information |
 
+#### Defender for Endpoint
+
+| OID                      | Type      | Description        |
+| ------------------------ | --------- | ------------------ |
+| `1.3.6.1.4.1.311.126.6`  | Extension | Entra ID Tenant ID |
+| `1.3.6.1.4.1.311.126.20` | Extension | Entra ID Device ID |
+
 #### Entra ID
 
 | OID                        | Type      | Description            |
