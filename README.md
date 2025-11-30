@@ -1,6 +1,7 @@
 CertUiExts
 ==========
 
+![GitHub Release](https://img.shields.io/github/v/release/ralish/CertUiExts?include_prereleases)
 [![azure devops](https://dev.azure.com/nexiom/CertUiExts/_apis/build/status/CertUiExts)](https://dev.azure.com/nexiom/CertUiExts/_build/latest?definitionId=1)
 [![license](https://img.shields.io/github/license/ralish/QueryHardwareSecurity)](https://choosealicense.com/licenses/mit/)
 
