@@ -658,6 +658,19 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     },
 
     /*
+     * Netscape
+     * 2.16.840.1.113730
+     */
+    {
+        "2.16.840.1.113730.4.1",
+        L"Netscape Server Gated Cryptography (SGC)",
+        L"Netscape: Server Gated Cryptography (SGC)",
+        CRYPT_ENHKEY_USAGE_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+
+    /*
      * Sectigo
      * 1.3.6.1.4.1.6449
      */

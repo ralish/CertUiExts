@@ -16,6 +16,7 @@ A library which extends Windows cryptography support for displaying additional O
   - [DigiCert](#digicert)
   - [Entrust](#entrust)
   - [Microsoft](#microsoft)
+  - [Netscape](#netscape)
   - [Sectigo](#sectigo)
   - [VeriSign](#verisign)
 - [Security](#security)
@@ -201,6 +202,12 @@ Object identifiers (OIDs)
 | OID                     | Type      | Description            |
 | ----------------------- | --------- | ---------------------- |
 | `1.3.6.1.4.1.311.3.3.1` | Extension | Timestamping Signature |
+
+### Netscape
+
+| OID                     | Type | Description                     |
+| ----------------------- | ---- | ------------------------------- |
+| `2.16.840.1.113730.4.1` | EKU  | Server Gated Cryptography (SGC) |
 
 ### Sectigo
 
