@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v0.5.0
+------
+
+- Add support for decoding some Defender for Endpoint OIDs
+- Add support for decoding Microsoft Privacy CA encryption EKU OID
+- Add support for decoding Netscape & VeriSign SGC EKU OIDs
+- Decode some additional unknown Intune OIDs in debug builds
+- Code quality & tooling improvements
+- Countless minor tweaks
+
 v0.4.0
 ------
 
