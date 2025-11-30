@@ -17,6 +17,7 @@ A library which extends Windows cryptography support for displaying additional O
   - [Entrust](#entrust)
   - [Microsoft](#microsoft)
   - [Sectigo](#sectigo)
+  - [VeriSign](#verisign)
 - [Security](#security)
   - [Build security](#build-security)
   - [Windows integration](#windows-integration)
@@ -218,6 +219,12 @@ Object identifiers (OIDs)
 | `1.3.6.1.4.1.6449.1.2.1.6.7` | Certificate Policy | Document Signing (remote)                         |
 | `1.3.6.1.4.1.6449.1.2.1.6.8` | Certificate Policy | Document Signing (external trusted partner)       |
 | `1.3.6.1.4.1.6449.1.2.2.7`   | Certificate Policy | Domain Validated (DV) TLS Certificate             |
+
+### VeriSign
+
+| OID                       | Type | Description                     |
+| ------------------------- | ---- | ------------------------------- |
+| `2.16.840.1.113733.1.8.1` | EKU  | Server Gated Cryptography (SGC) |
 
 Security
 --------

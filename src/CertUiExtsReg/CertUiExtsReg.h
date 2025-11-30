@@ -772,6 +772,19 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
         NULL,
         NULL
     },
+
+    /*
+     * VeriSign
+     * 2.16.840.1.113733
+     */
+    {
+        "2.16.840.1.113733.1.8.1",
+        L"VeriSign Server Gated Cryptography (SGC)",
+        L"VeriSign: Server Gated Cryptography (SGC)",
+        CRYPT_ENHKEY_USAGE_OID_GROUP_ID,
+        NULL,
+        NULL
+    }
 };
 
 // Number of registration information elements
