@@ -169,6 +169,12 @@ Object identifiers (OIDs)
 | `1.3.6.1.4.1.311.2.1.11` | Extension | SPC Statement Type        |
 | `1.3.6.1.4.1.311.2.1.12` | Extension | SPC Publisher Information |
 
+#### Certificate Services
+
+| OID                     | Type | Description           |
+| ----------------------- | ---- | --------------------- |
+| `1.3.6.1.4.1.311.21.36` | EKU  | Privacy CA encryption |
+
 #### Defender for Endpoint
 
 | OID                      | Type      | Description        |

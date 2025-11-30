@@ -420,6 +420,19 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     },
 
     /*
+     * Microsoft: Certificate Services
+     * 1.3.6.1.4.1.311.21
+     */
+    {
+        "1.3.6.1.4.1.311.21.36",
+        L"Microsoft Privacy CA encryption",
+        L"Microsoft: Certificate Services - Privacy CA encryption",
+        CRYPT_ENHKEY_USAGE_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+
+    /*
      * Microsoft: Defender for Endpoint
      * 1.3.6.1.4.1.311.126
      */
