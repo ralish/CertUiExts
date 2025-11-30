@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.4.0
+------
+
+- Add support for Entrust certificate policy OIDs
+- Code quality & tooling improvements
+
 v0.3.0
 ------
 
