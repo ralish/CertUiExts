@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.5.1
+------
+
+- Add support for several Microsoft Security Catalogue OIDs
+
 v0.5.0
 ------
 
