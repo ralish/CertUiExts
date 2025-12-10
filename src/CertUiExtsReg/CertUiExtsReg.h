@@ -658,6 +658,35 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
 #endif
 
     /*
+     * Microsoft: Security Catalogues
+     * 1.3.6.1.4.1.311.12
+     */
+     {
+         "1.3.6.1.4.1.311.12.1.1",
+         L"Security Catalogue List",
+         L"Microsoft: Security Catalogues - Security Catalogue List",
+         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+         NULL,
+         NULL
+    },
+     {
+         "1.3.6.1.4.1.311.12.1.2",
+         L"Security Catalogue v1",
+         L"Microsoft: Security Catalogues - Security Catalogue v1",
+         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+         NULL,
+         NULL
+     },
+     {
+         "1.3.6.1.4.1.311.12.1.3",
+         L"Security Catalogue v2",
+         L"Microsoft: Security Catalogues - Security Catalogue v2",
+         CRYPT_EXT_OR_ATTR_OID_GROUP_ID,
+         NULL,
+         NULL
+     },
+
+    /*
      * Microsoft: Time Stamping
      * 1.3.6.1.4.1.311.3
      */
