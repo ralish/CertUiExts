@@ -4,11 +4,14 @@
     <!-- Path to root of the repository -->
     <RepoRoot>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '..'))))\</RepoRoot>
 
+    <!-- Default to the Debug configuration if none specified -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+
     <!-- Create a platform directory for intermediate build outputs of Win32 builds -->
     <IntDir Condition=" '$(IntDir)' == '' AND '$(IntermediateOutputPath)' == '' AND '$(Platform)' == 'Win32' ">x86\$(Configuration)\</IntDir>
     <IntDir Condition=" '$(IntDir)' == '' AND '$(IntermediateOutputPath)' == '' AND '$(Platform)' != 'Win32' ">$(Platform)\$(Configuration)\</IntDir>
 
-    <!-- Store build outputs in a shared top-level bin/ directory -->
+    <!-- Store build outputs in a top-level bin/ directory -->
     <OutDir Condition=" '$(OutDir)' == '' AND '$(SolutionDir)' != '' AND '$(Platform)' == 'Win32' ">$(SolutionDir)bin\x86\$(Configuration)\</OutDir>
     <OutDir Condition=" '$(OutDir)' == '' AND '$(SolutionDir)' != '' AND '$(Platform)' != 'Win32' ">$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
