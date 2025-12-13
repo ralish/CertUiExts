@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
+    <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{cee62ee6-e539-41d2-9516-4a92d250aed0}</ProjectGuid>
     <RootNamespace>CertUiExtsReg</RootNamespace>
