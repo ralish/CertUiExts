@@ -5,12 +5,12 @@
     <RepoRoot>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '..'))))\</RepoRoot>
 
     <!-- Create a platform directory for intermediate build outputs of Win32 builds -->
-    <IntDir Condition="'$(IntDir)' == '' AND '$(IntermediateOutputPath)' == '' AND '$(Platform)' == 'Win32'">x86\$(Configuration)\</IntDir>
-    <IntDir Condition="'$(IntDir)' == '' AND '$(IntermediateOutputPath)' == '' AND '$(Platform)' != 'Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition=" '$(IntDir)' == '' AND '$(IntermediateOutputPath)' == '' AND '$(Platform)' == 'Win32' ">x86\$(Configuration)\</IntDir>
+    <IntDir Condition=" '$(IntDir)' == '' AND '$(IntermediateOutputPath)' == '' AND '$(Platform)' != 'Win32' ">$(Platform)\$(Configuration)\</IntDir>
 
     <!-- Store build outputs in a shared top-level bin/ directory -->
-    <OutDir Condition="'$(OutDir)' == '' AND '$(SolutionDir)' != '' AND '$(Platform)' == 'Win32'">$(SolutionDir)bin\x86\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(OutDir)' == '' AND '$(SolutionDir)' != '' AND '$(Platform)' != 'Win32'">$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition=" '$(OutDir)' == '' AND '$(SolutionDir)' != '' AND '$(Platform)' == 'Win32' ">$(SolutionDir)bin\x86\$(Configuration)\</OutDir>
+    <OutDir Condition=" '$(OutDir)' == '' AND '$(SolutionDir)' != '' AND '$(Platform)' != 'Win32' ">$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
 
   <ItemDefinitionGroup>
@@ -39,14 +39,14 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
 
-  <ItemDefinitionGroup Condition="'$(Configuration)' == 'Debug'">
+  <ItemDefinitionGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ResourceCompile>
       <!-- General -->
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
 
-  <ItemDefinitionGroup Condition="'$(Configuration)' == 'Release'">
+  <ItemDefinitionGroup Condition=" '$(Configuration)' == 'Release' ">
     <ResourceCompile>
       <!-- General -->
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>

@@ -36,20 +36,20 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' " Label="Configuration">
     <!-- Advanced -->
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' " Label="Configuration">
     <!-- Advanced -->
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' " Label="Configuration">
     <!-- Advanced -->
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' " Label="Configuration">
     <!-- Advanced -->
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -59,16 +59,16 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ImportGroup Label="PropertySheets" Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <ImportGroup Label="PropertySheets" Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ImportGroup Label="PropertySheets" Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ImportGroup Label="PropertySheets" Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -86,13 +86,13 @@
       <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ItemDefinitionGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
     <ClCompile>
       <!-- Preprocessor -->
       <PreprocessorDefinitions>WIN32;_DEBUG;CERTUIEXTS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <ItemDefinitionGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
     <ClCompile>
       <!-- Optimization -->
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -113,13 +113,13 @@
       <AdditionalOptions>/Brepro /PDBALTPATH:%_PDB% %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <ClCompile>
       <!-- Preprocessor -->
       <PreprocessorDefinitions>_DEBUG;CERTUIEXTS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ItemDefinitionGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <ClCompile>
       <!-- Optimization -->
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -160,10 +160,10 @@
     <ClCompile Include="Ntds.c" />
     <ClCompile Include="Utilities.c" />
     <ClCompile Include="pch.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
