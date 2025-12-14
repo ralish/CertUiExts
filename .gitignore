@@ -21,6 +21,7 @@ temp/
 
 # Build
 bin/
+obj/
 Debug/
 Release/
 x64/
