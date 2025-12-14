@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v0.5.2
+------
+
+- Add ARM64 support
+- Add support for Adobe Authentic Documents Trust EKU
+- Add support for Entrust Document Signing EKU
+- Add `Find-UnknownOids` PowerShell script
+- Documentation & tooling improvements
+
 v0.5.1
 ------
 
