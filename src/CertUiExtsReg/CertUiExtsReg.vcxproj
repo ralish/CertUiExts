@@ -92,6 +92,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <!-- Advanced -->
       <SetChecksum>true</SetChecksum>
+      <CETCompat>true</CETCompat>
       <!-- All options -->
       <AdditionalOptions>/Brepro /PDBALTPATH:%_PDB% %(AdditionalOptions)</AdditionalOptions>
     </Link>
