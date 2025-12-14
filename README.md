@@ -19,7 +19,7 @@ A library which extends Windows cryptography support for displaying additional O
   - [Microsoft](#microsoft)
   - [Netscape](#netscape)
   - [Sectigo](#sectigo)
-  - [VeriSign](#verisign)
+  - [Verisign](#verisign)
 - [Security](#security)
   - [Build security](#build-security)
   - [Windows integration](#windows-integration)
@@ -159,22 +159,22 @@ Object identifiers (OIDs)
 
 #### ASP.NET Core
 
-| OID                      | Type      | Description                   |
-| ------------------------ | --------- | ----------------------------- |
-| `1.3.6.1.4.1.311.84.1.1` | Extension | HTTPS Development Certificate |
+| OID                      | Type      | Description       |
+| ------------------------ | --------- | ----------------- |
+| `1.3.6.1.4.1.311.84.1.1` | Extension | HTTPS Development |
 
 #### Authenticode
 
-| OID                      | Type      | Description               |
-| ------------------------ | --------- | ------------------------- |
-| `1.3.6.1.4.1.311.2.1.11` | Extension | SPC Statement Type        |
-| `1.3.6.1.4.1.311.2.1.12` | Extension | SPC Publisher Information |
+| OID                      | Type      | Description    |
+| ------------------------ | --------- | -------------- |
+| `1.3.6.1.4.1.311.2.1.11` | Attribute | Statement Type |
+| `1.3.6.1.4.1.311.2.1.12` | Attribute | Publisher Info |
 
 #### Certificate Services
 
 | OID                     | Type | Description           |
 | ----------------------- | ---- | --------------------- |
-| `1.3.6.1.4.1.311.21.36` | EKU  | Privacy CA encryption |
+| `1.3.6.1.4.1.311.21.36` | EKU  | Privacy CA Encryption |
 
 #### Defender for Endpoint
 
@@ -204,11 +204,11 @@ Object identifiers (OIDs)
 | `1.2.840.113556.5.10` | Extension | User ID            |
 | `1.2.840.113556.5.14` | Extension | Entra ID Tenant ID |
 
-#### Time Stamping
+#### Timestamping
 
-| OID                     | Type      | Description            |
-| ----------------------- | --------- | ---------------------- |
-| `1.3.6.1.4.1.311.3.3.1` | Extension | Timestamping Signature |
+| OID                     | Type      | Description         |
+| ----------------------- | --------- | ------------------- |
+| `1.3.6.1.4.1.311.3.3.1` | Attribute | Timestamp Signature |
 
 ### Netscape
 
@@ -218,23 +218,23 @@ Object identifiers (OIDs)
 
 ### Sectigo
 
-| OID                          | Type               | Description                                       |
-| ---------------------------- | ------------------ | ------------------------------------------------- |
-| `1.3.6.1.4.1.6449.1.2.1.1.1` | Certificate Policy | S/MIME Certificate (Class 1)                      |
-| `1.3.6.1.4.1.6449.1.2.1.3.1` | Certificate Policy | TLS Certificate                                   |
-| `1.3.6.1.4.1.6449.1.2.1.3.2` | Certificate Policy | Code Signing Certificate                          |
-| `1.3.6.1.4.1.6449.1.2.1.3.4` | Certificate Policy | Organization Validated (OV) TLS Certificate       |
-| `1.3.6.1.4.1.6449.1.2.1.3.5` | Certificate Policy | S/MIME Certificate (Class 2)                      |
-| `1.3.6.1.4.1.6449.1.2.1.3.6` | Certificate Policy | S/MIME Certificate (Class 3)                      |
-| `1.3.6.1.4.1.6449.1.2.1.3.8` | Certificate Policy | Timestamping Certificate                          |
-| `1.3.6.1.4.1.6449.1.2.1.5.1` | Certificate Policy | Extended Validation (EV) TLS Certificate          |
-| `1.3.6.1.4.1.6449.1.2.1.6.1` | Certificate Policy | Extended Validation (EV) Code Signing Certificate |
-| `1.3.6.1.4.1.6449.1.2.1.6.6` | Certificate Policy | Document Signing (local)                          |
-| `1.3.6.1.4.1.6449.1.2.1.6.7` | Certificate Policy | Document Signing (remote)                         |
-| `1.3.6.1.4.1.6449.1.2.1.6.8` | Certificate Policy | Document Signing (external trusted partner)       |
-| `1.3.6.1.4.1.6449.1.2.2.7`   | Certificate Policy | Domain Validated (DV) TLS Certificate             |
+| OID                          | Type   | Description                                       |
+| ---------------------------- | ------ | ------------------------------------------------- |
+| `1.3.6.1.4.1.6449.1.2.1.1.1` | Policy | S/MIME Certificate (Class 1)                      |
+| `1.3.6.1.4.1.6449.1.2.1.3.1` | Policy | TLS Certificate                                   |
+| `1.3.6.1.4.1.6449.1.2.1.3.2` | Policy | Code Signing Certificate                          |
+| `1.3.6.1.4.1.6449.1.2.1.3.4` | Policy | Organization Validated (OV) TLS Certificate       |
+| `1.3.6.1.4.1.6449.1.2.1.3.5` | Policy | S/MIME Certificate (Class 2)                      |
+| `1.3.6.1.4.1.6449.1.2.1.3.6` | Policy | S/MIME Certificate (Class 3)                      |
+| `1.3.6.1.4.1.6449.1.2.1.3.8` | Policy | Timestamping Certificate                          |
+| `1.3.6.1.4.1.6449.1.2.1.5.1` | Policy | Extended Validation (EV) TLS Certificate          |
+| `1.3.6.1.4.1.6449.1.2.1.6.1` | Policy | Extended Validation (EV) Code Signing Certificate |
+| `1.3.6.1.4.1.6449.1.2.1.6.6` | Policy | Document Signing (local)                          |
+| `1.3.6.1.4.1.6449.1.2.1.6.7` | Policy | Document Signing (remote)                         |
+| `1.3.6.1.4.1.6449.1.2.1.6.8` | Policy | Document Signing (external trusted partner)       |
+| `1.3.6.1.4.1.6449.1.2.2.7`   | Policy | Domain Validated (DV) TLS Certificate             |
 
-### VeriSign
+### Verisign
 
 | OID                       | Type | Description                     |
 | ------------------------- | ---- | ------------------------------- |
