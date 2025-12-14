@@ -13,6 +13,7 @@ A library which extends Windows cryptography support for displaying additional O
   - [Uninstalling](#uninstalling)
 - [Usage](#usage)
 - [Object identifiers (OIDs)](#object-identifiers-oids)
+  - [Adobe](#adobe)
   - [CA/Browser Forum](#cabrowser-forum)
   - [DigiCert](#digicert)
   - [Entrust](#entrust)
@@ -97,6 +98,12 @@ CertUtil: -dump command completed successfully.
 
 Object identifiers (OIDs)
 -------------------------
+
+### Adobe
+
+| OID                    | Type | Description               |
+| ---------------------- | ---- | ------------------------- |
+| `1.2.840.113583.1.1.5` | EKU  | Authentic Documents Trust |
 
 ### CA/Browser Forum
 

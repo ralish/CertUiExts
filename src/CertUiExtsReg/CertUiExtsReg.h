@@ -51,6 +51,19 @@ typedef struct _CERTUIEXTS_REG_INFO {
 // Array of OIDs and functions to register
 CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     /*
+     * Adobe Systems
+     * 1.2.840.113583
+     */
+    {
+        "1.2.840.113583.1.1.5",
+        L"Adobe Authentic Documents Trust",
+        L"Adobe: Authentic Documents Trust EKU",
+        CRYPT_ENHKEY_USAGE_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+
+    /*
      * CA/Browser Forum
      * 2.23.140
      */
