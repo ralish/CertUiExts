@@ -6,56 +6,25 @@ pool:
 
 variables:
   solution: CertUiExts.slnx
+  configuration: Release
+
+strategy:
+  matrix:
+    x64:
+      platform: x64
+    x86:
+      platform: x86
 
 steps:
 - task: VSBuild@1
   inputs:
     solution: $(solution)
-    platform: x86
-    configuration: Debug
-    maximumCpuCount: true
-
-- task: VSBuild@1
-  inputs:
-    solution: $(solution)
-    platform: x86
-    configuration: Release
-    maximumCpuCount: true
-
-- task: VSBuild@1
-  inputs:
-    solution: $(solution)
-    platform: x64
-    configuration: Debug
-    maximumCpuCount: true
-
-- task: VSBuild@1
-  inputs:
-    solution: $(solution)
-    platform: x64
-    configuration: Release
+    platform: $(platform)
+    configuration: $(configuration)
     maximumCpuCount: true
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: bin/x86/Release
-    artifact: CertUiExts-$(build.SourceVersion)-x86
-    publishLocation: pipeline
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: bin/x86/Debug
-    artifact: CertUiExts-$(build.SourceVersion)-x86-dbg
-    publishLocation: pipeline
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: bin/x64/Release
-    artifact: CertUiExts-$(build.SourceVersion)-x64
-    publishLocation: pipeline
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: bin/x64/Debug
-    artifact: CertUiExts-$(build.SourceVersion)-x64-dbg
+    targetPath: bin/$(platform)/$(configuration)
+    artifact: CertUiExts-$(build.SourceVersion)-$(platform)
     publishLocation: pipeline
