@@ -32,6 +32,11 @@ MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Debug;Pla
 IF %ERRORLEVEL% GEQ 1 GOTO End
 ECHO.
 
+ECHO [CertUiExts] Running target "%MSBuildTarget%" for Debug/ARM64 ...
+MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Debug;Platform=ARM64
+IF %ERRORLEVEL% GEQ 1 GOTO End
+ECHO.
+
 ECHO [CertUiExts] Running target "%MSBuildTarget%" for Release/x86 ...
 MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Release;Platform=x86
 IF %ERRORLEVEL% GEQ 1 GOTO End
@@ -39,6 +44,11 @@ ECHO.
 
 ECHO [CertUiExts] Running target "%MSBuildTarget%" for Release/x64 ...
 MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Release;Platform=x64
+IF %ERRORLEVEL% GEQ 1 GOTO End
+ECHO.
+
+ECHO [CertUiExts] Running target "%MSBuildTarget%" for Release/ARM64 ...
+MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Release;Platform=ARM64
 IF %ERRORLEVEL% GEQ 1 GOTO End
 ECHO.
 
