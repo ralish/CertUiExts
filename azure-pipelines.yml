@@ -10,6 +10,8 @@ variables:
 
 strategy:
   matrix:
+    arm64:
+      platform: ARM64
     x64:
       platform: x64
     x86:

@@ -1,5 +1,6 @@
 <Solution xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Configurations>
+    <Platform Name="ARM64" />
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>

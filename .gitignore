@@ -24,6 +24,7 @@ bin/
 obj/
 Debug/
 Release/
+ARM64/
 x64/
 x86/
 

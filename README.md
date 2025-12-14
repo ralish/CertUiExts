@@ -37,7 +37,7 @@ Setup
 
 ### Installing
 
-1. Download the [latest release](https://github.com/ralish/CertUiExts/releases) which matches your Windows architecture (x86 or x64)
+1. Download the [latest release](https://github.com/ralish/CertUiExts/releases) which matches your Windows architecture (x86, x64, or ARM64)
 2. Unpack the archive to a location which is read-only for non-Administrators (e.g. `C:\Program Files\CertUiExts`)
 3. From an elevated command-line run the registration utility to install: `CertUiExtsReg.exe /i`
 
@@ -251,14 +251,14 @@ Compilation features:
 
 - Buffer Security Check (`/GS`)
 - Control Flow Guard (CFG) (`/guard:cf`)
-- EH Continuation (EHCONT) metadata (*x64 only*) (`/guard:ehcont`)
+- EH Continuation (EHCONT) metadata (*ARM64 / x64*) (`/guard:ehcont`)
 
 Linker features:
 
 - Data Execution Prevention (DEP) (`/NXCOMPAT`)
 - Address Space Layout Randomisation (ASLR) (`/DYNAMICBASE`)
-- High-entropy 64-bit ASLR (*x64 only*) (`/HIGHENTROPYVA`)
-- Control-flow Enforcement Technology (CET) Shadow Stack (`/CETCOMPAT`)
+- High-entropy 64-bit ASLR (*ARM64 / x64*) (`/HIGHENTROPYVA`)
+- Control-flow Enforcement Technology (CET) Shadow Stack (*x86 / x64*) (`/CETCOMPAT`)
 - Reproducible (aka. deterministic) builds (`/Brepro`)
 
 Many of these mitigations require operating system support. On older Windows releases they will simply be ignored.
