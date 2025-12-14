@@ -4,6 +4,7 @@
         "editorconfig.editorconfig",
         "ms-azure-devops.azure-pipelines",
         "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.powershell",
         "redhat.vscode-xml",
         "redhat.vscode-yaml",
         "willasm.rc-script",
