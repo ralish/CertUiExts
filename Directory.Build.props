@@ -1,8 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <!-- Path to root of the repository -->
-    <RepoRoot>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '..'))))\</RepoRoot>
+    <!-- Ensure SolutionDir is defined when outside of Visual Studio -->
+    <SolutionDir Condition=" '$(SolutionDir)' == '' Or '$(SolutionDir)' == '*Undefined*' ">$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '..\..'))))\</SolutionDir>
 
     <!-- Default to the Debug configuration if none specified -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
