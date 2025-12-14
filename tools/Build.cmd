@@ -17,11 +17,6 @@ SET MSBuildTarget=Build
 @REM Optional first arg is build target
 IF NOT "%1" == "" SET MSBuildTarget=%1
 
-@REM MSBuild swallows the first new-line
-MSBuild.exe -version
-ECHO.
-ECHO.
-
 ECHO [CertUiExts] Running target "%MSBuildTarget%" for Debug/x86 ...
 MSBuild %MSBuildSln% %MSBuildArgs% -t:%MSBuildTarget% -p:Configuration=Debug;Platform=x86
 IF %ERRORLEVEL% GEQ 1 GOTO End
