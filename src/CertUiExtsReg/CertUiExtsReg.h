@@ -288,6 +288,19 @@ CERTUIEXTS_REG_INFO g_rgRegInfo[] = {
     },
 
     /*
+     * Entrust Technologies
+     * 2.16.840.1.114027
+     */
+    {
+        "2.16.840.1.114027.40.11",
+        L"Entrust Document Signing",
+        L"Entrust: Document Signing EKU",
+        CRYPT_ENHKEY_USAGE_OID_GROUP_ID,
+        NULL,
+        NULL
+    },
+
+    /*
      * Entrust
      * 2.16.840.1.114028
      */

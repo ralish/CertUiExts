@@ -138,6 +138,7 @@ Object identifiers (OIDs)
 
 | OID                          | Type               | Description                                              |
 | ---------------------------- | ------------------ | -------------------------------------------------------- |
+| `2.16.840.1.114027.40.11`    | EKU                | Document Signing                                         |
 | `2.16.840.1.114028.10.1.2`   | Certificate Policy | Extended Validation (EV) SSL or Code Signing Certificate |
 | `2.16.840.1.114028.10.1.3`   | Certificate Policy | Code Signing Certificate                                 |
 | `2.16.840.1.114028.10.1.4.1` | Certificate Policy | Client Certificate (Class 1)                             |
