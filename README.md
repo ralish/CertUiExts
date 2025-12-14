@@ -204,6 +204,14 @@ Object identifiers (OIDs)
 | `1.2.840.113556.5.10` | Extension | User ID            |
 | `1.2.840.113556.5.14` | Extension | Entra ID Tenant ID |
 
+#### Security Catalogues
+
+| OID                      | Type      | Description             |
+| ------------------------ | --------- | ----------------------- |
+| `1.3.6.1.4.1.311.12.1.1` | Attribute | Security Catalogue List |
+| `1.3.6.1.4.1.311.12.1.2` | Attribute | Security Catalogue v1   |
+| `1.3.6.1.4.1.311.12.1.3` | Attribute | Security Catalogue v2   |
+
 #### Timestamping
 
 | OID                     | Type      | Description         |
